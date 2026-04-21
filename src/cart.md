@@ -1,604 +1,526 @@
-# CDHA Cart UI Functional Walkthrough
+# Cart Reference
 
-## Purpose
-This document describes how the current CDHA cart UI behaves 
+## Flow Map
 
-## Page Overview
+| Flow / state | Visible screens / steps | Conditional notes |
+| --- | --- | --- |
+| Initial load | Cart shell -> loading overlay -> resolved cart display | Member info and cart data are both fetched before the page settles |
+| Empty cart | Page title -> empty message | No summary, payment section, or submit button |
+| Standard payable cart | Error panel if needed -> Cart Items -> PD Biz / IPN if applicable -> Add-ons if applicable -> Donation if applicable -> Payment Method -> Order Summary -> Place Order | Payment section only shows when total due is greater than zero |
+| Zero-dollar cart | Error panel if needed -> Cart Items and other eligible sections -> Order Summary -> Place Order | Summary and submit remain visible even when payment is hidden |
+| Submit blocked | Top-level error panel -> current cart sections remain visible | Page scrolls to top and shows blocking validation message |
+| Successful submit | Cart validation -> payment submission -> `/confirmation` redirect | No intermediate success page inside the cart route |
 
-### Layout
-The page uses a centered container with a maximum width of about `960px`.
+### Shared Components
 
-On desktop and larger screens:
-- the page is split into two columns
-- the left column is wider and contains editable order sections
-- the right column is narrower and contains the order summary and submit button
+| Pattern | Cart |
+| --- | --- |
+| Page-level loading overlay | Yes |
+| Top-level error panel | Yes |
+| Table-based item list | Yes |
+| Invoice grouping | Yes, when invoice exists |
+| Conditional upsell / promo section | Yes, PD Biz / IPN only |
+| Add-ons editor | Yes, invoice-driven |
+| Donation editor | Yes |
+| Payment form | Yes, when amount due is greater than zero |
+| Order summary card | Yes |
+| Submit action | Yes |
 
-On smaller screens:
-- the layout collapses into a single column
-- the sections remain in the same relative order
-- editable sections appear first
-- summary and submit appear after them
+## Component Catalog
 
-### Main content zones
-The UI is organized into two functional areas.
+## 1. Cart Page Layout
 
-Left column:
-- cart items
-- PD Biz / IPN promotional decision section when applicable
-- add-ons
-- donation
-- payment
+### Purpose
 
-Right column:
-- order summary
+This is the order review and checkout page used to display current cart content, invoice-derived renewal content, optional add-ons, donations, payment, and final submission.
+
+### Visibility Matrix
+
+| Surface | Cart Page |
+| --- | --- |
+| Review order layout | Yes |
+
+### Main Layout Regions
+
+| Region | Desktop | Mobile |
+| --- | --- | --- |
+| Main page structure | Two columns | Single column |
+| Left column | Editable order sections | Shown first |
+| Right column | Order summary and submit action | Shown after editable sections |
+
+### Left Column Content
+
+- Cart Items
+- PD Biz / IPN promotional section when eligible
+- Add-ons when eligible
+- Donation when eligible
+- Payment Method when amount due is greater than zero
+
+### Right Column Content
+
+- Order Summary
 - `Place Order` button
 
-## Top-Level Page States
+## 2. Page-Level States
 
-### Initial loading state
-When the page first loads, member information and cart information are fetched before the interface settles into its final state.
+### Purpose
 
-During this period:
-- the page structure is still present
-- a loading overlay can appear over the content area
-- the user does not see a separate loading page
+These are the major whole-page states that determine whether the user sees the normal cart content, a loading treatment, an empty state, or a blocking error state.
 
-The loading treatment is an overlay:
-- semi-transparent grey layer
-- centered indeterminate spinner
-- underlying content remains visible but blocked visually
+### State Matrix
 
-### Empty state
-If the cart has no applicable items and no invoice content, the page becomes an empty state.
+| State | What the user sees | What is hidden / changed |
+| --- | --- | --- |
+| Initial loading | Existing page shell with blocking loading overlay and centered spinner | Interaction is blocked while data resolves |
+| Empty cart | Page title and `No items in the cart.` message | No summary, payment section, submit button, or editable cart sections |
+| Normal display | All sections whose own visibility rules pass | Non-eligible sections remain hidden |
+| Error state | Prominent top-level error panel near the top of the page | Existing sections may remain visible below the error |
 
-The user sees:
-- the page title
-- the message `No items in the cart.`
-
-The user does not see:
-- summary
-- payment form
-- submit button
-- editable cart sections
-
-### Normal display state
-If the cart contains displayable content, the page renders the relevant sections in order. Each section is shown only when its own conditions are satisfied.
-
-### Error state
-If the cart encounters an unrecoverable page-level error, the page shows a prominent error panel near the top.
-
-The error panel:
-- appears below the page title
-- uses a red background and red border styling
-- includes an error icon
-- shows either one or more specific error messages or a generic fallback error message
-
-This is also where submit-time validation errors appear.
-
-## Section Order and Display Logic
-
-### 1. Error panel
-This is the first conditional content block under the heading.
-
-It appears when:
-- the page enters an error state, or
-- the page has one or more top-level error messages
-
-Why it appears:
-- to communicate failures that affect the whole order flow
-- to show validation messages that block submission
-
-Examples of messages surfaced here:
-- payment data is invalid
-- the PD Biz / IPN question was not answered
-- a cart update failed
-- payment submission failed
-
-### 2. Cart items section
-This is the first main editable section in the left column.
-
-It appears when either of these is true:
-- there is an invoice to display
-- there are cart items remaining after filtering out special item types
-
-The section is rendered inside a bordered box and uses a table with three columns:
-- `Description`
-- `Price`
-- action column with no visible heading text
+### Loading Behavior
 
-#### Invoice row
-If an invoice exists, the invoice is shown as the first row in the table.
-
-The invoice row displays:
-- invoice line names in the description column
-- a single summarized invoice amount in the price column
-- all invoice items are grouped together with a different text based on the province (doesn't show insurance and other specific items needed for renewal)
-- a `Remove` link in the action column
-
-The invoice description is not a single label. Instead, it is built from the invoice lines, with two filtering rules:
-- tax lines are excluded
-- lines whose name contains `dues not collected` are excluded
-
-The amount shown for the invoice row is not the full invoice balance. It is:
-- invoice balance
-- minus invoice tax amount (tax will show in the summary)
-
-This means the invoice row behaves like an invoice subtotal, not a grand total.
-
-The invoice can be removed through the `Remove` link. Removing it triggers:
-- loading state
-- cart refresh
-- full section recalculation
-
-#### Standard cart item rows
-After the invoice row, the cart section shows normal cart item rows.
-
-Each row displays:
-- item name
-- item price
-- `Remove` link
+- The loading treatment is an overlay, not a separate page.
+- The underlying content remains visible but blocked visually.
+- Most cart-edit interactions reuse this same loading pattern.
 
-The price shown is the discounted amount when a discount exists. Otherwise it shows the item amount.
-
-### 3. PD Biz / IPN promotional section
-This section appears after cart items when specific course-related conditions are met.
-
-Its purpose is to ask whether the user wants to add the Independent Practice Network offer associated with certain PD Biz courses.
+## 3. Error Panel
 
-It appears only when:
-- the cart contains one of the PD Biz course items:
-  - `PD_BIZFUND`
-  - `PD_BIZGROWTH`
-  - `PD_BIZPLN`
-- and the member type is one of:
-  - `FM`
-  - `SUPPT`
-  - `GRAD`
-  - `STU`
-
-The section is rendered as:
-- a heading: `Independent Practice Network`
-- a bordered table with one row
-- a description with a link to the IPN information page
-- a fixed displayed price of `$75.00`
-- two radio choices:
-  - `Yes*`
-  - `No`
-- disclaimer text below the table
+### Purpose
 
-#### What the user is deciding
-The user is explicitly answering whether they want to purchase the Independent Practice Network in connection with the PD Biz course.
-
-This decision matters because:
-- it may add IPN to the order
-- it may affect promo-code behavior behind the scenes
-- it is required before submission when the section is visible
+This is the top-level error surface used for page errors and blocked submit-time validation.
 
-#### When the section does not appear
-The section can be hidden automatically in several cases because the system resolves the situation without asking the user.
+### Visibility Matrix
 
-Hidden examples include:
-- inactive members with no applicable promo-code path
-- members who already have IPN and are handled through automatic promo-code behavior
-- carts already containing the IPN add-on in a state where the promo has already been resolved
+| Condition | Error panel shown? | Notes |
+| --- | --- | --- |
+| Unrecoverable page-level error | Yes | Appears near the top of the page |
+| One or more top-level validation errors | Yes | Used for blocked submit states |
+| No error state and no messages | No | Hidden entirely |
 
-In these hidden cases, the UI does not show a question because the state machine has already determined the outcome.
+### What The User Sees
 
-#### Student special case
-Students are a special case in this flow.
+- Red error styling
+- Error icon
+- One or more specific messages, or a generic fallback message
 
-If the user is a student and enters a path where the PD Biz course is not available:
-- the UI triggers a browser alert saying the course is not available to students
-- the course is then removed
-- the page reloads
+### Example Messages
 
-### 4. Add-ons section
-The add-ons section appears after the PD Biz / IPN area.
+| Scenario | Message / meaning |
+| --- | --- |
+| Invalid payment data | Payment information is invalid |
+| PD Biz / IPN unanswered | User must explicitly answer Yes or No |
+| Cart update failure | Cart update failed |
+| Payment submission failure | Payment could not be completed |
 
-It appears only when an invoice exists.
+## 4. Cart Items Section
 
-This is a major display rule in the current cart:
-- no invoice means no add-ons section
-- invoice present means add-ons section is eligible to display
+### Purpose
 
-The currently active add-on list contains one item:
-- `Independent Practice`
-- `Educators`
+This is the main order-content table. It shows invoice-derived renewal content, standard cart items, or both.
 
-The row displays:
-- the add-on name
-- the price
-- a checkbox showing whether it is already in the cart
+### Visibility Matrix
 
-#### Add-on interaction
-If the checkbox is selected:
-- the add-on is considered in the cart
+| Condition | Cart Items shown? | Notes |
+| --- | --- | --- |
+| Invoice exists | Yes | Invoice row is shown first |
+| Standard cart items remain after filtering special items | Yes | Item rows are shown |
+| Neither invoice nor displayable cart items exist | No | Section is hidden |
 
-If the user unchecks it:
-- the cart updates
-- the page shows loading
-- the page reloads and recalculates totals and section content
+### Table Structure
 
-If the user checks it:
-- the add-on is added
-- the page reloads after the update
+| Column | Content |
+| --- | --- |
+| `Description` | Invoice description or cart item name |
+| `Price` | Display price |
+| Action | `Remove` link |
 
-#### First-load auto-selection rule
-This section has one important automatic behavior.
+### Invoice Row Rules
 
-On the initial load of the add-ons section, the `Independent Practice` add-on can be automatically added if all of the following are true:
-- the member already has IPN access
-- the member has not purchased IPN yet
-- the add-on is not already in the cart
+| Behavior | Rule |
+| --- | --- |
+| Placement | Invoice row appears before standard cart item rows |
+| Description source | Built from invoice lines, not a single static label |
+| Excluded invoice lines | Tax lines and lines containing `dues not collected` |
+| Display amount | Invoice balance minus invoice tax amount |
+| Removal | `Remove` link refreshes the cart and recalculates the section |
 
-This means the initial visual state of the checkbox is not always purely a reflection of manual user action. It can be set by business rules during first load.
+### Standard Cart Item Rules
 
+| Behavior | Rule |
+| --- | --- |
+| Display label | Uses the cart item name |
+| Display amount | Uses discounted amount when discount exists, otherwise normal item amount |
+| Removal | `Remove` link triggers cart refresh and recalculation |
 
-### 5. Donation section
-The donation section appears after add-ons.
+### Important Notes
 
-It appears when either of these is true:
-- an invoice exists
-- a donation is already present in the cart
+- Invoice content behaves like a subtotal row, not the final total.
+- Invoice and standard item content can appear together in the same table.
 
-This means donation can remain visible even without an invoice if the user already has a donation selected.
+## 5. PD Biz / IPN Promotional Section
 
-The section contains:
-- heading `CFDHRE Donation`
-- explanatory text
-- external link to the foundation website
-- amount dropdown
-- anonymous donation checkbox
+### Purpose
 
-#### Donation amount selector
-The amount control is a select dropdown, not a freeform numeric input.
+This is the promotional decision block that asks whether the user wants to add the Independent Practice Network offer when specific PD Biz courses are present.
 
-The first option is a blank prompt:
-- `Select Amount`
+### Visibility Matrix
 
-The selectable donation amounts are fixed increments from:
-- `$5`
-- up to `$100`
-- in `$5` steps
+| Condition | Section shown? | Notes |
+| --- | --- | --- |
+| Cart contains `PD_BIZFUND`, `PD_BIZGROWTH`, or `PD_BIZPLN` | Eligible | Requires qualifying member type |
+| Member type is `FM`, `SUPPT`, `GRAD`, or `STU` | Eligible | Combined with course rule |
+| Promo state already resolved automatically | No | UI stays hidden |
 
-Internally this is implemented as twenty choices, but from the user’s perspective it behaves like a fixed donation amount selector.
+### What The User Sees
 
-#### Donation behavior
-If the user selects an amount:
-- the donation is added or updated
-- the page enters loading
-- the page reloads
+- Section heading `Independent Practice Network`
+- One-row bordered table
+- Description with link to IPN information
+- Fixed displayed price of `$75.00`
+- Radio choices `Yes*` and `No`
+- Disclaimer text below the table
 
-If the user resets the select box back to the empty option:
-- the donation is removed
-- the page reloads
+### Decision Rules
 
-Only one donation amount is effectively active at a time.
+| Behavior | Rule |
+| --- | --- |
+| User must answer | Yes, when the section is visible |
+| Accepting the offer | May add IPN to the order |
+| Declining the offer | Valid path; the requirement is to answer, not to choose a specific option |
+| No answer on submit | Blocks submission and shows top-level error |
 
-#### Anonymous donation checkbox
-The section also includes a checkbox for anonymous donation preference.
+### Hidden-State Rules
 
-The label explains that donors are normally recognized publicly and that checking the box keeps the donation anonymous.
+- The section can be skipped when the state machine already resolved the promo outcome.
+- This includes cases such as existing IPN ownership, inactive-member handling, or promo state already resolved in the cart.
 
-If the user toggles the checkbox:
-- the page enters loading
-- the current donation is re-saved in its anonymous or non-anonymous form
-- the page reloads
+### Student Special Case
 
-### 6. Payment method section
-The payment section appears after donations.
+- If a student enters a path where the PD Biz course is not available, the UI shows a browser alert.
+- The course is removed and the page reloads.
 
-It appears only when the order total is greater than zero.
+## 6. Add-ons Section
 
-This means:
-- orders with payable balances show the payment form
-- zero-dollar orders do not show the payment form
+### Purpose
 
-The section contains:
-- heading `Payment Method`
-- bordered form container
-- Mastercard and Visa images at the top
-- card number input
-- name on card input
-- expiry date input
-- CVC input
+This is the optional add-ons editor used for invoice-driven add-on purchases.
 
-#### Card brand icons
-The page displays both card logos at all times, but the visual state changes based on the detected card type.
+### Visibility Matrix
 
-If the entered card number is recognized as Mastercard:
-- Mastercard icon appears active
-- Visa icon appears disabled
+| Condition | Add-ons shown? | Notes |
+| --- | --- | --- |
+| Invoice exists | Yes | Section becomes eligible to display |
+| No invoice exists | No | Section is hidden |
 
-If the entered card number is recognized as Visa:
-- Visa icon appears active
-- Mastercard icon appears disabled
+### Available Add-ons
 
-If the card type is unknown or unsupported:
-- neither supported-brand state is fully valid
+| Add-on | Notes |
+| --- | --- |
+| `Independent Practice` | Checkbox-based add-on |
+| `Educators` | Checkbox-based add-on |
 
-This provides immediate visual feedback about what the form believes the card type is.
+### Row Content
 
-#### Field layout
-The payment fields are arranged in two horizontal groups on larger screens.
+| Field | Display |
+| --- | --- |
+| Name | Add-on name |
+| Price | Add-on price |
+| Selection control | Checkbox |
 
-First row:
-- card number
-- name on card
+### Add-on Rules
 
-Second row:
-- expiry date
-- CVC
+| Behavior | Rule |
+| --- | --- |
+| Check the box | Add-on is added and the page reloads |
+| Uncheck the box | Add-on is removed and the page reloads |
+| Invoice dependency | No invoice means no add-ons section |
 
-The expiry and CVC inputs are narrower than the name and card number fields.
+### First-Load Auto-Selection Rule
 
-#### Input formatting
-The UI uses client-side formatting helpers for:
-- card number
-- expiry date
-- CVC
+| Condition | Outcome |
+| --- | --- |
+| Member already has IPN access | Candidate for auto-selection |
+| Member has not purchased IPN yet | Candidate for auto-selection |
+| `Independent Practice` add-on is not already in cart | Candidate for auto-selection |
+| All three conditions pass | `Independent Practice` can be auto-added on first load |
 
-This means the fields guide the user toward expected formatting as they type rather than behaving like plain raw text fields.
+## 7. Donation Section
 
-#### Payment validation timing
-Validation is partially field-driven and partially submit-driven.
+### Purpose
 
-On blur:
-- card number validation can run
-- card type validation can run
-- name validation can run
-- expiry validation can run
-- CVC validation can run
+This is the optional donation editor for CFDHRE donations.
 
-When a field is invalid, its form control is marked invalid visually.
+### Visibility Matrix
 
-The current implementation does not display inline help text beneath each field. The feedback is primarily:
-- invalid field styling
-- top-level error banner on blocked submit
+| Condition | Donation shown? | Notes |
+| --- | --- | --- |
+| Invoice exists | Yes | Standard invoice-driven case |
+| Donation already exists in cart | Yes | Keeps section visible even without invoice |
+| No invoice and no donation | No | Section is hidden |
 
-## Order Summary and Submit
+### What The User Sees
 
-### Summary card
-The order summary appears in the right column whenever there is something meaningful to summarize.
+- Heading `CFDHRE Donation`
+- Explanatory text
+- External foundation link
+- Amount dropdown
+- Anonymous donation checkbox
 
-It appears when:
-- there are cart lines, or
-- there is an invoice
+### Donation Amount Rules
 
-The summary uses:
-- light grey background
-- subtle border
-- heading `Order Summary`
+| Field | Rule |
+| --- | --- |
+| Control type | Select dropdown |
+| Empty prompt | `Select Amount` |
+| Available values | `$5` through `$100` in `$5` increments |
+| Multi-amount behavior | Only one donation amount is active at a time |
 
-#### Summary line items
-The summary begins with a subtotal-style line for the main order content, but the label changes depending on what is in the order.
+### Donation Interaction Rules
 
-Possible labels:
-- `Cart Items`
-- `Renewal Fees`
-- `Cart Items and Renewal fees`
+| Behavior | Rule |
+| --- | --- |
+| Select donation amount | Donation is added or updated, then page reloads |
+| Reset to empty option | Donation is removed, then page reloads |
+| Toggle anonymous checkbox | Current donation is re-saved with updated anonymity state, then page reloads |
 
-Why the label changes:
-- to tell the user whether the base total comes from items, invoice renewal content, or both
+## 8. Payment Method Section
 
-The amount shown on this line is:
-- invoice subtotal excluding invoice tax
-- plus cart item total
+### Purpose
 
-#### Add-on total
-If add-ons exist in the cart, the summary shows:
-- `Total add-ons`
-- corresponding total amount
+This is the credit-card payment form used when the order total is greater than zero.
 
-#### Donation total
-If a donation exists, the summary shows:
-- `CFDHRE donation`
-- corresponding donation amount
+### Visibility Matrix
 
-#### Tax line
-The summary shows tax only when total tax is greater than zero.
+| Condition | Payment section shown? | Notes |
+| --- | --- | --- |
+| Order total is greater than zero | Yes | User must provide valid payment details |
+| Order total is zero | No | Summary and submit can still remain visible |
 
-The tax total combines:
-- tax from order totals
-- invoice tax amount
+### What The User Sees
 
-#### Final total
-The bottom summary line is visually emphasized and labeled:
-- `You pay:`
+- Heading `Payment Method`
+- Mastercard and Visa logos
+- Card Number field
+- Name on Card field
+- Expiry Date field
+- CVC field
 
-This is the grand total the user is expected to pay.
+### Payment Fields
 
-### Submit button
-Below the summary is a full-width primary button labeled `Place Order`.
+| Field | Required | Validation / rules | Notes |
+| --- | --- | --- | --- |
+| `card_number` | Yes when payment section is shown | Must be a valid Visa or Mastercard number | Card-type detection affects icon state |
+| `name_on_card` | Yes when payment section is shown | Must not be empty | Validated on blur and submit |
+| `expiry_date` | Yes when payment section is shown | Must pass expiry validation | Formatted client-side |
+| `cvc` | Yes when payment section is shown | Must pass card-type-aware CVC validation | Formatted client-side |
 
-The button appears whenever the summary appears.
+### Card Brand Feedback
 
-It does not submit blindly. It always routes through page-level validation first.
+| Entered card type | Visual result |
+| --- | --- |
+| Mastercard | Mastercard icon active, Visa disabled |
+| Visa | Visa icon active, Mastercard disabled |
+| Unknown or unsupported | Neither supported-brand state is valid |
 
-## Submission and Validation Rules
+### Field Layout
 
-### Validation order
-When the user presses `Place Order`, the page checks blocking conditions in a defined order.
+| Row | Fields |
+| --- | --- |
+| First row | Card Number, Name on Card |
+| Second row | Expiry Date, CVC |
 
-The current order is:
-1. PD Biz / IPN decision requirement
-2. payment validity requirement
-3. payment submission if all checks pass
+### Payment Rules
 
-### PD Biz / IPN blocking rule
-If the PD Biz / IPN section is visible, the user must explicitly choose:
-- Yes
-- or No
+- The payment section does not refresh the cart while the user types.
+- Validation is field-driven on blur and checked again on submit.
+- Invalid fields receive invalid styling.
+- The current implementation relies on invalid styling and top-level error feedback rather than inline help text under each field.
 
-If neither option is selected:
-- submission is blocked
-- the page scrolls to the top
-- the error banner displays this message:
+## 9. Order Summary and Submit
+
+### Purpose
+
+This is the summary area that shows the totals the user is about to pay and provides the final `Place Order` action.
+
+### Visibility Matrix
+
+| Condition | Summary shown? | Submit shown? |
+| --- | --- | --- |
+| Cart lines exist | Yes | Yes |
+| Invoice exists | Yes | Yes |
+| Nothing meaningful to summarize | No | No |
+
+### Summary Card
+
+| Summary element | Rule |
+| --- | --- |
+| Heading | `Order Summary` |
+| Base total label | Changes based on invoice/cart composition |
+| Base total amount | Invoice subtotal excluding invoice tax plus cart item total |
+| Add-on line | Shows only when add-ons exist |
+| Donation line | Shows only when donation exists |
+| Tax line | Shows only when total tax is greater than zero |
+| Final total | Emphasized as `You pay:` |
+
+### Base Summary Labels
+
+| Order composition | Label shown |
+| --- | --- |
+| Cart items only | `Cart Items` |
+| Invoice content only | `Renewal Fees` |
+| Invoice content and cart items | `Cart Items and Renewal fees` |
+
+### Submit Button
+
+| Behavior | Rule |
+| --- | --- |
+| Label | `Place Order` |
+| Width | Full-width primary button |
+| Validation | Always runs page-level validation before submission |
+
+## 10. Submission and Validation Rules
+
+### Submit Order
+
+| Step | Validation / action |
+| --- | --- |
+| 1 | Check PD Biz / IPN decision requirement when that section is visible |
+| 2 | Check payment validity when the payment section is active |
+| 3 | Submit payment if blocking checks pass |
+| 4 | Redirect to `/confirmation` on success |
+
+### PD Biz / IPN Blocking Rule
+
+| Condition | Result |
+| --- | --- |
+| Section visible and neither `Yes` nor `No` selected | Submission blocked |
+| Section visible and either answer selected | Validation passes |
+
+Blocked-submit message:
 
 `Please answer if you would like to purchase the Independent Practice Network`
 
-This is important because:
-- both Yes and No are valid answers
-- the invalid state is not “wrong answer”
-- it is “no explicit answer provided”
+### Payment Blocking Rules
 
-### Payment blocking rules
-If the payment section is active, the form must be valid before submission.
+| Requirement | Must pass? |
+| --- | --- |
+| Name on card is not empty | Yes |
+| Card number is valid | Yes |
+| Expiry date is valid | Yes |
+| CVC is valid for the detected card type | Yes |
+| Card type is Visa or Mastercard | Yes |
 
-The form is valid only if all of the following are true:
-- name on card is not empty
-- card number passes card-number validation
-- expiry date passes expiry validation
-- CVC passes CVC validation for the detected card type
-- detected card type is Visa or Mastercard
-
-If payment is invalid at submit time:
-- submission is blocked
-- the page scrolls to the top
-- the error banner displays:
+Blocked-submit message:
 
 `Payment information is invalid. Please check your credit card details and try again`
 
-### Unsupported card types
-The card form accepts typed input, but the overall payment form is only valid for:
-- Visa
-- Mastercard
+### Unsupported Card Types
 
-A structurally valid card number for another brand is still rejected at the form level.
+- The form can accept typed input for other card brands.
+- A structurally valid non-Visa / non-Mastercard number is still rejected at the form level.
 
-### Successful submission
-If all blocking validations pass and payment processing succeeds:
-- the user is redirected to `/confirmation`
+## 11. Loading and Refresh Patterns
 
-The current cart does not show an intermediate success screen inside the cart page itself.
+### Purpose
 
-## Loading and Refresh Patterns
+This describes the shared cart interaction pattern used by most editable sections.
 
-### Page-level principle
-Most editable cart sections behave as small workflows that report loading to the parent page and then force a cart reload.
+### Refresh Pattern
 
-This pattern is used for:
-- removing invoice
-- removing cart item
-- toggling add-on
-- changing donation amount
-- toggling anonymous donation
-- accepting the PD Biz / IPN offer
+| Interaction | Uses loading overlay? | Reloads cart? |
+| --- | --- | --- |
+| Remove invoice | Yes | Yes |
+| Remove cart item | Yes | Yes |
+| Toggle add-on | Yes | Yes |
+| Change donation amount | Yes | Yes |
+| Toggle anonymous donation | Yes | Yes |
+| Accept or decline PD Biz / IPN offer | Yes | Yes |
+| Type in payment fields | No | No |
 
-The user experience is:
-1. user interacts with a section
-2. section enters loading
-3. top-level content shows loading overlay
-4. cart refreshes
-5. page re-derives which sections should exist
-6. totals and control states are updated
+### Shared Behavior
 
-This means the visible UI is always recalculated from refreshed cart state rather than from long-lived client-only assumptions.
+1. User interacts with a section.
+2. Section enters loading.
+3. The page shows the loading overlay.
+4. The cart refreshes.
+5. Section visibility and totals are recalculated from refreshed cart state.
 
-### Payment exception
-The payment form is different.
+### Important Distinction
 
-Typing into payment fields:
-- does not refresh the cart
-- does not trigger a loading overlay
-- remains local to the payment form until submit
+- Most editable cart sections are server-refresh-driven.
+- The payment form remains local until submit.
 
-## Special UI Rules
+## 12. Structural Rules Summary
 
-### Invoice-driven section availability
-Invoice presence drives a large portion of the page structure.
+### Invoice-Driven Section Availability
 
-If invoice exists:
-- cart items section can show invoice row
-- invoice items are grouped into the same item only showing 1 items and the total
-- add-ons section appears
-- donation section appears
-
-If invoice does not exist:
-- add-ons section disappears
-- donation appears only if donation is already selected
-
-This is one of the most important structural rules in the current UI.
+| Section | Invoice exists | No invoice exists |
+| --- | --- | --- |
+| Invoice row in Cart Items | Can show | Hidden |
+| Add-ons | Can show | Hidden |
+| Donation | Can show | Hidden unless donation already exists |
 
 ### Localization
-The page text is translation-driven.
 
-## Example User Scenarios
+- Page text is translation-driven.
 
-### Empty cart
-The user opens the cart and sees only:
-- `Review your Order`
-- `No items in the cart.`
+## 13. Example User Scenarios
 
-There is no payment form and no submit button because there is nothing to complete.
+### Empty Cart
 
-### Invoice-only order
-The user sees:
-- invoice row in the cart items table
-- add-ons section
-- donation section
-- summary
-- submit button
+| User sees | User does not see |
+| --- | --- |
+| `Review your Order` and `No items in the cart.` | Payment form, summary, submit button, editable sections |
 
-If the total due is greater than zero, the payment section also appears.
+### Invoice-Only Order
 
-### Cart-items-only order
-The user sees:
-- cart items table with standard cart rows
-- summary
-- submit button
+| User sees | Notes |
+| --- | --- |
+| Invoice row, add-ons, donation, summary, submit button | Payment also appears when amount due is greater than zero |
 
-The user does not see:
-- add-ons, because there is no invoice
-- donation, unless a donation is already in the cart
+### Cart-Items-Only Order
 
-### Invoice plus cart items
-The user sees both:
-- invoice row
-- item rows
+| User sees | User does not see |
+| --- | --- |
+| Standard cart item rows, summary, submit button | Add-ons, and donation unless donation is already present |
 
-The summary label becomes:
-- `Cart Items and Renewal fees`
+### Invoice Plus Cart Items
 
-This tells the user the order total combines both types of content.
+| User sees | Important note |
+| --- | --- |
+| Invoice row and item rows together | Summary label becomes `Cart Items and Renewal fees` |
 
-### Donation already selected without invoice
-The user can still see the donation section even though there is no invoice, because an existing donation keeps that section visible.
+### Donation Without Invoice
 
-The selected amount remains chosen in the dropdown, and the anonymous checkbox reflects the current donation mode.
+| User sees | Why |
+| --- | --- |
+| Donation section remains visible | Existing donation keeps the section alive |
 
-### Add-on auto-selected
-An eligible member opens the cart with an invoice and may see the add-on already selected even if they did not click the checkbox on that visit.
+### Add-on Auto-Selected
 
-This comes from first-load eligibility rules, not from a random default.
+| User sees | Why |
+| --- | --- |
+| Eligible add-on already selected | First-load business rules can auto-add it |
 
-### Invalid payment attempt
-The user clicks `Place Order` with incomplete or invalid payment details.
+### Invalid Payment Attempt
 
-The page:
-- blocks submission
-- scrolls to the top
-- shows the top-level error banner
-- marks relevant payment controls invalid
+| Result | Notes |
+| --- | --- |
+| Submission blocked, page scrolls to top, error banner shown | Relevant payment controls are also marked invalid |
 
-### Unsupported credit card type
-The user enters a card number that is not Visa or Mastercard.
+### Unsupported Card Type
 
-Even if the number format appears structurally valid, the order cannot be submitted because the supported card-type rule is stricter than basic numeric validity.
+| Result | Notes |
+| --- | --- |
+| Submission blocked | Structural number validity alone is not enough |
 
-### PD Biz / IPN question left unanswered
-The promotional section is visible, but the user clicks `Place Order` without choosing Yes or No.
+### PD Biz / IPN Left Unanswered
 
-The page blocks submission and shows the specific error asking the user to answer whether they want to purchase the Independent Practice Network.
+| Result | Notes |
+| --- | --- |
+| Submission blocked with explicit IPN message | Either Yes or No is acceptable; the only invalid state is no answer |
 
-### Zero-dollar order
-The user has an order with visible order content but no amount due.
+### Zero-Dollar Order
 
-The page still shows:
-- summary
-- submit button
-
-The page does not show:
-- payment section
-
-That separation is intentional in the current UI.
+| User sees | User does not see |
+| --- | --- |
+| Order summary and submit button | Payment section |
