@@ -14,7 +14,7 @@
 | [Renew SUPPT](./renew-suppt-flow-images.md) | Communications -> Payment Plan ->  Confirmation | Payment-plan only shows when renew is launched and in the current year |
 | Renew GRAD | Confirmation | GRAD Renewal are converted to FM and have to run in the FM Wizard after conversion |
 | [Renew RET](./renew-ret-flow-images.md) | Communications -> Additional Information -> Confirmation |  |
-| Profile Display | Profile dashboard / personal panels / renewal summary / tables / province-of-practice request access | Expired credit-card banner may appear above content |
+| [Profile Display](./profile-screens.md) | [Profile dashboard](./My-CDHA-Profile.png) / personal panels / [renewal summary](./profile_summary.png) / tables / province-of-practice request access | Expired credit-card banner may appear above content |
 | Profile Edit | Member Information -> Communication Preferences -> Auto-Renewal / Payment Plan -> Areas of Expertise & Education | Sections are stacked, not wizard-based |
 
 ### Shared Components
@@ -571,7 +571,7 @@ These are visible profile screens and panels that matter for migration scope eve
 
 ### Profile Tables / Content Blocks
 
-Profile Display includes several table-based panels, including:
+Profile Display includes several table-based panels, including the dashboard view shown in [My CDHA Profile](./My-CDHA-Profile.png):
 
 - job ads
 - membership add-ons
@@ -597,7 +597,7 @@ What the user sees:
 
 ### Membership Renewal Summary Area
 
-For eligible member types (`FM`, `STU`, `SUPPT`, `GRAD`, `RET`), the display can show:
+For eligible member types (`FM`, `STU`, `SUPPT`, `GRAD`, `RET`), the display can show the summary view shown in [Profile Summary](./profile_summary.png):
 
 - renewal section title
 - membership expiry date or expired message

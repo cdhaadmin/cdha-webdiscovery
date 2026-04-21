@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | Initial load | Cart shell -> loading overlay -> resolved cart display | Member info and cart data are both fetched before the page settles |
 | Empty cart | Page title -> empty message | No summary, payment section, or submit button |
-| Standard payable cart | Error panel if needed -> Cart Items -> PD Biz / IPN if applicable -> Add-ons if applicable -> Donation if applicable -> Payment Method -> Order Summary -> Place Order | Payment section only shows when total due is greater than zero |
+| [Standard payable cart](./cart-screens.md) | Error panel if needed -> [Cart Items](./cart_with_invoice.png) -> [PD Biz / IPN](./cart_pdBizPromo.png) if applicable -> Add-ons if applicable -> Donation if applicable -> Payment Method -> Order Summary -> Place Order | Payment section only shows when total due is greater than zero |
 | Zero-dollar cart | Error panel if needed -> Cart Items and other eligible sections -> Order Summary -> Place Order | Summary and submit remain visible even when payment is hidden |
 | Submit blocked | Top-level error panel -> current cart sections remain visible | Page scrolls to top and shows blocking validation message |
 | Successful submit | Cart validation -> payment submission -> `/confirmation` redirect | No intermediate success page inside the cart route |
@@ -32,7 +32,7 @@
 
 ### Purpose
 
-This is the order review and checkout page used to display current cart content, invoice-derived renewal content, optional add-ons, donations, payment, and final submission.
+This is the order review and checkout page used to display current cart content, invoice-derived renewal content, optional add-ons, donations, payment, and final submission. See [Cart Screens](./cart-screens.md) for the current visual examples.
 
 ### Visibility Matrix
 
@@ -115,7 +115,7 @@ This is the top-level error surface used for page errors and blocked submit-time
 
 ### Purpose
 
-This is the main order-content table. It shows invoice-derived renewal content, standard cart items, or both.
+This is the main order-content table. It shows invoice-derived renewal content, standard cart items, or both. A current example is shown in [Cart With Invoice](./cart_with_invoice.png).
 
 ### Visibility Matrix
 
@@ -160,7 +160,7 @@ This is the main order-content table. It shows invoice-derived renewal content, 
 
 ### Purpose
 
-This is the promotional decision block that asks whether the user wants to add the Independent Practice Network offer when specific PD Biz courses are present.
+This is the promotional decision block that asks whether the user wants to add the Independent Practice Network offer when specific PD Biz courses are present. A current example is shown in [Cart PD Biz Promo](./cart_pdBizPromo.png).
 
 ### Visibility Matrix
 
@@ -339,7 +339,7 @@ This is the credit-card payment form used when the order total is greater than z
 
 ### Purpose
 
-This is the summary area that shows the totals the user is about to pay and provides the final `Place Order` action.
+This is the summary area that shows the totals the user is about to pay and provides the final `Place Order` action. The right-column summary is visible in [Cart With Invoice](./cart_with_invoice.png).
 
 ### Visibility Matrix
 
@@ -475,7 +475,7 @@ This describes the shared cart interaction pattern used by most editable section
 
 | User sees | Notes |
 | --- | --- |
-| Invoice row, add-ons, donation, summary, submit button | Payment also appears when amount due is greater than zero |
+| [Invoice row, add-ons, donation, summary, submit button](./cart_with_invoice.png) | Payment also appears when amount due is greater than zero |
 
 ### Cart-Items-Only Order
 
@@ -487,7 +487,7 @@ This describes the shared cart interaction pattern used by most editable section
 
 | User sees | Important note |
 | --- | --- |
-| Invoice row and item rows together | Summary label becomes `Cart Items and Renewal fees` |
+| [Invoice row and item rows together](./cart_with_invoice.png) | Summary label becomes `Cart Items and Renewal fees` |
 
 ### Donation Without Invoice
 
@@ -517,7 +517,7 @@ This describes the shared cart interaction pattern used by most editable section
 
 | Result | Notes |
 | --- | --- |
-| Submission blocked with explicit IPN message | Either Yes or No is acceptable; the only invalid state is no answer |
+| [Submission blocked with explicit IPN message](./cart_pdBizPromo.png) | Either Yes or No is acceptable; the only invalid state is no answer |
 
 ### Zero-Dollar Order
 

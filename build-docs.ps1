@@ -68,6 +68,18 @@ $pages = @(
         Description = 'Retired member renewal flow screenshots.'
     }
     @{
+        Source = 'cart-screens.md'
+        Output = 'cart-screens.html'
+        NavTitle = 'Cart Screens'
+        Description = 'Screenshots for the cart UI states and promotional flow.'
+    }
+    @{
+        Source = 'profile-screens.md'
+        Output = 'profile-screens.html'
+        NavTitle = 'Profile Screens'
+        Description = 'Screenshots for profile display and summary views.'
+    }
+    @{
         Source = 'cart.md'
         Output = 'cart.html'
         NavTitle = 'Cart'

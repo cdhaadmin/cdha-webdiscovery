@@ -59,6 +59,14 @@
   <span class="nav-title">Renew RET</span>
   <span class="nav-description">Retired member renewal flow screenshots.</span>
 </a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
         </section>
       </nav>
     </aside>
@@ -86,8 +94,8 @@
 <td>No summary, payment section, or submit button</td>
 </tr>
 <tr>
-<td>Standard payable cart</td>
-<td>Error panel if needed -&gt; Cart Items -&gt; PD Biz / IPN if applicable -&gt; Add-ons if applicable -&gt; Donation if applicable -&gt; Payment Method -&gt; Order Summary -&gt; Place Order</td>
+<td><a href="./cart-screens.html">Standard payable cart</a></td>
+<td>Error panel if needed -&gt; <a href="./cart_with_invoice.png">Cart Items</a> -&gt; <a href="./cart_pdBizPromo.png">PD Biz / IPN</a> if applicable -&gt; Add-ons if applicable -&gt; Donation if applicable -&gt; Payment Method -&gt; Order Summary -&gt; Place Order</td>
 <td>Payment section only shows when total due is greater than zero</td>
 </tr>
 <tr>
@@ -161,7 +169,7 @@
 <h2 id="component-catalog">Component Catalog</h2>
 <h2 id="cart-page-layout">1. Cart Page Layout</h2>
 <h3 id="purpose">Purpose</h3>
-<p>This is the order review and checkout page used to display current cart content, invoice-derived renewal content, optional add-ons, donations, payment, and final submission.</p>
+<p>This is the order review and checkout page used to display current cart content, invoice-derived renewal content, optional add-ons, donations, payment, and final submission. See <a href="./cart-screens.html">Cart Screens</a> for the current visual examples.</p>
 <h3 id="visibility-matrix">Visibility Matrix</h3>
 <table>
 <thead>
@@ -323,7 +331,7 @@
 </table>
 <h2 id="cart-items-section">4. Cart Items Section</h2>
 <h3 id="purpose-3">Purpose</h3>
-<p>This is the main order-content table. It shows invoice-derived renewal content, standard cart items, or both.</p>
+<p>This is the main order-content table. It shows invoice-derived renewal content, standard cart items, or both. A current example is shown in <a href="./cart_with_invoice.png">Cart With Invoice</a>.</p>
 <h3 id="visibility-matrix-2">Visibility Matrix</h3>
 <table>
 <thead>
@@ -435,7 +443,7 @@
 </ul>
 <h2 id="pd-biz-ipn-promotional-section">5. PD Biz / IPN Promotional Section</h2>
 <h3 id="purpose-4">Purpose</h3>
-<p>This is the promotional decision block that asks whether the user wants to add the Independent Practice Network offer when specific PD Biz courses are present.</p>
+<p>This is the promotional decision block that asks whether the user wants to add the Independent Practice Network offer when specific PD Biz courses are present. A current example is shown in <a href="./cart_pdBizPromo.png">Cart PD Biz Promo</a>.</p>
 <h3 id="visibility-matrix-3">Visibility Matrix</h3>
 <table>
 <thead>
@@ -836,7 +844,7 @@
 </ul>
 <h2 id="order-summary-and-submit">9. Order Summary and Submit</h2>
 <h3 id="purpose-8">Purpose</h3>
-<p>This is the summary area that shows the totals the user is about to pay and provides the final <code>Place Order</code> action.</p>
+<p>This is the summary area that shows the totals the user is about to pay and provides the final <code>Place Order</code> action. The right-column summary is visible in <a href="./cart_with_invoice.png">Cart With Invoice</a>.</p>
 <h3 id="visibility-matrix-7">Visibility Matrix</h3>
 <table>
 <thead>
@@ -1157,7 +1165,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Invoice row, add-ons, donation, summary, submit button</td>
+<td><a href="./cart_with_invoice.png">Invoice row, add-ons, donation, summary, submit button</a></td>
 <td>Payment also appears when amount due is greater than zero</td>
 </tr>
 </tbody>
@@ -1187,7 +1195,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Invoice row and item rows together</td>
+<td><a href="./cart_with_invoice.png">Invoice row and item rows together</a></td>
 <td>Summary label becomes <code>Cart Items and Renewal fees</code></td>
 </tr>
 </tbody>
@@ -1262,7 +1270,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Submission blocked with explicit IPN message</td>
+<td><a href="./cart_pdBizPromo.png">Submission blocked with explicit IPN message</a></td>
 <td>Either Yes or No is acceptable; the only invalid state is no answer</td>
 </tr>
 </tbody>
