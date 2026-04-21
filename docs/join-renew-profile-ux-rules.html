@@ -1,0 +1,1450 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join / Renew / Profile Reference</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link active" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1 id="join-renew-profile-reference">Join / Renew / Profile Reference</h1>
+<h2 id="flow-map">Flow Map</h2>
+<table>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Visible screens / steps</th>
+<th>Conditional notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./join-landing-flow-images.html">Join landing</a></td>
+<td>Membership selection cards, eligibility information, visitor account link</td>
+<td>Layout differs on mobile vs desktop</td>
+</tr>
+<tr>
+<td><a href="./join-stu-flow-images.html">Join STU</a></td>
+<td>Member Information -&gt; Education -&gt; Communications -&gt; Confirmation</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="./join-fm-flow-images.html">Join FM</a></td>
+<td>Member Information -&gt; Communications -&gt; Insurance -&gt; Payment Plan -&gt; Confirmation</td>
+<td>Payment-plan only shows when renew is launched and in the current year</td>
+</tr>
+<tr>
+<td><a href="./join-suppt-flow-images.html">Join SUPPT</a></td>
+<td>Member Information -&gt; Communications -&gt; Confirmation</td>
+<td>Payment-plan only shows when renew is launched and in the current year</td>
+</tr>
+<tr>
+<td><a href="./join-nm-flow-images.html">Join NM</a></td>
+<td>Member Information -&gt; Communications</td>
+<td>Visitor-specific fields shown inside member information</td>
+</tr>
+<tr>
+<td><a href="./renew-stu-flow-images.html">Renew STU</a></td>
+<td>Communications -&gt; Education -&gt; Confirmation</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="./renew-fm-flow-images.html">Renew FM</a></td>
+<td>Communications -&gt; Insurance -&gt; Payment Plan -&gt; Confirmation</td>
+<td>Insurance step only appears when <code>show_ins_renew</code> is true; Payment-plan only shows when renew is launched and in the current year</td>
+</tr>
+<tr>
+<td><a href="./renew-suppt-flow-images.html">Renew SUPPT</a></td>
+<td>Communications -&gt; Payment Plan -&gt;  Confirmation</td>
+<td>Payment-plan only shows when renew is launched and in the current year</td>
+</tr>
+<tr>
+<td>Renew GRAD</td>
+<td>Confirmation</td>
+<td>GRAD Renewal are converted to FM and have to run in the FM Wizard after conversion</td>
+</tr>
+<tr>
+<td><a href="./renew-ret-flow-images.html">Renew RET</a></td>
+<td>Communications -&gt; Additional Information -&gt; Confirmation</td>
+<td></td>
+</tr>
+<tr>
+<td>Profile Display</td>
+<td>Profile dashboard / personal panels / renewal summary / tables / province-of-practice request access</td>
+<td>Expired credit-card banner may appear above content</td>
+</tr>
+<tr>
+<td>Profile Edit</td>
+<td>Member Information -&gt; Communication Preferences -&gt; Auto-Renewal / Payment Plan -&gt; Areas of Expertise &amp; Education</td>
+<td>Sections are stacked, not wizard-based</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shared-components">Shared Components</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Member Information Editor</td>
+<td>Yes</td>
+<td>No</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Communications editor</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Education Editor</td>
+<td>Yes STU only</td>
+<td>Yes STU only</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Areas of Expertise Editor</td>
+<td>No</td>
+<td>No</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Insurance editor</td>
+<td>Join FM only</td>
+<td>Renew FM only</td>
+<td>Summary</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Confirmation editor</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Payment Plan Editor</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shared-component-catalog">Shared Component Catalog</h2>
+<h2 id="join-landing-page">1. <a href="https://www.cdha.ca/cdha/Membership_folder/Join_or_Renew_Today_folder/Join_Now_folder/CDHA/Membership/Join.aspx" target="_blank" rel="noreferrer">Join Landing Page</a></h2>
+<h3 id="purpose">Purpose</h3>
+<p>This is the entry page for unauthenticated users starting the Join journey.</p>
+<h3 id="visibility-matrix">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Membership selection page</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-the-user-sees">What The User Sees</h3>
+<ul>
+<li>A warning banner at the top telling former members to renew instead of joining.</li>
+<li>A heading for the join experience.</li>
+<li>A set of membership cards:
+<ul>
+<li>Student</li>
+<li>Graduate</li>
+<li>Active dental hygienist</li>
+<li>Support</li>
+<li>Retired</li>
+</ul>
+</li>
+<li>Each card shows:
+<ul>
+<li>icon</li>
+<li>title</li>
+<li>short description</li>
+<li>&quot;See details&quot; action</li>
+<li>call-to-action button</li>
+</ul>
+</li>
+<li>A visitor account link below the membership cards.</li>
+<li>Eligibility content below the cards on desktop.</li>
+<li>A slider overlay for eligibility details on mobile.</li>
+</ul>
+<h3 id="mobile-vs-desktop">Mobile vs Desktop</h3>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Desktop</th>
+<th>Mobile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Membership options</td>
+<td>Shown as columns/cards</td>
+<td>Shown as stacked rows</td>
+</tr>
+<tr>
+<td>Eligibility details</td>
+<td>Rendered inline below the cards</td>
+<td>Opened inside a slider</td>
+</tr>
+<tr>
+<td>Card layout</td>
+<td>Icon, text, CTA in panel</td>
+<td>Icon with compact text and CTA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="member-information-section">2. Member Information Section</h2>
+<h3 id="purpose-1">Purpose</h3>
+<p>Member personal information details editor used in Join and Profile Edit, and the source of many shared validation rules across the overall system.</p>
+<h3 id="visibility-matrix-1">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Member Information editor</td>
+<td>Yes</td>
+<td>No</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-level-ui-groups">High-Level UI Groups</h3>
+<ul>
+<li>Personal Information</li>
+<li>Address / Location</li>
+<li>Contact &amp; Communication</li>
+<li>Identity &amp; Demographics</li>
+<li>Security</li>
+</ul>
+<h3 id="important-shared-ui-behavior">Important Shared UI Behavior</h3>
+<ul>
+<li>Names are editable only during JOIN.</li>
+<li>Some field sets depend on member type, some depend on country and some depends on current form information.</li>
+</ul>
+<h3 id="personal-information">Personal Information</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Label shown to user</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+<th>Validation / rules</th>
+<th>Conditional display / notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first_name</code></td>
+<td>First Name</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Max 20 characters</td>
+<td>Editable in Join; disabled everywhere else</td>
+</tr>
+<tr>
+<td><code>middle_name</code></td>
+<td>Middle Name</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>No</td>
+<td>Max 29 characters</td>
+<td>Optional, Editable in Join; disabled everywhere else</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>Last Name</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Max 29 characters</td>
+<td>Editable in Join; disabled everywhere else</td>
+</tr>
+<tr>
+<td><code>date_of_birth</code></td>
+<td>Date of Birth</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All, but special NM rule</td>
+<td>Yes except NM</td>
+<td>Must be a valid date string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="address-location">Address / Location</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Label shown to user</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+<th>Validation / rules</th>
+<th>Conditional display / notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>street</code></td>
+<td>Street Address</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Max 39 characters; commas removed by parser</td>
+<td>Canada Post integration for autocomplete</td>
+</tr>
+<tr>
+<td><code>street2</code></td>
+<td>Street Address 2</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>No</td>
+<td>Max 39 characters; commas removed by parser</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Max 39 characters; commas removed by parser</td>
+<td></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>Country</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Required</td>
+<td>Changing country clears province and resets postal handling</td>
+</tr>
+<tr>
+<td><code>province</code></td>
+<td>Province</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Required for CA, US, AU</td>
+<td></td>
+<td>Province options depend on selected country</td>
+</tr>
+<tr>
+<td><code>postal_code</code></td>
+<td>Postal Code</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>CA postal validation for Canada; US ZIP validation for US</td>
+<td>CA input is normalized to uppercase / spacing</td>
+</tr>
+<tr>
+<td><code>practice_different_province_yes/no</code></td>
+<td>&quot;Do you practice in a different province or territory than where you live?&quot;</td>
+<td>Join only</td>
+<td>NA</td>
+<td>No</td>
+<td>FM Join only</td>
+<td>Effectively yes, because it controls downstream requirement</td>
+<td>User chooses Yes or No</td>
+<td>Only shown for FM during Join</td>
+</tr>
+<tr>
+<td><code>selected_chapter</code></td>
+<td>Select Chapter</td>
+<td>Join only</td>
+<td>NA</td>
+<td>No</td>
+<td>FM Join only</td>
+<td>Required when country is CA and user answered Yes to different-province question</td>
+<td>Required validator tied to prior answer</td>
+<td>Only visible after selecting &quot;Yes&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="address-location-rules">Address / Location Rules</h3>
+<ul>
+<li>all addresses fields use Canada Post Autocomplete</li>
+<li><code>country</code> is always required.</li>
+<li>FM and GRAD are not allowed outside Canada in the relevant contexts:
+<ul>
+<li>Join validation for FM / GRAD outside Canada</li>
+<li>Profile validation behavior for FM / GRAD outside Canada</li>
+</ul>
+</li>
+<li>Province is required only when country is CA, US, or AU.</li>
+<li>Postal code is required.</li>
+<li>Postal code format rules:
+<ul>
+<li>Canada: must be a valid Canadian postal code</li>
+<li>US: must be a valid US ZIP code</li>
+<li>Other countries: no country-specific format rule is applied</li>
+</ul>
+</li>
+<li>FM Join has a special province-of-practice branch:
+<ul>
+<li>ask whether practice province differs from home province</li>
+<li>if yes, show chapter selector</li>
+<li>chapter selector becomes required</li>
+</ul>
+</li>
+</ul>
+<h3 id="special-warning-for-us-users">Special Warning For US Users</h3>
+<ul>
+<li>On Join, when country is US and member type is <code>FM</code>, <code>GRAD</code>, <code>SUPPT</code>, or <code>STU</code>, the user sees a warning that this is the Canadian Dental Hygienists Association site, not the California CDHA site.</li>
+</ul>
+<h3 id="contact-communication">Contact &amp; Communication</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Label shown to user</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+<th>Validation / rules</th>
+<th>Conditional display / notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cell_phone</code></td>
+<td>Cell Phone</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>At least one phone across cell/home</td>
+<td>Max 24 characters; NANP validation for CA/US; formatted for CA/US</td>
+<td>Changing cell phone refreshes home-phone validation</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Home Phone</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>At least one phone across cell/home</td>
+<td>Max 24 characters; NANP validation for CA/US; formatted for CA/US</td>
+<td>Changing home phone refreshes cell-phone validation</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Valid email; max 99 characters; async uniqueness check</td>
+<td>Lowercased on change</td>
+</tr>
+<tr>
+<td><code>confirm_email</code></td>
+<td>Confirm Email</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Conditionally required</td>
+<td>Must match current email; max 99 characters</td>
+<td>Required only when email changed from original value</td>
+</tr>
+<tr>
+<td><code>alternate_email</code></td>
+<td>School Email</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>STU only</td>
+<td>No</td>
+<td>If entered, must be valid email; max 99 characters</td>
+<td>Only shown for students</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contact-rules">Contact Rules</h3>
+<ul>
+<li>At least one of <code>cell_phone</code> or <code>phone</code> must be provided.</li>
+<li>Phone formatting and validation are only enforced for Canada and US.</li>
+<li><code>email</code> is required, validated, and checked asynchronously for availability.</li>
+<li><code>confirm_email</code> only becomes required when the primary email changes from the original loaded value.</li>
+<li><code>confirm_email</code> must match the primary email.</li>
+<li><code>school email</code> is only shown for students and is optional, but if entered it must be a valid email.</li>
+</ul>
+<h3 id="identity-demographics">Identity &amp; Demographics</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Label shown to user</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+<th>Validation / rules</th>
+<th>Conditional display / notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preferred_language</code></td>
+<td>Preferred Language</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>All</td>
+<td>Yes</td>
+<td>Required selection</td>
+<td>English / French options</td>
+</tr>
+<tr>
+<td><code>ipn_status</code></td>
+<td>IPN Status</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>FM, SUPPT, LIFE, RET</td>
+<td>Yes for those groups</td>
+<td>Required select</td>
+<td>Hidden for STU and GRAD</td>
+</tr>
+<tr>
+<td><code>indigenous_status</code></td>
+<td>Indigenous Status</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>Most eligible member groups</td>
+<td>No</td>
+<td>No required validator in full member-info form</td>
+<td>Shown broadly for eligible members</td>
+</tr>
+<tr>
+<td><code>orofacial_status</code></td>
+<td>Orofacial Status</td>
+<td>Yes</td>
+<td>NA</td>
+<td>Yes</td>
+<td>FM, GRAD, SUPPT, LIFE, RET</td>
+<td>Yes</td>
+<td>Required select</td>
+<td>Hidden for STU</td>
+</tr>
+<tr>
+<td><code>job_description</code></td>
+<td>Job Description</td>
+<td>Join only</td>
+<td>No</td>
+<td>No</td>
+<td>NM Join only</td>
+<td>Yes</td>
+<td>Required; non-null selection</td>
+<td>Visitor account only</td>
+</tr>
+<tr>
+<td><code>join_reason</code></td>
+<td>Join Reason</td>
+<td>Join only</td>
+<td>No</td>
+<td>No</td>
+<td>NM Join only</td>
+<td>Yes</td>
+<td>Required; non-null selection</td>
+<td>Visitor account only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="identity-rules">Identity Rules</h3>
+<ul>
+<li><code>preferred_language</code> is required for everyone using the full member-info form.</li>
+<li><code>ipn_status</code> is required only for <code>FM</code>, <code>SUPPT</code>, <code>LIFE</code>, and <code>RET</code>.</li>
+<li><code>indigenous_status</code> is shown but not required.</li>
+<li><code>orofacial_status</code> is required for <code>FM</code>, <code>GRAD</code>, <code>SUPPT</code>, <code>LIFE</code>, and <code>RET</code>.</li>
+<li>Visitor / NM Join adds two extra required fields:
+<ul>
+<li><code>job_description</code></li>
+<li><code>join_reason</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="security">Security</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Label shown to user</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+<th>Validation / rules</th>
+<th>Conditional display / notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>password</code></td>
+<td>Password</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>All using this form</td>
+<td>Required on Join, optional otherwise</td>
+<td>Minimum 8 characters when entered</td>
+<td>Changing password refreshes confirm-password field</td>
+</tr>
+<tr>
+<td><code>confirm_password</code></td>
+<td>Confirm Password</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Same as above</td>
+<td>Required only when password has a value</td>
+<td>Must match password</td>
+<td>No requirement if password is blank in non-Join cases</td>
+</tr>
+</tbody>
+</table>
+<h3 id="security-rules">Security Rules</h3>
+<ul>
+<li>On Join, password is required.</li>
+<li>Password must be at least 8 characters when provided.</li>
+<li>Confirm Password becomes required once Password has a value.</li>
+<li>Confirm Password must match Password.</li>
+</ul>
+<h2 id="communication-preferences-section">3. Communication Preferences Section</h2>
+<h3 id="purpose-2">Purpose</h3>
+<p>This is the shared communication-preferences editor used in Join, Renew, and Profile Edit.</p>
+<h3 id="visibility-matrix-2">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Communications editor</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Summary Only</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ui-blocks">UI Blocks</h3>
+<ul>
+<li>Overall email communications yes / no decision</li>
+<li>Detailed subscription options</li>
+<li>Job alerts and province selector</li>
+<li>Publication preference</li>
+<li>Third-party / letter-mail consent</li>
+<li>Privacy policy / GDPR consent</li>
+</ul>
+<h3 id="overall-communications-decision">Overall Communications Decision</h3>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User selects Yes</td>
+<td>Turns on major communication subscriptions</td>
+</tr>
+<tr>
+<td>User selects No</td>
+<td>Turns off major communication subscriptions and clears job-alert province</td>
+</tr>
+<tr>
+<td>Requirement</td>
+<td>A yes/no decision is required</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detailed-subscription-options">Detailed Subscription Options</h3>
+<p>These appear as individual checkboxes when the detailed options are shown:</p>
+<ul>
+<li>e-news</li>
+<li>professional development</li>
+<li>benefits</li>
+<li>products</li>
+<li>campaigns</li>
+<li>event calendar</li>
+<li>job alerts</li>
+</ul>
+<h3 id="detailed-options-visibility">Detailed Options Visibility</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Shown?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Join</td>
+<td>No, hidden</td>
+</tr>
+<tr>
+<td>Renew</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Profile Edit</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="job-alerts">Job Alerts</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>job_subscribe</code></td>
+<td>Hidden with detailed options</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Controls province selector</td>
+</tr>
+<tr>
+<td><code>job_notification_prov</code></td>
+<td>Hidden with detailed options</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Enabled only when job alerts are enabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="publication-preference">Publication Preference</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e_ohcanada</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>FM, SUPPT, LIFE</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="third-party-letter-mail-consent">Third-Party / Letter-Mail Consent</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Member types</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>third_party</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Hidden for NM</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="privacy-gdpr-consent">Privacy / GDPR Consent</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gdpr_consent</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Text differs for BC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="communication-rules">Communication Rules</h3>
+<ul>
+<li>Join shows the top-level communications yes/no choice.</li>
+<li>Join hides the detailed subscription options block.</li>
+<li>Choosing &quot;Yes&quot; turns on the main communication subscriptions.</li>
+<li>Choosing &quot;No&quot; turns them off and clears the job-alert province.</li>
+<li>Job province selection is only enabled when job alerts are enabled.</li>
+<li>Publication choice (<code>e_ohcanada</code>) appears only for <code>FM</code>, <code>SUPPT</code>, and <code>LIFE</code>, and it is required.</li>
+<li>Third-party consent is hidden for <code>NM</code>.</li>
+<li>Privacy / GDPR consent appears only on Join and Renew and is required.</li>
+<li>BC gets a different privacy-consent wording in Join and Renew.</li>
+</ul>
+<h2 id="insurance-section">4. Insurance Section</h2>
+<h3 id="purpose-3">Purpose</h3>
+<p>This section appears only in Join and Renew flows and only for FM membership / renewal behavior and province-specific insurance rules.</p>
+<h3 id="visibility-matrix-3">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insurance editor</td>
+<td>Join FM only</td>
+<td>Renew FM only</td>
+<td>Summary</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-it-appears">Where It Appears</h3>
+<table>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Insurance shown?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Join FM</td>
+<td>Yes</td>
+<td>Standard insurance step</td>
+</tr>
+<tr>
+<td>Renew FM</td>
+<td>Conditional</td>
+<td>Only shown when <code>show_ins_renew</code> is true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-the-user-sees-1">What The User Sees</h3>
+<ul>
+<li>One or more insurance radio options.</li>
+<li>Additional extension choices in some scenarios.</li>
+<li>Alberta-specific extension experience with multiple mutually exclusive choices.</li>
+<li>Informational notes and warnings depending on current insurance state.</li>
+</ul>
+<h3 id="base-selection-rule">Base Selection Rule</h3>
+<ul>
+<li>When the insurance section is shown, base insurance selection is required.</li>
+</ul>
+<h3 id="extension-behavior">Extension Behavior</h3>
+<p>Extension visibility depends on:</p>
+<ul>
+<li>member type</li>
+<li>Join vs Renew context</li>
+<li>membership cut date</li>
+<li>current server date</li>
+<li>current insurance expiry</li>
+<li>province / chapter</li>
+<li>Alberta special handling</li>
+</ul>
+<h3 id="alberta-specific-behavior">Alberta-Specific Behavior</h3>
+<p>For Alberta, the section may show a special PLI coverage / extension decision with multiple choices represented by the <code>add_extension</code> state:</p>
+<ul>
+<li>covered extension</li>
+<li>non-covered extension</li>
+<li>no extension selection</li>
+</ul>
+<h3 id="insurance-rules-summary">Insurance Rules Summary</h3>
+<ul>
+<li>Insurance appears in Join FM.</li>
+<li>Insurance appears in Renew FM only if <code>show_ins_renew</code> is true.</li>
+<li>Base insurance selection is required when shown.</li>
+<li>Extension UI depends on province/chapter and timing.</li>
+<li>Alberta has a special multi-option extension experience.</li>
+</ul>
+<h2 id="payment-plan-auto-renewal-section">5. Payment Plan / Auto-Renewal Section</h2>
+<h3 id="purpose-4">Purpose</h3>
+<p>This is the user-facing payment-plan / auto-renewal experience. It is shared conceptually across several flows, but its visible usage differs significantly by route.</p>
+<h3 id="visibility-matrix-4">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full payment-plan editor</td>
+<td>Yes FM, SUPPT, RET</td>
+<td>Yes FM, SUPPT, RET</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Payment-plan summary / signup link</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-the-user-sees-in-the-full-section">What The User Sees In The Full Section</h3>
+<ul>
+<li>Section title</li>
+<li>Dues options area</li>
+<li>IPN options area</li>
+<li>Saved-payment display or add-new-payment form</li>
+<li>Update button in Profile Edit</li>
+<li>Loading / success / error feedback</li>
+</ul>
+<h3 id="paymentplancomponent-as-a-reusable-user-facing-component"><code>PaymentPlanComponent</code> As A Reusable User-Facing Component</h3>
+<p><code>PaymentPlanComponent</code> should be understood as the reusable visible shell for payment-plan / auto-renewal behavior.</p>
+<p>User-facing parts of this component:</p>
+<ul>
+<li>top section title</li>
+<li>dues selection sub-section</li>
+<li>IPN selection sub-section</li>
+<li>payment-method area</li>
+<li>validation / error surface</li>
+<li>success feedback surface</li>
+<li>profile-only update button</li>
+</ul>
+<p>Migration implication:</p>
+<ul>
+<li>even when the dedicated route step is currently commented out, this component is still the intended reusable Join / Renew payment-plan UI and should be documented as shared future scope</li>
+</ul>
+<h3 id="whole-section-visibility-rules">Whole-Section Visibility Rules</h3>
+<ul>
+<li>The component can show:
+<ul>
+<li>dues only</li>
+<li>IPN only</li>
+<li>both dues and IPN</li>
+<li>neither</li>
+</ul>
+</li>
+<li>When hidden in Join or Renew contexts, the user sees &quot;payment plan not available&quot;.</li>
+</ul>
+<h3 id="dues-ipn-option-rules">Dues / IPN Option Rules</h3>
+<ul>
+<li>Visibility depends on eligibility state, chapter/province, renewal state, and timing windows.</li>
+</ul>
+<h3 id="payment-card-area">Payment Card Area</h3>
+<p>When the user is entering new payment details, the validation messages are based on:</p>
+<ul>
+<li>card type</li>
+<li>card number</li>
+<li>cardholder name</li>
+<li>expiry</li>
+<li>CVC</li>
+</ul>
+<h3 id="payment-validation-messages">Payment Validation Messages</h3>
+<p>The visible error rules include:</p>
+<ul>
+<li>Only Mastercard or Visa are valid cards</li>
+<li>Invalid credit card number</li>
+<li>Invalid credit card name</li>
+<li>Invalid credit card expiration date</li>
+<li>Invalid credit card expiration CVC</li>
+<li>Please select a payment option</li>
+</ul>
+<h3 id="profile-display-auto-renewal-summary">Profile Display Auto-Renewal Summary</h3>
+<p>Profile Display includes a renewal summary component that can show:</p>
+<ul>
+<li>membership expiry or expired state</li>
+<li>renew-now link</li>
+<li>sign-up-for-payment-plan link</li>
+<li>auto-renewal dashboard when enrolled</li>
+</ul>
+<h3 id="payment-plan-rules-summary">Payment Plan Rules Summary</h3>
+<ul>
+<li>Profile Edit includes the full auto-renewal / payment-plan UI.</li>
+<li>Renew RET, FM, SUPPT includes a payment-plan step.</li>
+<li>The component may show dues, IPN, both, or neither based on elegibility.</li>
+<li>Only Visa and Mastercard are accepted.</li>
+</ul>
+<h2 id="education">6. Education</h2>
+<h3 id="purpose-5">Purpose</h3>
+<p>Member Education Information</p>
+<h3 id="visibility-matrix-5">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Education editor</td>
+<td>Yes, STU only</td>
+<td>Yes, STU only</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="join-renew-version">Join / Renew Version</h3>
+<ul>
+<li>For STU Join and STU Renew, Education is an explicit wizard step.</li>
+</ul>
+<h3 id="education-fields-shown">Education Fields Shown</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Edit</th>
+<th>Required rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Degree / level</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Required during JOIN/RENEW or if any education field is being filled</td>
+</tr>
+<tr>
+<td>University</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Required during JOIN/RENEW or if any education field is being filled</td>
+</tr>
+<tr>
+<td>Graduation month</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Required during JOIN/RENEW or if any education field is being filled</td>
+</tr>
+<tr>
+<td>Graduation year</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Requiredduring JOIN/RENEW or if any education field is being filled</td>
+</tr>
+<tr>
+<td>Current school year attended</td>
+<td>Join/Renew only</td>
+<td>Yes</td>
+<td>No</td>
+<td>Required during JOIN/RENEW</td>
+</tr>
+</tbody>
+</table>
+<h3 id="education-rules">Education Rules</h3>
+<ul>
+<li>In Join / Renew, current school year is shown.</li>
+<li>In Profile Edit, the user sees education records on file plus an add-new path.</li>
+<li>In Join / Renew, university options exclude disabled universities.</li>
+<li>In STU Join, graduation-year options are constrained to current year and later.</li>
+</ul>
+<h3 id="profile-edit-version">Profile Edit Version</h3>
+<p>Profile Edit uses &quot;Areas of Expertise &amp; Education&quot; section.</p>
+<p>What the user sees:</p>
+<ul>
+<li>For <code>FM</code>, <code>SUPPT</code>, <code>RET</code>, <code>LIFE</code>, and <code>GRAD</code>:
+<ul>
+<li>Areas of Expertise</li>
+<li>divider</li>
+<li>Education</li>
+</ul>
+</li>
+<li>For <code>STU</code>:
+<ul>
+<li>Education only</li>
+</ul>
+</li>
+</ul>
+<h2 id="areas-of-expertise">7. Areas Of Expertise</h2>
+<h3 id="purpose-6">Purpose</h3>
+<p>Areas of Expertise (shows on Profile only).</p>
+<h3 id="visibility-matrix-6">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Areas of Expertise editor</td>
+<td>No</td>
+<td>No</td>
+<td>Summary</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="join-renew-version-1">Join / Renew Version</h3>
+<ul>
+<li>The Areas of Expertise portion is suppressed in Join and Renew.</li>
+</ul>
+<h3 id="profile-edit-version-1">Profile Edit Version</h3>
+<p>Profile Edit uses a newer v2 &quot;Areas of Expertise &amp; Education&quot; section.</p>
+<p>What the user sees:</p>
+<ul>
+<li>For <code>FM</code>, <code>SUPPT</code>, <code>RET</code>, <code>LIFE</code>, and <code>GRAD</code>:
+<ul>
+<li>Areas of Expertise</li>
+<li>divider</li>
+<li>Education</li>
+</ul>
+</li>
+</ul>
+<h3 id="areas-of-expertise-rules">Areas Of Expertise Rules</h3>
+<table>
+<thead>
+<tr>
+<th>Field pair</th>
+<th>Required?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work environment primary / secondary</td>
+<td>Required for non-STU</td>
+<td>STU is exempt</td>
+</tr>
+<tr>
+<td>Area of expertise primary / secondary</td>
+<td>Required for non-STU</td>
+<td>STU is exempt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="confirmation-section">8. Confirmation Section</h2>
+<h3 id="purpose-7">Purpose</h3>
+<p>This is the reusable final acknowledgement step used in Join and Renew flows.</p>
+<h3 id="visibility-matrix-7">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirmation step</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-the-user-sees-2">What The User Sees</h3>
+<ul>
+<li>One or more checkbox/radio acknowledgement statements.</li>
+<li>Some member types get only one confirmation.</li>
+<li>Some member types get additional refund-related statements and notes.</li>
+</ul>
+<h3 id="universal-rule">Universal Rule</h3>
+<ul>
+<li>Every visible acknowledgement is required before the user can finish the step.</li>
+</ul>
+<h3 id="confirmation-matrix">Confirmation Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Confirmation content shown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Join FM / Renew FM</td>
+<td>Confirmed statement plus refund-related statements / notes</td>
+</tr>
+<tr>
+<td>Join STU / Renew STU</td>
+<td>Confirmed statement only</td>
+</tr>
+<tr>
+<td>Join SUPPT / Renew SUPPT</td>
+<td>Confirmed statement plus refund-related statements / notes</td>
+</tr>
+<tr>
+<td>Renew GRAD</td>
+<td>Confirmed statement only</td>
+</tr>
+<tr>
+<td>Renew RET</td>
+<td>Confirmed statement plus refund-related statements / notes</td>
+</tr>
+<tr>
+<td>Upgrade FM</td>
+<td>Upgrade-specific confirmed statement</td>
+</tr>
+<tr>
+<td>Upgrade SUPPT</td>
+<td>Upgrade-specific confirmed statement</td>
+</tr>
+<tr>
+<td>Upgrade NM</td>
+<td>Upgrade-specific confirmed statement</td>
+</tr>
+<tr>
+<td>BC upgrade-insurance</td>
+<td>Upgrade-insurance-specific statements</td>
+</tr>
+</tbody>
+</table>
+<h2 id="profile-display-only-sections">9. Profile Display-Only Sections</h2>
+<h3 id="purpose-8">Purpose</h3>
+<p>These are visible profile screens and panels that matter for migration scope even though they are not the shared edit forms.</p>
+<h3 id="visibility-matrix-8">Visibility Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Join</th>
+<th>Renew</th>
+<th>Profile Display</th>
+<th>Profile Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Profile dashboard / display panels</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="expired-credit-card-alert-banner">Expired Credit-Card Alert Banner</h3>
+<ul>
+<li>Profile route can show an alert banner when the stored card expiry is before today.</li>
+<li>The banner includes:
+<ul>
+<li>title</li>
+<li>message</li>
+<li>link to <code>/profile/edit/autorenewal</code></li>
+<li>trailing text after the link</li>
+</ul>
+</li>
+</ul>
+<h3 id="profile-tables-content-blocks">Profile Tables / Content Blocks</h3>
+<p>Profile Display includes several table-based panels, including:</p>
+<ul>
+<li>job ads</li>
+<li>membership add-ons</li>
+<li>conferences</li>
+<li>workshops</li>
+<li>on-demand webinars</li>
+</ul>
+<p>These are mostly display based on information from Docebo (LMS).</p>
+<h3 id="province-of-practice-change-request-access">Province Of Practice Change Request Access</h3>
+<p>Profile Display exposes a route-driven modal / overlay form for province-of-practice change requests.</p>
+<p>What the user sees:</p>
+<ul>
+<li>modal overlay</li>
+<li>title</li>
+<li>explanatory text</li>
+<li>textarea</li>
+<li>submit button</li>
+<li>success state</li>
+<li>error state</li>
+</ul>
+<h3 id="membership-renewal-summary-area">Membership Renewal Summary Area</h3>
+<p>For eligible member types (<code>FM</code>, <code>STU</code>, <code>SUPPT</code>, <code>GRAD</code>, <code>RET</code>), the display can show:</p>
+<ul>
+<li>renewal section title</li>
+<li>membership expiry date or expired message</li>
+<li>renew-now link when eligible</li>
+<li>sign-up payment-plan link when applicable</li>
+<li>auto-renewal dashboard summary</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>
