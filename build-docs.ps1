@@ -85,6 +85,18 @@ $pages = @(
         NavTitle = 'Cart'
         Description = 'Functional walkthrough for the current cart UI.'
     }
+    @{
+        Source = 'career-centre.md'
+        Output = 'career-centre.html'
+        NavTitle = 'Career Centre'
+        Description = 'Functional walkthrough for job ad posting and Career Centre search.'
+    }
+    @{
+        Source = 'career-centre-screens.md'
+        Output = 'career-centre-screens.html'
+        NavTitle = 'Career Centre Screens'
+        Description = 'Screenshots for job ad posting and Career Centre search.'
+    }
 )
 
 $linkMap = @{}
@@ -144,8 +156,8 @@ function New-SiteHtml {
     )
 
     $safeTitle = [System.Net.WebUtility]::HtmlEncode($Title)
-    $primaryPages = @($pages | Where-Object { $_.Output -in @('index.html', 'cart.html') })
-    $screenPages = @($pages | Where-Object { $_.Output -notin @('index.html', 'cart.html') })
+    $primaryPages = @($pages | Where-Object { $_.Output -in @('index.html', 'cart.html', 'career-centre.html') })
+    $screenPages = @($pages | Where-Object { $_.Output -notin @('index.html', 'cart.html', 'career-centre.html') })
 
     $primaryNavItems = foreach ($navPage in $primaryPages) {
         $isActive = $navPage.Output -eq $Page.Output
