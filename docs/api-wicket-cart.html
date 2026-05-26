@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link active" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Cart API Calls</h1>
+<h2>Purpose</h2>
+<p>This page documents the API calls needed by the Cart application mounted from <code>/home/lalves/dev/cdha/client/src/App.tsx</code>.</p>
+<p>The entry point renders <code>IndexPage</code>, which aliases <code>CartPage</code>. <code>CartPage</code> starts the XState <code>cartMachine</code>, and <code>CartPageComponent</code> renders cart sections from child machines for items, add-ons, donations, PD business course prompts, payment, and summary.</p>
+<h2>Base URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Development</th>
+<th>Production</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostUrl</code></td>
+<td><code>https://www.cdha.ca/</code></td>
+<td><code>//{window.location.hostname}</code></td>
+<td>Legacy Wicket/iMIS <code>.ashx</code> endpoints under <code>/CDHACommon</code></td>
+</tr>
+<tr>
+<td>Static card images</td>
+<td><code>//files.cdha.ca</code></td>
+<td>Same</td>
+<td>Visa and Mastercard card-brand images</td>
+</tr>
+</tbody>
+</table>
+<p>The source builds Wicket URLs as <code>{hostUrl}/CDHACommon/{endpoint}.ashx</code>. Because the development <code>hostUrl</code> includes a trailing slash, development requests may contain a double slash before <code>CDHACommon</code>; browsers normalize this.</p>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>API family</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Wicket/iMIS <code>.ashx</code></td>
+<td>Browser session cookies. The shared fetch wrapper always sends <code>credentials: &quot;include&quot;</code> and defaults to <code>POST</code>.</td>
+</tr>
+<tr>
+<td>Static images</td>
+<td>Public image URLs.</td>
+</tr>
+</tbody>
+</table>
+<p>The Cart page does not use the <code>newHostUrl</code> bearer-token flow used by Profile/Join/Renew.</p>
+<h2>Initial Cart Load</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Authentication</th>
+<th>Request</th>
+<th>Response</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load member summary</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/UpdatePersonalInfo.ashx</code></td>
+<td>iMIS session cookie</td>
+<td><code>{ &quot;get_summaryonly&quot;: true }</code></td>
+<td><code>{ data: MemberInfo, errors, server_time, status }</code></td>
+<td>First state in <code>cartMachine</code>; member data drives add-on eligibility, PD business course eligibility, and payment validation context</td>
+</tr>
+<tr>
+<td>Load cart items</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/getCartItems.ashx</code></td>
+<td>iMIS session cookie</td>
+<td>Empty request body</td>
+<td><code>CartAPIResponse</code></td>
+<td>Second state in <code>cartMachine</code>; extracts invoices, lines, discount codes, order totals, taxes, and <code>invoicePaidThru</code></td>
+</tr>
+<tr>
+<td>Remove stale 2021 conference line</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/updateCart.ashx</code></td>
+<td>iMIS session cookie</td>
+<td><code>{ lines: [{ productCode: &quot;EVENT-2021CONF&quot;, quantity: 0 }] }</code></td>
+<td>Cart update JSON</td>
+<td>Automatic cleanup when <code>getCartItems.ashx</code> returns a line whose <code>Event.EventId === &quot;2021CONF&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>If the cart response contains no <code>lines</code> and no <code>invoices.Lines</code>, the page enters the empty-cart state and makes no further business API calls.</p>
+<h2>Cart Sections and API Usage</h2>
+<table>
+<thead>
+<tr>
+<th>UI section</th>
+<th>Created when</th>
+<th>API calls it can trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cart items</td>
+<td>Cart has lines or an invoice</td>
+<td>Remove cart lines, remove invoice</td>
+</tr>
+<tr>
+<td>Donations</td>
+<td>Cart has an invoice or a donation already in cart</td>
+<td>Add/change donation amount, remove donation, toggle anonymous donation</td>
+</tr>
+<tr>
+<td>Add-ons</td>
+<td>Cart has an invoice</td>
+<td>Add/remove Independent Practice add-on; auto-adds it on first load when member already has IPN but has not purchased IPN</td>
+</tr>
+<tr>
+<td>PD business course prompt</td>
+<td>Cart has <code>PD_BIZFUND</code>, <code>PD_BIZGROWTH</code>, or <code>PD_BIZPLN</code>, and member type is <code>FM</code>, <code>SUPPT</code>, <code>GRAD</code>, or <code>STU</code></td>
+<td>Apply/remove promo codes, add Independent Practice, remove PD business course lines</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td><code>order_data.order_total &gt; 0</code></td>
+<td>Submit credit-card/payment data</td>
+</tr>
+<tr>
+<td>Summary</td>
+<td>Cart has lines or an invoice</td>
+<td>No direct API calls</td>
+</tr>
+</tbody>
+</table>
+<h2>Detailed Calls</h2>
+<h3>Load Member Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/CDHACommon/UpdatePersonalInfo.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;get_summaryonly&quot;: true }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: MemberInfo, errors: any[], server_time: string, status: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Initial <code>cartMachine</code> load; add-on, PD business course, and validation rules</td>
+</tr>
+</tbody>
+</table>
+<p>Important <code>MemberInfo</code> fields consumed by the cart:</p>
+<p><code>id</code>, <code>first_name</code>, <code>last_name</code>, <code>member_type</code>, <code>member_status</code>, <code>paid_thru</code>, <code>chapter</code>, <code>has_IPN</code>, <code>purchased_IPN</code>, <code>has_EDU</code>, <code>purchased_EDU</code>, <code>show_renew</code>, <code>show_invoice</code>, <code>insurance_code</code>, <code>insurance_expires</code>, <code>DUES_DRAFT_DATE</code>, <code>IPN_DRAFT_DATE</code>, and installment fields.</p>
+<h3>Load Cart</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/CDHACommon/getCartItems.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty request body</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>CartAPIResponse</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Initial cart load, reload after every line/promo/payment-related child-machine update</td>
+</tr>
+</tbody>
+</table>
+<p><code>CartAPIResponse</code> shape used by the app:</p>
+<pre><code class="language-json">{
+  &quot;discountCodes&quot;: &quot;WEBINAR_IPN&quot;,
+  &quot;errors&quot;: [],
+  &quot;invoicePaidThru&quot;: &quot;2026-10-31&quot;,
+  &quot;invoices&quot;: {
+    &quot;Balance&quot;: { &quot;Amount&quot;: 100 },
+    &quot;InvoiceAmount&quot;: { &quot;Amount&quot;: 100 },
+    &quot;Lines&quot;: []
+  },
+  &quot;lines&quot;: [],
+  &quot;order_data&quot;: {
+    &quot;base_total&quot;: 100,
+    &quot;discount_total&quot;: 0,
+    &quot;order_total&quot;: 100,
+    &quot;taxes&quot;: {
+      &quot;TaxTotal&quot;: { &quot;Amount&quot;: 0 },
+      &quot;OrderTaxes&quot;: []
+    }
+  },
+  &quot;status&quot;: &quot;success&quot;
+}
+</code></pre>
+<p>Important line fields:</p>
+<p><code>lines[].Item.ItemCode</code>, <code>lines[].Item.Name</code>, <code>lines[].BaseUnitPrice.Amount</code>, <code>lines[].Discount.Amount</code>, <code>lines[].UnitPrice.Amount</code>, <code>lines[].ExtendedAmount.Amount</code>, <code>lines[].QuantityOrdered.Amount</code>, and optional <code>lines[].Event.EventId</code>.</p>
+<p>Important invoice fields:</p>
+<p><code>invoices.Balance.Amount</code>, <code>invoices.InvoiceAmount.Amount</code>, <code>invoices.Lines[].Item.ItemCode</code>, <code>invoices.Lines[].Item.Name</code>, and tax invoice lines whose <code>Item.ItemCode</code> starts with <code>TAX</code>.</p>
+<h3>Update Cart Lines</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/CDHACommon/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;lines&quot;: [{ &quot;productCode&quot;: string, &quot;quantity&quot;: number }] }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart update JSON</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Removing regular items, changing quantities, donations, add-ons, PD business course add/remove, and stale conference cleanup</td>
+</tr>
+</tbody>
+</table>
+<p>Common product codes used by the active cart page:</p>
+<table>
+<thead>
+<tr>
+<th>Product code</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IND_PRACTICE</code></td>
+<td>Independent Practice add-on and PD business course IPN offer</td>
+</tr>
+<tr>
+<td><code>CFDHRE5</code></td>
+<td>Donation product; quantity determines the donation amount in <code>$5</code> increments</td>
+</tr>
+<tr>
+<td><code>CFDHRE5_ANON</code></td>
+<td>Anonymous donation variant</td>
+</tr>
+<tr>
+<td><code>PD_BIZFUND</code>, <code>PD_BIZGROWTH</code>, <code>PD_BIZPLN</code></td>
+<td>PD business course products; removed when unavailable</td>
+</tr>
+<tr>
+<td><code>EVENT-2021CONF</code></td>
+<td>Stale conference line cleanup if present in the cart response</td>
+</tr>
+</tbody>
+</table>
+<p>When changing a quantity, the machines usually call <code>updateCart.ashx</code> twice: first with the same product code and <code>quantity: 0</code>, then with the new desired quantity. This pattern is used to force Wicket/iMIS to recalculate the cart cleanly.</p>
+<h3>Remove Invoice</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/CDHACommon/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;removeInvoice&quot;: true, &quot;lines&quot;: [{ &quot;productCode&quot;: &quot;EDUCATORS&quot;, &quot;quantity&quot;: 0 }, { &quot;productCode&quot;: &quot;IND_PRACTICE&quot;, &quot;quantity&quot;: 0 }] }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart update JSON</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Clicking remove on the invoice row in <code>CartItems</code></td>
+</tr>
+</tbody>
+</table>
+<p>This removes the invoice and clears add-ons tied to invoice checkout. <code>EDUCATORS</code> is included even though the current visible educators add-on is commented out.</p>
+<h3>Apply or Remove Promo Code</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/CDHACommon/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;discountCodes&quot;: string }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart update JSON</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>PD business course promo logic</td>
+</tr>
+</tbody>
+</table>
+<p>Active promo-code values from <code>pdBizCourseMachine</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PD_BIZFUND</code></td>
+<td>Applied when a PD business course is in cart and <code>IND_PRACTICE</code> is also in cart</td>
+</tr>
+<tr>
+<td><code>WEBINAR_IPN</code></td>
+<td>Applied when the member already has IPN and does not already have this promo</td>
+</tr>
+<tr>
+<td><code>&quot;&quot;</code></td>
+<td>Removes/clears the promo code when no longer eligible</td>
+</tr>
+</tbody>
+</table>
+<h3>Submit Payment</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/CDHACommon/updatePaymentData.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Payment payload from the payment machine, or a zeroed default payload if no payment form is present</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Payment/update JSON from Wicket/iMIS</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Cart submit button after payment and PD business course validation</td>
+</tr>
+</tbody>
+</table>
+<p>When payment is required, the client sends:</p>
+<pre><code class="language-json">{
+  &quot;PAYMENT_METHOD&quot;: &quot;W_VISA&quot;,
+  &quot;CC_NUMBER&quot;: &quot;4111111111111111&quot;,
+  &quot;CC_NAME&quot;: &quot;Cardholder Name&quot;,
+  &quot;CC_CCV&quot;: 123,
+  &quot;CC_MONTH&quot;: 12,
+  &quot;CC_YEAR&quot;: 26,
+  &quot;DUES_DRAFT_DATE&quot;: null,
+  &quot;IPN_DRAFT_DATE&quot;: null
+}
+</code></pre>
+<p><code>PAYMENT_METHOD</code> is <code>W_VISA</code> for Visa cards and <code>W_MC</code> for Mastercard. The client validates card number, expiry, CVC, name, and accepted card type before submit.</p>
+<p>If no payment form actor exists, the submit path sends:</p>
+<pre><code class="language-json">{
+  &quot;PAYMENT_METHOD&quot;: &quot;W_MC&quot;,
+  &quot;CC_NUMBER&quot;: 0,
+  &quot;CC_NAME&quot;: 0,
+  &quot;CC_CCV&quot;: 0,
+  &quot;CC_MONTH&quot;: 0,
+  &quot;CC_YEAR&quot;: 0
+}
+</code></pre>
+<p>On success, the browser navigates to <code>/confirmation</code>.</p>
+<h2>Section-Specific Flows</h2>
+<h3>Regular Cart Items</h3>
+<table>
+<thead>
+<tr>
+<th>User action</th>
+<th>API call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Remove an item</td>
+<td><code>POST updateCart.ashx</code> with <code>{ lines: [{ productCode, quantity: 0 }] }</code></td>
+</tr>
+<tr>
+<td>Change quantity</td>
+<td><code>POST updateCart.ashx</code> with quantity <code>0</code>, then <code>POST updateCart.ashx</code> with the new quantity</td>
+</tr>
+<tr>
+<td>Remove invoice</td>
+<td><code>POST updateCart.ashx</code> with <code>removeInvoice: true</code> and add-on removal lines</td>
+</tr>
+</tbody>
+</table>
+<p>The current <code>CartItems</code> UI exposes remove actions. The machine also supports quantity changes.</p>
+<h3>Donations</h3>
+<p>The active donation product is <code>CFDHRE5</code>; the selected quantity is <code>1</code> through <code>20</code>, representing <code>$5</code> through <code>$100</code>.</p>
+<table>
+<thead>
+<tr>
+<th>User action</th>
+<th>API call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Select a donation amount</td>
+<td>Removes the current donation and anonymous variant if present, then adds <code>{ productCode: &quot;CFDHRE5&quot; or &quot;CFDHRE5_ANON&quot;, quantity }</code></td>
+</tr>
+<tr>
+<td>Clear donation select</td>
+<td>Sends quantity <code>0</code> for the donation product</td>
+</tr>
+<tr>
+<td>Toggle anonymous donation</td>
+<td>Removes the current donation and re-adds it with or without <code>_ANON</code> suffix</td>
+</tr>
+</tbody>
+</table>
+<h3>Add-ons</h3>
+<p>The visible add-on is Independent Practice:</p>
+<pre><code class="language-json">{
+  &quot;productCode&quot;: &quot;IND_PRACTICE&quot;,
+  &quot;quantity&quot;: 1,
+  &quot;amount&quot;: 95
+}
+</code></pre>
+<p>On first add-on load, if <code>memberInfo.data.has_IPN === true</code>, <code>purchased_IPN === false</code>, and the add-on is not already in cart, the machine automatically calls:</p>
+<pre><code class="language-json">{
+  &quot;lines&quot;: [
+    { &quot;productCode&quot;: &quot;IND_PRACTICE&quot;, &quot;quantity&quot;: 1 }
+  ]
+}
+</code></pre>
+<p>Manual add/remove uses the same <code>updateCart.ashx</code> line payload, with quantity <code>1</code> or <code>0</code>.</p>
+<h3>PD Business Course Prompt</h3>
+<p>The PD business course prompt appears when the cart contains <code>PD_BIZFUND</code>, <code>PD_BIZGROWTH</code>, or <code>PD_BIZPLN</code>, and the member type is one of:</p>
+<p><code>FM</code>, <code>SUPPT</code>, <code>GRAD</code>, <code>STU</code>.</p>
+<p>API behavior:</p>
+<table>
+<thead>
+<tr>
+<th>Condition or action</th>
+<th>API call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Student member has a PD business course product</td>
+<td><code>POST updateCart.ashx</code> removes <code>PD_BIZFUND</code>, <code>PD_BIZGROWTH</code>, and <code>PD_BIZPLN</code></td>
+</tr>
+<tr>
+<td>Inactive member has a promo code</td>
+<td><code>POST updateCart.ashx</code> with <code>{ discountCodes: &quot;&quot; }</code></td>
+</tr>
+<tr>
+<td>Member has IPN and missing <code>WEBINAR_IPN</code> promo</td>
+<td><code>POST updateCart.ashx</code> with <code>{ discountCodes: &quot;WEBINAR_IPN&quot; }</code></td>
+</tr>
+<tr>
+<td><code>IND_PRACTICE</code> is in cart and missing <code>PD_BIZFUND</code> promo</td>
+<td><code>POST updateCart.ashx</code> with <code>{ discountCodes: &quot;PD_BIZFUND&quot; }</code></td>
+</tr>
+<tr>
+<td><code>PD_BIZFUND</code> promo is applied but <code>IND_PRACTICE</code> is not in cart</td>
+<td><code>POST updateCart.ashx</code> with <code>{ discountCodes: &quot;&quot; }</code></td>
+</tr>
+<tr>
+<td>User accepts IPN offer</td>
+<td><code>POST updateCart.ashx</code> with <code>{ lines: [{ productCode: &quot;IND_PRACTICE&quot;, quantity: 1 }] }</code></td>
+</tr>
+<tr>
+<td>User declines IPN offer</td>
+<td>No API call; local state records <code>acceptOffer: false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Before payment submit, the parent machine requires the user to answer the PD business course IPN offer if the prompt is present.</p>
+<h2>Non-Business Assets and Navigation</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load Mastercard image</td>
+<td><code>GET</code></td>
+<td><code>//files.cdha.ca/images/mastercardactive.png</code> or <code>mastercarddisabled.png</code></td>
+<td>Payment card-brand indicator</td>
+</tr>
+<tr>
+<td>Load Visa image</td>
+<td><code>GET</code></td>
+<td><code>//files.cdha.ca/images/visaactive.png</code> or <code>visadisabled.png</code></td>
+<td>Payment card-brand indicator</td>
+</tr>
+<tr>
+<td>Confirmation navigation</td>
+<td>Browser navigation</td>
+<td><code>/confirmation</code></td>
+<td>After successful <code>updatePaymentData.ashx</code></td>
+</tr>
+</tbody>
+</table>
+<p>No Sentry or Google Analytics initialization is present in this cart entry point.</p>
+<h2>Response Shape Reference</h2>
+<h3>CartAPIResponse</h3>
+<p>Important fields consumed by the Cart app:</p>
+<p><code>discountCodes</code>, <code>errors</code>, <code>invoicePaidThru</code>, <code>invoices</code>, <code>lines</code>, <code>order_data</code>, and <code>status</code>.</p>
+<h3>Invoice</h3>
+<p>Important invoice fields:</p>
+<p><code>Balance.Amount</code>, <code>InvoiceAmount.Amount</code>, <code>Lines[].Item.ItemCode</code>, <code>Lines[].Item.Name</code>, and <code>Lines[].ExtendedAmount.Amount</code>.</p>
+<p>Invoice lines whose item code starts with <code>TAX</code> are summed into <code>invoiceTaxAmount</code> and excluded from the visible invoice item description.</p>
+<h3>Cart Line</h3>
+<p>Important line fields:</p>
+<p><code>Item.ItemCode</code>, <code>Item.Name</code>, <code>BaseUnitPrice.Amount</code>, <code>Discount.Amount</code>, <code>UnitPrice.Amount</code>, <code>ExtendedAmount.Amount</code>, <code>QuantityOrdered.Amount</code>, and optional <code>Event.EventId</code>.</p>
+<h3>Order Data</h3>
+<p>Important order fields:</p>
+<p><code>base_total</code>, <code>discount_total</code>, <code>order_total</code>, <code>taxes.TaxTotal.Amount</code>, and <code>taxes.OrderTaxes</code>.</p>
+<h3>Payment</h3>
+<p>Important payment fields:</p>
+<p><code>PAYMENT_METHOD</code>, <code>CC_NUMBER</code>, <code>CC_NAME</code>, <code>CC_CCV</code>, <code>CC_MONTH</code>, <code>CC_YEAR</code>, <code>DUES_DRAFT_DATE</code>, and <code>IPN_DRAFT_DATE</code>.</p>
+<h2>Legacy or Unreached Cart APIs Found</h2>
+<p>These modules exist in the cart source tree, but are not currently reached from <code>/home/lalves/dev/cdha/client/src/App.tsx -&gt; IndexPage -&gt; CartPage -&gt; CartPageComponent</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{hostUrl}/CDHACommon/geteventdata.ashx?Event=2021CONF</code></td>
+<td>Imported by <code>cartConferenceMachine</code>, but that machine is not spawned by the active cart page.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/CDHACommon/UpdateEventRegistrationEx.ashx?Event=2021CONF</code></td>
+<td>Same; would register the 2021 conference if <code>CartConference</code> were mounted.</td>
+</tr>
+<tr>
+<td>Conference promo codes <code>MEMCONF_2021</code>, <code>MEMCONF_2021_IPN</code>, <code>MEMCONF_2021_EDU</code>, <code>MEMCONF_2021_EIP</code>, <code>WEBINAR_EIP</code>, <code>WEBINAR_EDU</code></td>
+<td>Defined by <code>cartConferenceMachine</code>, but the active page only auto-removes stale <code>EVENT-2021CONF</code> lines.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/CDHACommon/GetLookupData.ashx?table=UNIVERSITY</code>, <code>GRAD_YEAR</code>, <code>GRAD_MONTH</code>, <code>DEGREES</code>, <code>YEAR_ATTEND</code></td>
+<td>Used by other pages in the same app source tree, not by the active Cart page.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/CDHACommon/UpdateDHEducation.ashx</code></td>
+<td>Used by video-submission/education flows in this app source tree, not by the active Cart page.</td>
+</tr>
+</tbody>
+</table>
+<h2>Open Questions</h2>
+<ul>
+<li>Confirm whether the unmounted <code>CartConference</code>/<code>cartConferenceMachine</code> should remain out of scope or be restored to the active Cart page.</li>
+<li>Confirm whether <code>updatePaymentData.ashx</code> intentionally receives the zeroed payment payload when <code>order_total &lt;= 0</code> or no payment form actor exists.</li>
+<li>Confirm exact server response shapes for <code>updateCart.ashx</code> and <code>updatePaymentData.ashx</code>; the current frontend mostly relies on HTTP success and then reloads cart state from <code>getCartItems.ashx</code>.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

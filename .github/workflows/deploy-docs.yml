@@ -31,9 +31,12 @@ jobs:
         with:
           enablement: true
 
+      - name: Install docs build dependency
+        run: python3 -m pip install --user markdown-it-py
+
       - name: Build static docs
-        shell: pwsh
-        run: ./build-docs.ps1
+        shell: bash
+        run: bash ./build-docs.sh
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5

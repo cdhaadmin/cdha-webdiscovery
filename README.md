@@ -4,16 +4,17 @@ This repository now includes a lightweight static site build for the migration d
 
 ## What was added
 
-- `build-docs.ps1` generates a publishable site in `docs/`
+- `build-docs.py` and `build-docs.sh` generate a publishable site in `docs/`
 - `.github/workflows/deploy-docs.yml` builds and deploys the site to GitHub Pages on pushes to `main`
 - `docs/` becomes the published artifact and uses `join-renew-profile-ux-rules.md` as the site home page
 
 ## Local build
 
-Run this from the repo root:
+Run this from the repo root on WSL or any Linux shell:
 
-```powershell
-./build-docs.ps1
+```bash
+python3 -m pip install --user markdown-it-py
+bash ./build-docs.sh
 ```
 
 Then open `docs/index.html` in a browser to preview the generated site.
@@ -32,7 +33,7 @@ If your default branch is `master`, the workflow also supports that. If you use 
 
 When you edit or add markdown/images under `src/`:
 
-1. Update `build-docs.ps1` if you want new pages added to the sidebar navigation.
-2. Run `./build-docs.ps1` locally to preview changes.
+1. Update `build-docs.py` if you want new pages added to the sidebar navigation.
+2. Run `bash ./build-docs.sh` locally to preview changes.
 3. Commit and push.
 4. GitHub Actions will rebuild and redeploy the site.

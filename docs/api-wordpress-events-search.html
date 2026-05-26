@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Career Centre Screens</title>
+  <title>Events Search API Calls</title>
   <link rel="stylesheet" href="./assets/site.css" />
 </head>
 <body>
@@ -71,7 +71,7 @@
   <span class="nav-title">Profile Screens</span>
   <span class="nav-description">Screenshots for profile display and summary views.</span>
 </a>
-<a class="nav-link active" href="./career-centre-screens.html">
+<a class="nav-link" href="./career-centre-screens.html">
   <span class="nav-title">Career Centre Screens</span>
   <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
 </a>
@@ -130,7 +130,7 @@
   <span class="nav-title">Events Add</span>
   <span class="nav-description">WordPress API calls for adding events.</span>
 </a>
-<a class="nav-link" href="./api-wordpress-events-search.html">
+<a class="nav-link active" href="./api-wordpress-events-search.html">
   <span class="nav-title">Events Search</span>
   <span class="nav-description">WordPress API calls for event search.</span>
 </a>
@@ -155,18 +155,192 @@
     </aside>
     <main class="content">
       <article class="markdown-body">
-<h1>Career Centre Screens</h1>
-<p>This page is a visual companion to <a href="./career-centre.html">career-centre.md</a>.</p>
-<h2>1. Post Your Job Ad Validation</h2>
-<p><img src="./newJobAdValidation.png" alt="Post Your Job Ad Validation" /></p>
-<h2>2. Add New Job Ad</h2>
-<p><img src="./addNewJobad.png" alt="Add New Job Ad" /></p>
-<h2>3. Career Search</h2>
-<p><img src="./JobSearch.png" alt="Career Search" /></p>
-<h2>4. Career Search By City</h2>
-<p><img src="./JobSearchByCity.png" alt="Career Search By City" /></p>
-<h2>5. Career Search Details</h2>
-<p><img src="./JobSearchDetails.png" alt="Career Search Details" /></p>
+<h1>Events Search API Calls</h1>
+<h2>Purpose</h2>
+<p>This page documents the API calls used by the event calendar flow mounted from <code>/home/lalves/dev/frontend/src/eventDisplayPage.tsx</code>.</p>
+<p>The page shell renders <code>components/event/eventDisplayRoute.tsx</code>, which loads the country lookup in the root container and then fetches the event list for the calendar display.</p>
+<h2>Base URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Value</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostUrl</code></td>
+<td><code>https://www.cdha.ca/CDHACommon</code> in development, <code>//{window.location.hostname}/CDHACommon</code> in production</td>
+<td>Legacy Wicket/iMIS <code>.ashx</code> endpoints</td>
+</tr>
+<tr>
+<td><code>newHostUrl</code></td>
+<td><code>https://api.lalves.mycdha.ca</code> in development, <code>https://api.imisdev.mycdha.ca</code> on <code>imisdev</code>, otherwise <code>https://api.mycdha.ca</code></td>
+<td>Lookup table API</td>
+</tr>
+</tbody>
+</table>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>API family</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Wicket/iMIS <code>.ashx</code></td>
+<td>Browser session cookies via <code>withCredentials: true</code></td>
+</tr>
+<tr>
+<td>Lookup API</td>
+<td>No auth for the country table read</td>
+</tr>
+</tbody>
+</table>
+<h2>Page Flow</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>API call</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page bootstrap</td>
+<td><code>GET {newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+<td>Triggered by the root container even though the display view does not directly consume the country table</td>
+</tr>
+<tr>
+<td>Load calendar list</td>
+<td><code>POST {hostUrl}/GetCDHAEvents.ashx</code></td>
+<td>Loads the event list for the current calendar view</td>
+</tr>
+<tr>
+<td>Open item details</td>
+<td>none</td>
+<td>Detail panels are rendered client-side from the loaded list item</td>
+</tr>
+</tbody>
+</table>
+<h2>Detailed Calls</h2>
+<h3>Load Country Lookup</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Query string <code>table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: CountryLookup[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/event/rootContainer.tsx</code> through <code>getLookupData([&quot;COUNTRY&quot;])</code></td>
+</tr>
+</tbody>
+</table>
+<p>The calendar page does not currently use the lookup data directly, but the call still fires as part of the shared root bootstrap.</p>
+<h3>Load Event Calendar</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/GetCDHAEvents.ashx</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Browser session cookies</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty JSON body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: EventItem[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/event/displayContainer.tsx</code> on mount</td>
+</tr>
+</tbody>
+</table>
+<p>The list is grouped in the reducer by month/year, with a dedicated <code>Ongoing</code> bucket for items whose <code>is_ongoing</code> flag is true.</p>
+<h2>Response Shape</h2>
+<h3>Event item</h3>
+<p>The event list and detail panels use these fields from each item:</p>
+<pre><code class="language-json">{
+  &quot;seqn&quot;: 123,
+  &quot;name&quot;: &quot;Event title&quot;,
+  &quot;start_date&quot;: &quot;2026-05-26T00:00:00Z&quot;,
+  &quot;end_date&quot;: &quot;2026-05-27T00:00:00Z&quot;,
+  &quot;is_ongoing&quot;: false,
+  &quot;city&quot;: &quot;Toronto&quot;,
+  &quot;province&quot;: &quot;ON&quot;,
+  &quot;country&quot;: &quot;CA&quot;,
+  &quot;venue&quot;: &quot;Venue name&quot;,
+  &quot;contact_name&quot;: &quot;Contact name&quot;,
+  &quot;email&quot;: &quot;contact@example.com&quot;,
+  &quot;url&quot;: &quot;example.com&quot;,
+  &quot;volunteers_needed&quot;: false,
+  &quot;description&quot;: &quot;...&quot;,
+  &quot;event_code&quot;: &quot;2024CONF&quot;
+}
+</code></pre>
+<h3>Grouped list shape</h3>
+<p>The reducer transforms the raw array into grouped pairs:</p>
+<pre><code class="language-json">[
+  [&quot;Ongoing&quot;, [/* ongoing events */]],
+  [&quot;May 2026&quot;, [/* dated events */]]
+]
+</code></pre>
+<h2>Where It Is Used</h2>
+<ul>
+<li><code>eventDisplayPage.tsx</code> bootstraps the page.</li>
+<li><code>components/event/eventDisplayRoute.tsx</code> mounts the display route.</li>
+<li><code>containers/event/rootContainer.tsx</code> loads the country lookup.</li>
+<li><code>containers/event/displayContainer.tsx</code> fetches and groups the events.</li>
+<li><code>components/event/eventsDisplay.tsx</code>, <code>eventsDisplayItem.tsx</code>, and <code>eventDetails.tsx</code> render the result set.</li>
+</ul>
+<h2>Open Questions</h2>
+<ul>
+<li>The event search page currently loads country lookup data even though the rendered view does not use it directly.</li>
+<li>The detail panel is entirely client-side once the list is loaded; there is no separate event-detail request in the active page path.</li>
+</ul>
 
       </article>
     </main>

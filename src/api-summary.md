@@ -1,0 +1,377 @@
+# API Summary
+
+## Purpose
+
+This page is a consolidated inventory of the active API calls documented across the Wicket and WordPress sections.
+
+Use the filter chips to narrow the table, then expand a row to inspect its input and output. Legacy and unreached endpoints stay in the detailed pages.
+
+<div class="api-summary-shell">
+<input type="radio" name="api-filter" id="api-filter-all" checked>
+<label for="api-filter-all">All</label>
+<input type="radio" name="api-filter" id="api-filter-wicket">
+<label for="api-filter-wicket">Wicket</label>
+<input type="radio" name="api-filter" id="api-filter-wordpress">
+<label for="api-filter-wordpress">WordPress</label>
+<input type="radio" name="api-filter" id="api-filter-both">
+<label for="api-filter-both">Both</label>
+
+<table class="api-summary-table">
+<thead>
+<tr>
+<th>API call</th>
+<th>Where used</th>
+<th>Platform</th>
+<th>Description</th>
+<th>Input / output</th>
+</tr>
+</thead>
+<tbody>
+<tr data-platform="both">
+<td><code>POST /api/CDHASessionToken</code><br><code>POST {newHostUrl}/auth/token</code></td>
+<td>Wicket: Profile, Join, Renew, Cart bootstrap<br>WordPress: Image Gallery, Coloring Contest, Docebo helpers</td>
+<td><span class="platform-chip">Both</span></td>
+<td>Shared token bootstrap used to turn an iMIS request verification token and client context into a CDHA bearer token.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td><code>/api/CDHASessionToken</code> posts the iMIS entity payload; <code>/auth/token</code> posts <code>{ code, context }</code>.</td></tr>
+<tr><th>Output</th><td><code>/api/CDHASessionToken</code> returns the generated <code>UserCode</code>; <code>/auth/token</code> returns <code>{ token }</code>.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="both">
+<td><code>GET {newHostUrl}/v1/lookupdata?table={table}</code></td>
+<td>Wicket: Join, Renew, Profile edit, standalone communications, upgrade pages<br>WordPress: Job add/search, event add/search</td>
+<td><span class="platform-chip">Both</span></td>
+<td>Common lookup-table endpoint for country, province, degree, insurance, and similar select lists.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Query string <code>table</code>; common values include <code>COUNTRY</code>, <code>DEGREES</code>, <code>UNIVERSITY</code>, <code>GRAD_YEAR</code>, <code>GRAD_MONTH</code>, <code>YEAR_ATTEND</code>, <code>AREAS_OF_PRACTICE</code>, <code>WORK_ENVIRONMENT</code>, <code>INSURANCE</code>, <code>IPN_STATUS</code>, and <code>INDIGENOUS_STATUS</code>.</td></tr>
+<tr><th>Output</th><td><code>{ data: LookupOption[] }</code> or a page-specific normalized lookup payload.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/UpdatePersonalInfo.ashx</code></td>
+<td>Profile load and edit, Join account creation, Renew bootstrap, Cart member summary, insurance/upgrade bootstrap</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Loads member state and persists member-info changes, including the summary-only bootstrap request used by several flows.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Read path uses <code>{ get_summaryonly: true }</code> or <code>{}</code>. Write path posts a JSON diff or selected fields plus <code>id</code>.</td></tr>
+<tr><th>Output</th><td><code>{ data: MemberInfo, server_time? }</code> for reads; <code>{ data: MemberInfo }</code> for updates.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET / POST {hostUrl}/UpdateCommunications.ashx</code></td>
+<td>Profile, Join, Renew, standalone communications editor, Job Search notification signup</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Reads and writes the member communication preference record.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>GET has no body. POST sends the communications payload plus <code>is_update</code> and route-specific fields such as <code>email_address</code>.</td></tr>
+<tr><th>Output</th><td><code>{ data: Communications }</code>.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET / POST {hostUrl}/UpdateAutoRenew.ashx</code></td>
+<td>Profile, Join, Renew, payment-plan and auto-renewal flows</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Loads and updates the member auto-renewal / payment-plan record.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>GET uses no body. POST uses <code>{}</code>, <code>{ action, data }</code>, or the payment-plan payload selected by the route.</td></tr>
+<tr><th>Output</th><td><code>{ data: AutoRenewalSubscription }</code> for reads and a legacy update response for writes.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET / POST / PUT {newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>Profile load/edit, Join create-account flow, Renew bootstrap, upgrade flows</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Loads the orofacial question and creates or updates the answer when the member profile changes.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>GET has no body. POST/PUT sends <code>{ question_code, question, answer }</code>, with <code>seqn</code> added for updates.</td></tr>
+<tr><th>Output</th><td><code>{ data: CdhaQuestion[] }</code> on read and the new API JSON response on write.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET / POST / PUT / DELETE {newHostUrl}/v1/authenticated/education</code></td>
+<td>Profile, Join student education, Renew student education, upgrade-to-grad flow</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>CRUD for the member education records managed by the profile, join, renew, and upgrade flows.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Reads have no body. Creates and updates send degree, university, grad year/month, and optional year-attend fields. Deletes use the education <code>seqn</code> path param.</td></tr>
+<tr><th>Output</th><td><code>{ success, data: Education[], message? }</code> for reads and writes.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET / POST / PUT {newHostUrl}/v1/authenticated/expertise</code></td>
+<td>Profile summary/edit and Renew bootstrap</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Loads and mutates the member areas-of-expertise record.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>GET has no body. POST/PUT send <code>aoe_primary</code>, <code>aoe_secondary</code>, <code>we_primary</code>, <code>we_secondary</code>, and <code>is_update</code>.</td></tr>
+<tr><th>Output</th><td><code>{ success, data: AreaOfExpertise, message? }</code>.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/ValidateNewEmail.ashx?email={email}</code></td>
+<td>Profile edit email field and Join email validation</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Legacy async email validator used before the client accepts a new address.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Email in the query string.</td></tr>
+<tr><th>Output</th><td>Legacy validation JSON; the form uses the response as the validator result.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/GetMemberJobAds.ashx?filter=MYADS_</code><br><code>POST {hostUrl}/GetJobAdDetail.ashx?SEQN={seqn}</code><br><code>POST {hostUrl}/getmemberaddons.ashx?filter=ADDONS_</code></td>
+<td>Profile display tables and profile popup detail views</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Loads the member job-ad table, job-ad detail popup, and membership add-ons used on the profile dashboard.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Empty POST body; the filter or <code>seqn</code> stays in the query string.</td></tr>
+<tr><th>Output</th><td><code>{ pd_data: ProfileTableItem[] }</code>, <code>{ ad_data: JobAdDetails }</code>, and <code>{ addons_data: AddOn[] }</code>.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="both">
+<td><code>GET {newHostUrl}/v1/authenticated/docebo/token</code><br><code>GET https://cdha.docebosaas.com/manage/v1/user/session</code><br><code>GET https://cdha.docebosaas.com/learn/v1/enrollments?id_user[]={userId}&page_size=200</code></td>
+<td>Profile eLearning/conference/workshop tables and the Docebo integration docs</td>
+<td><span class="platform-chip">Both</span></td>
+<td>CDHA-side Docebo SSO and the follow-up user/enrollment calls that build the course table.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Bearer token on the CDHA token call; Docebo bearer token on the user/session and enrollments calls.</td></tr>
+<tr><th>Output</th><td><code>{ data: { access_token } }</code>, <code>{ data: { id, ... } }</code>, and <code>{ data: { items: DoceboEnrollment[] } }</code>.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/UpdatecdhaQuestions.ashx</code></td>
+<td>Join submit helper after member-info save</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Legacy join-specific orofacial answer save path.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>JSON string with <code>{ seqn?, question_code, question, answer }</code>.</td></tr>
+<tr><th>Output</th><td>Legacy Wicket/iMIS JSON response.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/UpdateBilling.ashx</code><br><code>POST https://www.cdha.ca/CDHAstaff/InvoiceTest.ashx</code><br><code>POST {hostUrl}/updateCart.ashx</code><br><code>POST {hostUrl}/getCartItems.ashx</code><br><code>POST {hostUrl}/updatePaymentData.ashx</code></td>
+<td>Join, Renew, Cart, and insurance/upgrade flows</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Billing and cart orchestration used to create invoices, recalculate cart state, and submit payments.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td><code>UpdateBilling.ashx</code> posts the insurance code. <code>InvoiceTest.ashx</code> posts the membership invoice test payload. <code>updateCart.ashx</code> posts line changes or promo code updates. <code>getCartItems.ashx</code> reads the cart. <code>updatePaymentData.ashx</code> posts the payment payload.</td></tr>
+<tr><th>Output</th><td>Legacy Wicket/iMIS update responses and the cart payload that drives the UI.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/UpdateDHEducation.ashx</code><br><code>POST {hostUrl}/SendErrorEmail.ashx</code><br><code>POST {hostUrl}/SendEmailGeneric.ashx</code></td>
+<td>Join and Renew submission helpers, plus failure reporting</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Legacy student-education write path and the error-email helpers used when a create/account or cart step fails.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td><code>UpdateDHEducation.ashx</code> posts the education payload. The email helpers post <code>{ emailSubject, emailMessage }</code>.</td></tr>
+<tr><th>Output</th><td>Legacy Wicket/iMIS JSON or email-send responses.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/ProcessInsuranceUpgrade.ashx</code><br><code>POST {hostUrl}/ProcessUpgrade.ashx</code></td>
+<td>Renew upgrade flows and the BC insurance upgrade page</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Core upgrade endpoints used to move the member into the new state before the cart or confirmation redirect.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Legacy Wicket upgrade payloads; the insurance flow posts an empty body, and the renew upgrade flow posts <code>{ member_type, ndhcb_id }</code>.</td></tr>
+<tr><th>Output</th><td>Legacy upgrade response objects, including invoice totals and error arrays where relevant.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST {hostUrl}/UpdateUINAddress.ashx</code><br><code>POST {hostUrl}/UpdateCDHAnet.ashx</code></td>
+<td>Profile business-info display/edit</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Reads, adds, updates, and deletes business addresses for the UIN and CDHA Net sections.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Empty object for reads, <code>{ update: ... }</code> for writes, or <code>{ remove: [seqn] }</code> for deletes.</td></tr>
+<tr><th>Output</th><td>Legacy Wicket/iMIS JSON payloads with address arrays or update responses.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET https://www.imisdev.cdha.ca/CDHACommon/SendConnectRequest.ashx</code><br><code>GET //{window.location.hostname}/CDHACommon/SendConnectRequest.ashx</code><br><code>GET https://cdha.adobeconnect.com/api/xml</code><br><code>POST https://www.imisdev.cdha.ca/CDHACommon/UpdateConnectUserTranscript.ashx</code><br><code>POST //{window.location.hostname}/CDHACommon/UpdateConnectUserTranscript.ashx</code></td>
+<td>Profile eLearning / Adobe Connect transcript flows</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Adobe Connect proxy calls used to load course contents, learner status, and transcript updates.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Query parameters such as <code>action=common-info</code>, <code>curriculum-contents</code>, <code>report-curriculum-taker</code>, and <code>learning-path-info</code>; transcript updates post <code>{ sco_id, curriculum_id }</code>.</td></tr>
+<tr><th>Output</th><td>XML responses from Adobe Connect and the transcript update response from Wicket/iMIS.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wordpress">
+<td><code>POST {hostUrl}/UpdateJobAd.ashx</code><br><code>POST {hostUrl}/GetJobAds.ashx</code></td>
+<td>WordPress Career Centre job add and job search</td>
+<td><span class="platform-chip">WordPress</span></td>
+<td>Legacy job-ad submission and the job-search list/detail endpoints.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Job add posts the validated form payload; search posts the selected province; detail reads the row by <code>SEQN</code>.</td></tr>
+<tr><th>Output</th><td>Legacy service response objects and the job list/detail payloads consumed by the Career Centre pages.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wordpress">
+<td><code>POST {hostUrl}/UpdateCDHAEvent.ashx</code><br><code>POST {hostUrl}/GetCDHAEvents.ashx</code></td>
+<td>WordPress event add and event search</td>
+<td><span class="platform-chip">WordPress</span></td>
+<td>Legacy event submission and the event calendar list endpoint.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Event add posts the validated event form payload. Event search loads the calendar list with an empty body.</td></tr>
+<tr><th>Output</th><td>Legacy service responses and grouped event list data.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wordpress">
+<td><code>GET {newHostUrl}/v1/authenticated/memberInfo</code><br><code>GET {newHostUrl}/v1/imagegallery/{galleryCode}</code><br><code>POST {newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/generate-upload-url</code><br><code>PUT presigned upload URL</code><br><code>DELETE {newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/delete-image/{imageId}</code></td>
+<td>WordPress image gallery</td>
+<td><span class="platform-chip">WordPress</span></td>
+<td>Public gallery listing, upload gating, presigned uploads, and delete support for the image gallery app.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Gallery code in the path, file metadata for the upload-url call, raw file bytes for the presigned upload, and image id for delete.</td></tr>
+<tr><th>Output</th><td><code>{ data: MemberInfo }</code>, gallery item arrays, upload URLs, and delete responses.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wordpress">
+<td><code>POST {newHostUrl}/v1/ndhwcoloringcontest</code><br><code>PUT presigned upload URL</code><br><code>GET {newHostUrl}/v1/authenticated/ndhwcoloringcontest/{campaignId}/{status}</code><br><code>GET {newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/file</code><br><code>PUT {newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/{endpoint}</code></td>
+<td>WordPress coloring-contest public submission and admin moderation</td>
+<td><span class="platform-chip">WordPress</span></td>
+<td>Submission create/upload flow plus the authenticated admin listing, file download, and status update actions.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>Contest metadata and file info for create, raw bytes for upload, campaign and status params for admin list, and sequence numbers for file/status updates.</td></tr>
+<tr><th>Output</th><td>Presigned upload URLs, file IDs, contest submission lists, download URLs, and success responses.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wordpress">
+<td><code>POST https://cdha.docebosaas.com/oauth2/token</code><br><code>POST {hostUrl}/getmemberpd.ashx?filter=EVENT</code><br><code>POST {hostUrl}/ConnectRegister.ashx</code></td>
+<td>WordPress Docebo webinar registration and legacy webinar-alert support</td>
+<td><span class="platform-chip">WordPress</span></td>
+<td>Docebo OAuth exchange plus the legacy webinar registration path that checks for an existing registration and enrolls the member when needed.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td>JWT bearer assertion for the OAuth exchange; empty body for the registration lookup; <code>{ scoId }</code> for registration.</td></tr>
+<tr><th>Output</th><td>Docebo OAuth token payload, registration arrays, and the legacy Connect registration response.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+<tr data-platform="wordpress">
+<td><code>POST https://api.cdha.ca/v1/graphql</code></td>
+<td>WordPress live-event and Zoom join flows</td>
+<td><span class="platform-chip">WordPress</span></td>
+<td>GraphQL token generation and Zoom event registration used by the live-event registration flow.</td>
+<td>
+<details class="api-summary-details">
+<summary>Show input / output</summary>
+<table class="api-summary-io">
+<tr><th>Input</th><td><code>mutation GenerateToken(payload: { id })</code> and <code>mutation ZoomRegisterEvent(...)</code>.</td></tr>
+<tr><th>Output</th><td>The generated GraphQL token string and the Zoom registration payload, including the join URL.</td></tr>
+</table>
+</details>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coloring Contest API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link active" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Coloring Contest API Calls</h1>
+<p>This document covers the WordPress coloring contest application entry point and the admin APIs shipped in the same package.</p>
+<p>Entry point:</p>
+<ul>
+<li><code>/home/lalves/dev/cdha/webcomponents/src/applications/coloring-contest/main.tsx</code></li>
+</ul>
+<p>Package entry:</p>
+<ul>
+<li><code>AppContent</code> renders the public contest submission form</li>
+<li><code>features/coloringContestAdmin/*</code> consumes the admin endpoints in the same API module</li>
+</ul>
+<h2>API Inventory</h2>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Request</th>
+<th>Response</th>
+<th>Used By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Submit coloring contest entry</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/ndhwcoloringcontest</code></td>
+<td>None</td>
+<td>JSON payload with contact fields and file metadata</td>
+<td><code>{ success: true, data: { uploadUrl, fileId } }</code></td>
+<td>Public submission form in <code>applications/coloring-contest/App.tsx</code></td>
+</tr>
+<tr>
+<td>Upload submitted file</td>
+<td><code>PUT</code></td>
+<td>Presigned <code>uploadUrl</code> returned from the submit response</td>
+<td>None</td>
+<td>Raw file bytes, <code>Content-Type</code> matches the uploaded file</td>
+<td>HTTP 200 on success</td>
+<td>Public submission form after the create call succeeds</td>
+</tr>
+<tr>
+<td>Acquire client auth token</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/auth/token</code></td>
+<td>None at the API level; production also uses the site session bootstrap</td>
+<td>JSON body with <code>code</code> and <code>context</code></td>
+<td><code>{ token: string }</code></td>
+<td>Shared helper for authenticated contest APIs</td>
+</tr>
+<tr>
+<td>Production auth bootstrap</td>
+<td><code>POST</code></td>
+<td><code>/api/CDHASessionToken</code></td>
+<td>Site request verification token</td>
+<td>JSON body containing <code>CDHASessionToken</code> entity data</td>
+<td>Session token payload with a generated <code>UserCode</code></td>
+<td>Internal helper used before <code>{newHostUrl}/auth/token</code> in production</td>
+</tr>
+<tr>
+<td>List contest submissions</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{campaignId}/{status}</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+<td><code>campaignId</code>, <code>status</code> in the path; <code>status</code> is <code>uploaded</code>, <code>downloaded</code>, or <code>deleted</code></td>
+<td><code>{ success: true, data: ColoringContestSubmission[] }</code></td>
+<td>Admin submissions page</td>
+</tr>
+<tr>
+<td>Get file download URL</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/file</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+<td>Submission <code>seqn</code> in the path</td>
+<td><code>{ success: true, url: string }</code></td>
+<td>Admin table download button</td>
+</tr>
+<tr>
+<td>Mark submission as downloaded</td>
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/markasdownloaded</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+<td>Submission <code>seqn</code> in the path</td>
+<td><code>{ success: true }</code></td>
+<td>Admin actions in the submissions table</td>
+</tr>
+<tr>
+<td>Mark submission as uploaded</td>
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/markasuploaded</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+<td>Submission <code>seqn</code> in the path</td>
+<td><code>{ success: true }</code></td>
+<td>Admin actions in the submissions table</td>
+</tr>
+<tr>
+<td>Mark submission as deleted</td>
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/markasdeleted</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+<td>Submission <code>seqn</code> in the path</td>
+<td><code>{ success: true }</code></td>
+<td>Admin actions in the submissions table</td>
+</tr>
+</tbody>
+</table>
+<h2>1. Public Submission</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/ndhwcoloringcontest</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Contest registration fields and file metadata</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true, data: { uploadUrl, fileId } }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>submitColoringContestEntry()</code> in <code>src/api/coloringContestApi.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Request shape</h3>
+<p>The client sends:</p>
+<pre><code class="language-json">{
+  &quot;campaignId&quot;: &quot;NDHW_2026&quot;,
+  &quot;contact_type&quot;: &quot;Parent/Guardian&quot;,
+  &quot;email&quot;: &quot;parent@example.com&quot;,
+  &quot;first_name&quot;: &quot;Jane&quot;,
+  &quot;hygienist_name&quot;: &quot;&quot;,
+  &quot;last_name&quot;: &quot;Doe&quot;,
+  &quot;phone&quot;: &quot;(416) 555-1234&quot;,
+  &quot;school_clinic&quot;: &quot;&quot;,
+  &quot;fileExtension&quot;: &quot;pdf&quot;,
+  &quot;contentType&quot;: &quot;application/pdf&quot;
+}
+</code></pre>
+<h3>Field mapping</h3>
+<ul>
+<li><code>role === &quot;parent&quot;</code> becomes <code>contact_type: &quot;Parent/Guardian&quot;</code></li>
+<li><code>role === &quot;staff&quot;</code> becomes <code>contact_type: &quot;School Staff/Dental Office&quot;</code></li>
+<li><code>campaignId</code> comes from the web component prop and currently defaults to <code>NDHW_2026</code></li>
+<li><code>fileExtension</code> is derived from the selected file name</li>
+<li><code>contentType</code> is taken from the browser file object</li>
+</ul>
+<h3>Response handling</h3>
+<p>The API does not upload the file itself. It returns a presigned <code>uploadUrl</code>, which the client uses for a second request.</p>
+<h2>2. Presigned File Upload</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>PUT</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>Presigned <code>uploadUrl</code> from the create response</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Raw file bytes</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>HTTP 200 on success</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>submitColoringContestEntry()</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>After the create call succeeds, the client uploads the file directly to the returned URL with <code>Content-Type</code> set to the selected file's MIME type.</p>
+<h3>Validation before upload</h3>
+<p>The form schema accepts:</p>
+<ul>
+<li>JPG</li>
+<li>PNG</li>
+<li>PDF</li>
+<li>HEIC</li>
+<li>HEIF</li>
+<li>ZIP</li>
+</ul>
+<p>The file must also be 15 MB or smaller.</p>
+<h2>3. Auth Token Bootstrap</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/auth/token</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None at API level</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>{ code, context }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ token: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getCDHAClientToken()</code> inside the admin API helpers</td>
+</tr>
+</tbody>
+</table>
+<h3>Production bootstrap</h3>
+<p>In production, the helper first calls <code>/api/CDHASessionToken</code> with the current site context and request verification token to obtain a one-time <code>UserCode</code>. It then posts that code to <code>{newHostUrl}/auth/token</code>.</p>
+<h3>Development bootstrap</h3>
+<p>In development, the helper uses a local in-memory client context and posts directly to <code>{newHostUrl}/auth/token</code>.</p>
+<h2>4. List Contest Submissions</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{campaignId}/{status}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>campaignId</code> and <code>status</code> in the path</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true, data: ColoringContestSubmission[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>features/coloringContestAdmin/AdminPage.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Status values</h3>
+<p>The admin UI requests one of:</p>
+<ul>
+<li><code>uploaded</code></li>
+<li><code>downloaded</code></li>
+<li><code>deleted</code></li>
+</ul>
+<h3>Response shape</h3>
+<p>Each submission record includes:</p>
+<ul>
+<li><code>campaignId</code></li>
+<li><code>contact_type</code></li>
+<li><code>created_at</code></li>
+<li><code>email</code></li>
+<li><code>fileId</code></li>
+<li><code>first_name</code></li>
+<li><code>hygienist_name</code></li>
+<li><code>last_name</code></li>
+<li><code>phone</code></li>
+<li><code>school_clinic</code></li>
+<li><code>seqn</code></li>
+<li><code>status</code></li>
+<li><code>file_extension</code></li>
+<li><code>content_type</code></li>
+<li>optional <code>downloadUrl</code></li>
+</ul>
+<h2>5. Get File Download URL</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/file</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Submission <code>seqn</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true, url: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>features/coloringContestAdmin/AdminTable.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The admin table download button calls this endpoint before opening the file in a new tab.</p>
+<h2>6. Update Submission Status</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>PUT</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/{endpoint}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Submission <code>seqn</code> and a target status</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>features/coloringContestAdmin/AdminPage.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Endpoint mapping</h3>
+<ul>
+<li><code>downloaded</code> -&gt; <code>markasdownloaded</code></li>
+<li><code>uploaded</code> -&gt; <code>markasuploaded</code></li>
+<li><code>deleted</code> -&gt; <code>markasdeleted</code></li>
+</ul>
+<h3>Admin actions using this call</h3>
+<ul>
+<li>Mark as Downloaded</li>
+<li>Revert to Uploaded</li>
+<li>Delete</li>
+<li>Revert to Downloaded</li>
+</ul>
+<h2>Page-Level Flow</h2>
+<ol>
+<li>The public app loads with <code>campaign_id=&quot;NDHW_2026&quot;</code> and <code>contest_page_url=&quot;https://www.cdha.ca/coloring-contest&quot;</code></li>
+<li>The user fills out the contest form and selects a file</li>
+<li>The client posts the metadata to <code>{newHostUrl}/v1/ndhwcoloringcontest</code></li>
+<li>The API returns a presigned upload URL</li>
+<li>The client uploads the file with <code>PUT</code> to that URL</li>
+<li>On success, the UI switches to the thank-you state</li>
+<li>The admin page uses the authenticated list/download/status endpoints to review and manage submissions</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>The public contest page does not require authentication.</li>
+<li>The admin helpers all use the shared CDHA client token flow.</li>
+<li>The file upload is not sent to the API host directly; it is sent to the presigned URL returned from the create call.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link active" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Profile API Calls</h1>
+<h2>Purpose</h2>
+<p>This page documents the API calls needed by the Profile application mounted from <code>/home/lalves/dev/frontend/src/profilePage.tsx</code>.</p>
+<p>The entry point creates the Redux store, React Query client, router, translations, and Sentry. The business API calls are reached through <code>components/profile/route/profileRoute.tsx</code> and the Profile display/edit route tree.</p>
+<h2>Base URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Development</th>
+<th>Production</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostUrl</code></td>
+<td><code>https://www.cdha.ca/CDHACommon</code></td>
+<td><code>//{window.location.hostname}/CDHACommon</code></td>
+<td>Legacy Wicket/iMIS <code>.ashx</code> endpoints</td>
+</tr>
+<tr>
+<td><code>newHostUrl</code></td>
+<td><code>https://api.lalves.mycdha.ca</code></td>
+<td><code>https://api.imisdev.mycdha.ca</code> on imisdev, otherwise <code>https://api.mycdha.ca</code></td>
+<td>New authenticated JSON API</td>
+</tr>
+<tr>
+<td>Adobe Connect proxy</td>
+<td><code>https://www.imisdev.cdha.ca/CDHACommon/SendConnectRequest.ashx</code></td>
+<td><code>//{window.location.hostname}/CDHACommon/SendConnectRequest.ashx</code></td>
+<td>Adobe Connect XML API proxy</td>
+</tr>
+<tr>
+<td>Adobe Connect direct</td>
+<td><code>https://cdha.adobeconnect.com/api/xml</code></td>
+<td>Same</td>
+<td>Only used when <code>insideConnect</code> is set</td>
+</tr>
+<tr>
+<td>Docebo</td>
+<td><code>https://cdha.docebosaas.com</code></td>
+<td>Same</td>
+<td>Docebo user session/enrollment data and course launch links</td>
+</tr>
+</tbody>
+</table>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>API family</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Wicket/iMIS <code>.ashx</code></td>
+<td>Browser session cookies. Axios uses <code>withCredentials: true</code>; <code>api/fetch/*</code> uses <code>credentials: &quot;include&quot;</code>.</td>
+</tr>
+<tr>
+<td>New <code>newHostUrl</code> API</td>
+<td><code>Authorization: Bearer {CDHA_CLIENT_TOKEN}</code> from <code>util/token.ts</code>. Token is stored in <code>localStorage</code> under <code>CDHA_CLIENT_TOKEN</code>.</td>
+</tr>
+<tr>
+<td>Docebo API</td>
+<td>Docebo access token returned by <code>GET {newHostUrl}/v1/authenticated/docebo/token</code>.</td>
+</tr>
+<tr>
+<td>Adobe Connect API</td>
+<td>Adobe Connect <code>session</code> query value from profile PD/eLearning rows.</td>
+</tr>
+</tbody>
+</table>
+<h3>Client Token Bootstrap</h3>
+<h4>Create CDHA session token code</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>/api/CDHASessionToken</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS request verification token in <code>RequestVerificationToken</code> header; production only</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>iMIS generic entity payload with <code>EntityTypeName: &quot;CDHASessionToken&quot;</code>, <code>ContactKey: context.selectedPartyId</code>, and a random <code>UserCode</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>iMIS generic entity response; client reads <code>Properties.$values[].Name === &quot;UserCode&quot;</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>util/token.ts</code> before requesting a new API bearer token</td>
+</tr>
+</tbody>
+</table>
+<h4>Exchange code for API token</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/auth/token</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None. The request body carries the generated code and iMIS client context.</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;code&quot;: string, &quot;context&quot;: ClientContext }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ &quot;token&quot;: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Every Profile call that uses <code>{newHostUrl}/v1/authenticated/*</code></td>
+</tr>
+</tbody>
+</table>
+<p>In development, the app skips <code>/api/CDHASessionToken</code> and calls <code>/auth/token</code> with <code>code: &quot;anyValue&quot;</code> plus a hard-coded development client context.</p>
+<h2>Initial Profile Load</h2>
+<p>These calls run when <code>ProfileRoute</code> mounts through <code>RootContainer type=&quot;PROFILE&quot;</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Request</th>
+<th>Response</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load lookup tables</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code></td>
+<td>Query <code>table</code></td>
+<td><code>{ success, data, errors?, status? }</code></td>
+<td>Personal info, communications, education, expertise, insurance, and edit forms</td>
+</tr>
+<tr>
+<td>Load communications</td>
+<td><code>GET</code></td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+<td>None</td>
+<td><code>{ data: Communications }</code></td>
+<td>Top profile communications summary and edit form</td>
+</tr>
+<tr>
+<td>Load auto-renewal subscription</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code></td>
+<td><code>{}</code></td>
+<td><code>{ data: AutoRenewalSubscription }</code></td>
+<td>Expired-card banner, renewal summary, auto-renewal/payment-plan editor</td>
+</tr>
+<tr>
+<td>Load member profile summary</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+<td><code>{ get_summaryonly: true }</code></td>
+<td><code>{ data: MemberInfo, server_time? }</code></td>
+<td>Main personal/membership dashboard</td>
+</tr>
+<tr>
+<td>Load orofacial question</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>Bearer token</td>
+<td><code>{ data: CdhaQuestion[] }</code></td>
+<td>Merged into <code>memberInfo.orofacial_status</code> and <code>memberInfo.orofacial_seqn</code></td>
+</tr>
+<tr>
+<td>Load education</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+<td>Bearer token</td>
+<td><code>{ success, data: Education[], message? }</code></td>
+<td>Education summary and Profile Edit education section</td>
+</tr>
+<tr>
+<td>Load areas of expertise</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+<td>Bearer token</td>
+<td><code>{ success, data: AreaOfExpertise, message? }</code></td>
+<td>Expertise summary and Profile Edit expertise section</td>
+</tr>
+<tr>
+<td>Load Docebo token</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/docebo/token</code></td>
+<td>Bearer token</td>
+<td>Expected <code>{ data: { access_token } }</code></td>
+<td>Starts Docebo enrollment loading for eLearning, conferences, and workshops</td>
+</tr>
+<tr>
+<td>Load Docebo user</td>
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com/manage/v1/user/session</code></td>
+<td>Docebo bearer token</td>
+<td><code>{ data: { id, ... } }</code></td>
+<td>Gets the current Docebo user id</td>
+</tr>
+<tr>
+<td>Load Docebo enrollments</td>
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com/learn/v1/enrollments?id_user[]={userId}&amp;page_size=200</code></td>
+<td>Docebo bearer token</td>
+<td><code>{ data: { items: DoceboEnrollment[] } }</code></td>
+<td>Builds eLearning, conference, and workshop profile tables</td>
+</tr>
+</tbody>
+</table>
+<p>Lookup tables requested by the profile route are:</p>
+<p><code>COUNTRY</code>, <code>DEGREES</code>, <code>UNIVERSITY</code>, <code>GRAD_YEAR</code>, <code>GRAD_MONTH</code>, <code>YEAR_ATTEND</code>, <code>AREAS_OF_PRACTICE</code>, <code>WORK_ENVIRONMENT</code>, <code>INSURANCE</code>, <code>IPN_STATUS</code>, <code>INDIGENOUS_STATUS</code>.</p>
+<p>Profile Edit also requests some of the same lookup tables through React Query when education or expertise modals open.</p>
+<h2>Profile Display Calls</h2>
+<h3>Member Job Ads</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/GetMemberJobAds.ashx?filter=MYADS_</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ pd_data: ProfileTableItem[], errors?: any[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>ProfileTableContainer</code> in the &quot;My Job Ads&quot; table on <code>/profile</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each <code>pd_data</code> item is expected to contain a <code>Value</code> object with fields such as <code>seqn</code>, <code>title</code>, <code>created_date</code>, <code>end_date</code>, <code>province</code>, <code>area</code>, and <code>status</code>.</p>
+<h3>Job Ad Details</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/GetJobAdDetail.ashx?SEQN={seqn}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ ad_data: JobAdDetails }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Clicking a job ad title opens the <code>JobAdDetailsContainer</code> popup</td>
+</tr>
+</tbody>
+</table>
+<h3>Membership Add-ons</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/getmemberaddons.ashx?filter=ADDONS_</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ addons_data: AddOn[], errors?: any[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>&quot;My Membership Add-ons&quot; table on <code>/profile</code></td>
+</tr>
+</tbody>
+</table>
+<p>Expected add-on fields include <code>Name</code>, <code>Active</code>, and optionally <code>href</code>.</p>
+<h3>Certificate and Document Links</h3>
+<p>These are navigational GET links, not XHR/fetch calls, but they are part of the Profile API surface.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Input</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Download CE/conference certificate</td>
+<td><code>GET</code></td>
+<td><code>/cdha/GetCert?CE={scoTag}&amp;cert={CECert.pdf or ConfCert.pdf}&amp;SRC={D or C}</code></td>
+<td><code>CE</code> is the course code/sco tag; <code>SRC=D</code> for Docebo, <code>SRC=C</code> for Connect/conference</td>
+<td>eLearning, conferences, workshops</td>
+</tr>
+<tr>
+<td>Download invoice</td>
+<td><code>GET</code></td>
+<td><code>/cdha/MyInvoice</code> or <code>/achd/MyInvoice</code></td>
+<td>Current logged-in member session</td>
+<td>Downloads panel</td>
+</tr>
+<tr>
+<td>Download receipts</td>
+<td><code>GET</code></td>
+<td><code>/cdha/MyReceipt</code> or <code>/achd/MyReceipt</code></td>
+<td>Current logged-in member session</td>
+<td>Downloads panel</td>
+</tr>
+<tr>
+<td>Download membership card</td>
+<td><code>GET</code></td>
+<td><code>/cdha/MyMembershipCard</code> or <code>/achd/MyMembershipCard</code></td>
+<td>Current logged-in member session</td>
+<td>Downloads panel</td>
+</tr>
+<tr>
+<td>Download insurance certificate</td>
+<td><code>GET</code></td>
+<td><code>/cdha/MyCertificate</code> or <code>/achd/MyCertificate</code></td>
+<td>Current logged-in member session</td>
+<td>Insurance panel</td>
+</tr>
+</tbody>
+</table>
+<h3>Docebo Course Launch</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code> navigation</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://cdha.docebosaas.com{courseUrl};type=oauth2_response;reenter_cc=0;access_token={doceboAccessToken}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Docebo access token in URL</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Link navigation only</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Docebo course page</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Active eLearning, conference, and workshop rows when the item came from Docebo</td>
+</tr>
+</tbody>
+</table>
+<h2>Profile Edit Calls</h2>
+<h3>Validate New Email</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/ValidateNewEmail.ashx?email={email}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Expected <code>{ is_valid: boolean, ... }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Async validator on the Profile Edit email field</td>
+</tr>
+</tbody>
+</table>
+<h3>Update Personal Information</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>JSON string of changed fields plus <code>id</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: MemberInfo }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Profile Edit member information update button</td>
+</tr>
+</tbody>
+</table>
+<p>Profile updates send a diff, not the full form. Allowed Profile fields are:</p>
+<p><code>street</code>, <code>street2</code>, <code>city</code>, <code>country</code>, <code>province</code>, <code>postal_code</code>, <code>cell_phone</code>, <code>phone</code>, <code>email</code>, <code>date_of_birth</code>, <code>preferred_language</code>, <code>exclude_directory</code>, <code>join_reason</code>, <code>job_description</code>, <code>password</code>, <code>indigenous_status</code>, <code>ipn_status</code>, <code>canadapost_id</code>, <code>name_log_string</code>, <code>orofacial_status</code>, <code>orofacial_seqn</code>, and <code>id</code>.</p>
+<p>After a successful update, the client waits two seconds and refreshes member info with <code>POST {hostUrl}/UpdatePersonalInfo.ashx</code> without <code>get_summaryonly</code>.</p>
+<h3>Create or Update Orofacial Question</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Request</th>
+<th>Response</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create answer</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td><code>{ question_code, question, answer }</code></td>
+<td>New API JSON response</td>
+<td>Profile Edit member information update when no <code>orofacial_seqn</code> exists</td>
+</tr>
+<tr>
+<td>Update answer</td>
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS/{seqn}</code></td>
+<td><code>{ seqn, question_code, question, answer }</code></td>
+<td>New API JSON response</td>
+<td>Profile Edit member information update when <code>orofacial_seqn</code> exists</td>
+</tr>
+</tbody>
+</table>
+<p>The current question payload is:</p>
+<pre><code class="language-json">{
+  &quot;question_code&quot;: &quot;OROFACIAL_STATUS&quot;,
+  &quot;question&quot;: &quot;Do you practice orofacial myofunctional therapy?&quot;,
+  &quot;answer&quot;: &quot;...&quot;
+}
+</code></pre>
+<h3>Rebill Insurance After Profile Address Update</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateBilling.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;insurance&quot;: memberInfo.insurance_code }</code> or <code>{ &quot;insurance&quot;: &quot;INS01&quot; }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: any }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Conditional secondary call after member info update for <code>FM</code>, <code>SUPPT</code>, or <code>RET</code> members when <code>paid_thru.year() &lt;= cut_date.year()</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Update Communications</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Communications object with <code>is_update: true</code>; <code>0</code> and <code>1</code> values are converted to booleans before sending</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Profile Edit communication preferences update button</td>
+</tr>
+</tbody>
+</table>
+<p>Common request fields include:</p>
+<p><code>enews_subscribe</code>, <code>pd_subscribe</code>, <code>benefit_subscribe</code>, <code>products_subscribe</code>, <code>campaign_subscribe</code>, <code>eventcal_subscribe</code>, <code>job_notification_prov</code>, <code>e_ohcanada</code>, <code>third_party</code>, related <code>*_updated</code> values, and <code>is_update</code>.</p>
+<p><code>gdpr_updated</code>, <code>gdpr_consent</code>, and <code>gdprCommunity_consent</code> are removed for Profile Edit because GDPR consent fields are only shown for Join/Renew.</p>
+<p>After a successful update, the client refreshes communications with <code>GET {hostUrl}/UpdateCommunications.ashx</code>.</p>
+<h3>Auto-Renewal and Payment Plan</h3>
+<h4>Read auto-renewal data</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: AutoRenewalSubscription }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Initial profile load, expired-card alert, membership renewal summary, and Profile Edit auto-renewal/payment-plan machine</td>
+</tr>
+</tbody>
+</table>
+<p>Expected auto-renewal fields:</p>
+<p><code>PAYMENT_METHOD</code>, <code>CC_NUMBER</code>, <code>CC_NAME</code>, <code>CC_MONTH</code>, <code>CC_YEAR</code>, <code>CC_CCV</code>, <code>DUES_DRAFT_DATE</code>, <code>IPN_DRAFT_DATE</code>, <code>MONTHS</code>, <code>FREQUENCY</code>, <code>PERPETUAL</code>.</p>
+<h4>Update auto-renewal data</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ action: &quot;UPDATE&quot; | &quot;UNSUBSCRIBE&quot;, data: AutoRenewalUpdate | null }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>JSON response from Wicket/iMIS endpoint</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Profile Edit auto-renewal/payment-plan update button</td>
+</tr>
+</tbody>
+</table>
+<p><code>AutoRenewalUpdate</code> can contain:</p>
+<p><code>PAYMENT_METHOD</code>, <code>CC_NUMBER</code>, <code>CC_NAME</code>, <code>CC_CCV</code>, <code>CC_MONTH</code>, <code>CC_YEAR</code>, <code>DUES_DRAFT_DATE</code>, <code>IPN_DRAFT_DATE</code>, <code>MONTHS</code>, <code>FREQUENCY</code>, and <code>PERPETUAL</code>.</p>
+<p>For credit-card-only updates during an existing payment plan, draft date and installment fields are explicitly sent as <code>undefined</code>.</p>
+<p>For unsubscribe, the client sends <code>{ action: &quot;UNSUBSCRIBE&quot;, data: null }</code>. The current machine calls unsubscribe twice to clear card data.</p>
+<h4>Update cart for IPN payment-plan change</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ lines: [{ productCode: &quot;IPN&quot;, quantity }], removeInvoice: true }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart JSON response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Auto-renewal/payment-plan machine before updating IPN payment-plan enrollment</td>
+</tr>
+</tbody>
+</table>
+<p>The machine first removes <code>IPN</code> with quantity <code>0</code>; if the submitted IPN draft date exists, it adds <code>IPN</code> back with quantity <code>1</code>.</p>
+<h3>Education</h3>
+<h4>Read education</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: Education[], message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Education summary and Profile Edit education cards</td>
+</tr>
+</tbody>
+</table>
+<p><code>Education</code> fields:</p>
+<p><code>seqn</code>, <code>dh_degree</code>, <code>dh_university</code>, <code>dh_grad_year</code>, <code>dh_grad_month</code>, <code>dh_year_attend?</code>.</p>
+<h4>Add education</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ update: { dh_degree, dh_university, dh_grad_year, dh_grad_month, dh_year_attend? } }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: Education[], message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Add Education modal</td>
+</tr>
+</tbody>
+</table>
+<p><code>dh_year_attend</code> is included only for student members (<code>memberType === &quot;STU&quot;</code>).</p>
+<h4>Update education</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>PUT</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education/{seqn}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ seqn, dh_degree, dh_university, dh_grad_year, dh_grad_month, dh_year_attend? }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: Education[], message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Edit Education modal</td>
+</tr>
+</tbody>
+</table>
+<h4>Delete education</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>DELETE</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education/{seqn}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Path <code>seqn</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: Education[], message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Delete confirmation modal in Profile Edit education section</td>
+</tr>
+</tbody>
+</table>
+<h3>Areas of Expertise</h3>
+<h4>Read expertise</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: AreaOfExpertise, message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Expertise summary and Profile Edit expertise card</td>
+</tr>
+</tbody>
+</table>
+<p><code>AreaOfExpertise</code> fields:</p>
+<p><code>aoe_primary</code>, <code>aoe_secondary</code>, <code>we_primary</code>, <code>we_secondary</code>.</p>
+<h4>Add or update expertise</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ aoe_primary, aoe_secondary, we_primary, we_secondary, is_update }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: AreaOfExpertise, message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Add/Edit Areas of Expertise modal</td>
+</tr>
+</tbody>
+</table>
+<p><code>is_update</code> is <code>false</code> for a new expertise record and <code>true</code> when editing an existing record.</p>
+<h4>Clear expertise</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>PUT</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ aoe_primary: &quot;&quot;, aoe_secondary: &quot;&quot;, we_primary: &quot;&quot;, we_secondary: &quot;&quot;, is_update: true }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: AreaOfExpertise, message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Implemented by <code>useDeleteAreaOfExpertise</code>; the current visible delete icon is commented out in the Profile Edit expertise card</td>
+</tr>
+</tbody>
+</table>
+<h2>Province of Practice Change Request</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/SendEmailGeneric.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Email payload from <code>ProvinceOfPracticeChangeRequestForm</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: any }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>/requestprovincechange/form</code> route</td>
+</tr>
+</tbody>
+</table>
+<p>On success the app routes to <code>/requestprovincechange/form/success</code>; on failure it routes to <code>/requestprovincechange/form/error</code>.</p>
+<h2>Business Info Calls</h2>
+<p>These calls are only reachable when <code>memberInfo.active_uin === true</code> and the user opens <code>/businessInfo</code>.</p>
+<h3>UIN Addresses</h3>
+<h4>Read UIN addresses</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateUINAddress.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: UINAddress[] }</code>; client filters out records with <code>status === &quot;DEL&quot;</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Business Info display and edit screen</td>
+</tr>
+</tbody>
+</table>
+<p><code>UINAddress</code> fields:</p>
+<p><code>seqn</code>, <code>address1</code>, <code>address2</code>, <code>address3</code>, <code>city</code>, <code>state_province</code>, <code>zip</code>, <code>phone</code>, <code>email</code>, <code>change_date</code>, <code>status</code>.</p>
+<h4>Add or update UIN address</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateUINAddress.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ update: UINAddress }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Wicket/iMIS JSON response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Add Business Address and edit UIN address flows</td>
+</tr>
+</tbody>
+</table>
+<p>When updating an existing address, the client clears <code>address2</code>, <code>address3</code>, <code>status</code>, and <code>change_date</code> before sending.</p>
+<h4>Delete UIN address</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateUINAddress.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ remove: [seqn] }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Wicket/iMIS JSON response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Delete confirmation in Business Info edit</td>
+</tr>
+</tbody>
+</table>
+<h3>CDHA Net Addresses</h3>
+<h4>Read CDHA Net addresses</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCDHAnet.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: CDHANetAddress[] }</code>; client filters out records with <code>status === &quot;DEL&quot;</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Business Info display and edit screen</td>
+</tr>
+</tbody>
+</table>
+<p><code>CDHANetAddress</code> fields:</p>
+<p><code>seqn</code>, <code>office_code</code>, <code>address1</code>, <code>address2</code>, <code>address3</code>, <code>city</code>, <code>state_province</code>, <code>zip</code>, <code>phone</code>, <code>fax</code>, <code>email</code>, <code>software</code>, <code>dh_incorporation</code>, <code>change_date</code>, <code>status</code>.</p>
+<h4>Delete CDHA Net address</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCDHAnet.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ remove: [seqn] }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Wicket/iMIS JSON response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Delete CDHA Net office confirmation in Business Info edit</td>
+</tr>
+</tbody>
+</table>
+<p>The API wrapper also supports <code>{ update: CDHANetAddress }</code>, but the current Business Info UI only wires deletion for CDHA Net records.</p>
+<h2>eLearning, Adobe Connect, and Transcript Calls</h2>
+<h3>Adobe Connect Curriculum Load</h3>
+<p>These calls are used when a hosted active eLearning item is opened. The default path uses the CDHA proxy endpoint; <code>insideConnect</code> switches to direct Adobe Connect calls.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Request</th>
+<th>Response</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common info</td>
+<td><code>GET</code></td>
+<td><code>{connectProxy}?action=common-info&amp;session={session}</code></td>
+<td>Adobe Connect session id</td>
+<td>XML common-info response with current <code>user-id</code></td>
+<td>Start curriculum load</td>
+</tr>
+<tr>
+<td>Curriculum contents</td>
+<td><code>GET</code></td>
+<td><code>{connectProxy}?action=curriculum-contents&amp;session={session}&amp;sco-id={scoId}</code></td>
+<td><code>session</code>, curriculum <code>scoId</code></td>
+<td>XML curriculum contents</td>
+<td>Build sub-table/lesson list</td>
+</tr>
+<tr>
+<td>Curriculum taker report</td>
+<td><code>GET</code></td>
+<td><code>{connectProxy}?action=report-curriculum-taker&amp;session={session}&amp;sco-id={scoId}&amp;user-id={userId}</code></td>
+<td><code>session</code>, <code>scoId</code>, Adobe user id</td>
+<td>XML learner status and scores</td>
+<td>Merge completion state into curriculum list</td>
+</tr>
+<tr>
+<td>Learning path</td>
+<td><code>GET</code></td>
+<td><code>{connectProxy}?action=learning-path-info&amp;session={session}&amp;sco-id={scoId}&amp;curriculum-id={scoId}</code></td>
+<td><code>session</code>, <code>scoId</code>, <code>curriculum-id</code></td>
+<td>XML prerequisites/learning path</td>
+<td>Shows blocked items and prerequisites</td>
+</tr>
+</tbody>
+</table>
+<p><code>connectProxy</code> is <code>SendConnectRequest.ashx</code> in normal profile usage, or <code>https://cdha.adobeconnect.com/api/xml</code> when <code>insideConnect</code> is true.</p>
+<h3>Update External Curriculum Item</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://www.imisdev.cdha.ca/CDHACommon/UpdateConnectUserTranscript.ashx</code> in development, <code>//{window.location.hostname}/CDHACommon/UpdateConnectUserTranscript.ashx</code> in production</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;sco_id&quot;: string, &quot;curriculum_id&quot;: string }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>XML/string response from Wicket/iMIS endpoint</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Clicking an <code>external-event</code> curriculum item, except <code>Submit Your Questions</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Adobe Connect Viewer Navigation</h3>
+<p>The embedded viewer iframe navigates to either an absolute lesson URL or <code>https://cdha.adobeconnect.com{urlPath}?session={session}</code>. The &quot;Page not loading?&quot; link navigates to <code>https://cdha.adobeconnect.com/setcookie?session={session}</code>.</p>
+<h2>Canada Post AddressComplete</h2>
+<p>The Profile member address editor and Business Info UIN address editor instantiate <code>pca.Address</code> with key <code>KT92-DZ18-BR58-ZD45</code>. The source does not call the Canada Post endpoint directly; the AddressComplete script loaded in <code>public/index.html</code> makes the external lookup requests.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Script/CSS host</td>
+<td><code>http://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js</code> and matching CSS</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Managed by <code>pca.Address</code> while the user searches an address</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Address object with fields such as <code>Line1</code>, <code>Line2</code>, <code>City</code>, <code>ProvinceCode</code>, <code>PostalCode</code>, <code>CountryIso2</code>, <code>Id</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Profile Edit member address and Business Info UIN address add/edit</td>
+</tr>
+</tbody>
+</table>
+<p>The selected address is copied into the profile or UIN form and later submitted through <code>UpdatePersonalInfo.ashx</code> or <code>UpdateUINAddress.ashx</code>.</p>
+<h2>Non-Business Telemetry</h2>
+<p><code>profilePage.tsx</code> initializes Sentry browser tracing. This is not a CDHA business API, but the page can send telemetry/envelope requests to Sentry.</p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>DSN host</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Development</td>
+<td><code>o4508212392361984.ingest.us.sentry.io</code> project <code>4508212403437568</code></td>
+<td>Error and tracing telemetry from the Profile bundle</td>
+</tr>
+<tr>
+<td>Production</td>
+<td><code>o4508212392361984.ingest.us.sentry.io</code> project <code>4508331702878208</code></td>
+<td>Error and tracing telemetry from the Profile bundle</td>
+</tr>
+</tbody>
+</table>
+<h2>Response Shape Reference</h2>
+<h3>MemberInfo</h3>
+<p>Important fields consumed by the Profile app:</p>
+<p><code>id</code>, <code>first_name</code>, <code>last_name</code>, <code>street</code>, <code>street2</code>, <code>city</code>, <code>province</code>, <code>country</code>, <code>postal_code</code>, <code>email</code>, <code>phone</code>, <code>cell_phone</code>, <code>date_of_birth</code>, <code>preferred_language</code>, <code>exclude_directory</code>, <code>member_type</code>, <code>member_type_description</code>, <code>member_status</code>, <code>member_since</code>, <code>paid_thru</code>, <code>cut_date</code>, <code>chapter</code>, <code>years_of_membership</code>, <code>insurance</code>, <code>insurance_code</code>, <code>insurance_expires</code>, <code>show_ins_certificate</code>, <code>show_ins_upgrade</code>, <code>show_invoice</code>, <code>show_mem_card</code>, <code>show_recepits</code>, <code>show_renew</code>, <code>has_IPN</code>, <code>purchased_IPN</code>, <code>purchased_EDU</code>, <code>active_uin</code>, <code>uin_number</code>, <code>dh_incorporation</code>, <code>ipn_status</code>, <code>indigenous_status</code>, <code>job_description</code>, <code>join_reason</code>, <code>canadapost_id</code>, <code>orofacial_status</code>, <code>orofacial_seqn</code>, <code>DUES_DRAFT_DATE</code>, <code>IPN_DRAFT_DATE</code>, <code>DRAFT_AMOUNT</code>, <code>INSTALLMENT_AMOUNT1</code>, <code>INSTALLMENT_AMOUNT2</code>, <code>INSTALLMENT_AMOUNT3</code>, <code>INSTALLMENT_AMOUNT4</code>.</p>
+<h3>Communications</h3>
+<p>Important fields consumed by the Profile app:</p>
+<p><code>enews_subscribe</code>, <code>pd_subscribe</code>, <code>benefit_subscribe</code>, <code>products_subscribe</code>, <code>campaign_subscribe</code>, <code>eventcal_subscribe</code>, <code>job_notification_prov</code>, <code>e_ohcanada</code>, <code>third_party</code>, <code>gdpr_consent</code>, <code>gdprCommunity_consent</code>, <code>gdprLanguage_consent</code>, <code>ac_exclusion_date</code>, and related <code>*_updated</code> timestamp fields.</p>
+<h3>Profile Table Item</h3>
+<p>Profile table endpoints return arrays of items with a common shape:</p>
+<pre><code class="language-json">{
+  &quot;Key&quot;: &quot;...&quot;,
+  &quot;Value&quot;: {
+    &quot;name&quot;: &quot;...&quot;,
+    &quot;title&quot;: &quot;...&quot;,
+    &quot;sco-id&quot;: &quot;...&quot;,
+    &quot;sco-tag&quot;: &quot;...&quot;,
+    &quot;url&quot;: &quot;...&quot;,
+    &quot;session&quot;: &quot;...&quot;,
+    &quot;completed&quot;: false,
+    &quot;date-taken&quot;: &quot;...&quot;,
+    &quot;date-expire&quot;: &quot;...&quot;
+  }
+}
+</code></pre>
+<p>Not every table uses every field. Job ads use <code>Value.title</code>, <code>Value.seqn</code>, <code>Value.created_date</code>, <code>Value.end_date</code>, <code>Value.province</code>, <code>Value.area</code>, and <code>Value.status</code>. Add-ons use top-level <code>Name</code>, <code>Active</code>, and optional <code>href</code>.</p>
+<h2>Legacy Profile APIs Found But Not Currently Reached</h2>
+<p>The following modules exist under <code>src/api/profile</code> or older profile containers, but they are not currently reached from the active <code>profilePage.tsx -&gt; ProfileRoute -&gt; Display/Edit</code> tree:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Legacy module</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{hostUrl}/getmemberpd.ashx?filter=PD_</code> and <code>WE_</code></td>
+<td><code>api/profile/getMemberPDData.ts</code></td>
+<td>Imported by on-demand webinar container, but the profile container's load calls are commented out. Docebo enrollment data currently drives the active eLearning merge.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/UpdateDHEducation.ashx</code></td>
+<td><code>api/profile/addEducationData.ts</code></td>
+<td>Legacy education add path for Join/old profile editors; current Profile Edit uses <code>{newHostUrl}/v1/authenticated/education</code>.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/UpdateExpertise.ashx</code></td>
+<td><code>api/profile/getCDHANetData.ts</code></td>
+<td>Legacy/misnamed expertise loader; current Profile display and edit use <code>{newHostUrl}/v1/authenticated/expertise</code>.</td>
+</tr>
+<tr>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code> via <code>api/profile/updateExpertiseData.ts</code></td>
+<td>Old expertise edit container</td>
+<td>Current Profile Edit uses React Query hooks in <code>api/react-query/areasofexpertise.ts</code>.</td>
+</tr>
+<tr>
+<td><code>{newHostUrl}/v1/authenticated/memberInfo</code></td>
+<td><code>api/profile/getMemberInfoDatav2.ts</code></td>
+<td>Experimental/new member-info loader; current Profile route still reads member info from <code>UpdatePersonalInfo.ashx</code>.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/UpdatecdhaQuestions.ashx</code></td>
+<td><code>updateOrofacial(..., isJoin: true)</code></td>
+<td>Join-only fallback; Profile Edit uses the new authenticated <code>cdhaquestions</code> endpoints.</td>
+</tr>
+</tbody>
+</table>
+<h2>Open Questions</h2>
+<ul>
+<li>Confirm exact server response shapes for legacy <code>.ashx</code> endpoints. The frontend validates only the top-level keys it consumes, so fields not used by the current UI are inferred from usage.</li>
+<li>Confirm whether the hidden expertise delete action should remain documented as an API requirement or be removed from the migration scope.</li>
+<li>Confirm whether the legacy <code>getmemberpd.ashx</code> PD/WE calls should be restored for non-Docebo eLearning records or remain out of the current Profile page API scope.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

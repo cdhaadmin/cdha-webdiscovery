@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Career Centre Screens</title>
+  <title>Wicket API Calls - Standalone Communications Preference Edit</title>
   <link rel="stylesheet" href="./assets/site.css" />
 </head>
 <body>
@@ -71,7 +71,7 @@
   <span class="nav-title">Profile Screens</span>
   <span class="nav-description">Screenshots for profile display and summary views.</span>
 </a>
-<a class="nav-link active" href="./career-centre-screens.html">
+<a class="nav-link" href="./career-centre-screens.html">
   <span class="nav-title">Career Centre Screens</span>
   <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
 </a>
@@ -97,7 +97,7 @@
   <span class="nav-title">Renew</span>
   <span class="nav-description">Wicket API calls for renewal workflows.</span>
 </a>
-<a class="nav-link" href="./api-wicket-standalone-communications.html">
+<a class="nav-link active" href="./api-wicket-standalone-communications.html">
   <span class="nav-title">Standalone Communications</span>
   <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
 </a>
@@ -155,18 +155,208 @@
     </aside>
     <main class="content">
       <article class="markdown-body">
-<h1>Career Centre Screens</h1>
-<p>This page is a visual companion to <a href="./career-centre.html">career-centre.md</a>.</p>
-<h2>1. Post Your Job Ad Validation</h2>
-<p><img src="./newJobAdValidation.png" alt="Post Your Job Ad Validation" /></p>
-<h2>2. Add New Job Ad</h2>
-<p><img src="./addNewJobad.png" alt="Add New Job Ad" /></p>
-<h2>3. Career Search</h2>
-<p><img src="./JobSearch.png" alt="Career Search" /></p>
-<h2>4. Career Search By City</h2>
-<p><img src="./JobSearchByCity.png" alt="Career Search By City" /></p>
-<h2>5. Career Search Details</h2>
-<p><img src="./JobSearchDetails.png" alt="Career Search Details" /></p>
+<h1>Wicket API Calls - Standalone Communications Preference Edit</h1>
+<p>This page is the standalone communications preference editor in the Wicket section.</p>
+<p>Entry point:</p>
+<ul>
+<li><code>/home/lalves/dev/frontend/src/standAloneCommunicationsPreferenceEditPage.tsx</code></li>
+</ul>
+<p>Route flow:</p>
+<ul>
+<li><code>standAloneCommunicationsPreferenceEditPage.tsx</code> renders <code>EditCommunicationsRoute</code></li>
+<li><code>EditCommunicationsRoute</code> reads the <code>email</code> parameter and redirects to <code>/:email</code></li>
+<li><code>EditStandAloneCommunicationsContainer</code> loads the lookup data and current communications record</li>
+<li>The user edits the communications form and clicks Update</li>
+<li>The update action writes the record back and then reloads communications from the server</li>
+</ul>
+<h2>API Inventory</h2>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Input</th>
+<th>Output</th>
+<th>Where Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load lookup tables</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+<td>None</td>
+<td>Query string <code>table=COUNTRY</code></td>
+<td><code>{ data: LookupRow[] }</code></td>
+<td>Used by the standalone container to build the Canadian province list</td>
+</tr>
+<tr>
+<td>Load current communications</td>
+<td><code>GET</code></td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td>None</td>
+<td><code>{ data: Communications }</code></td>
+<td>Used when the email route mounts</td>
+</tr>
+<tr>
+<td>Update communications</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td>Communications payload plus <code>email_address</code>, <code>is_update</code>, and <code>is_enews_subscribeupdate</code></td>
+<td><code>{ data: Communications }</code></td>
+<td>Triggered by the Update button</td>
+</tr>
+</tbody>
+</table>
+<h2>1. Load Lookup Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: LookupRow[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/standAloneCommunications/editStandAloneCommunicationsContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The page only needs the Canada record from the <code>COUNTRY</code> lookup table. The container picks the item whose <code>CountryCode === &quot;CA&quot;</code> and uses that to populate the province selector in the communications form.</p>
+<h3>Notes</h3>
+<p>The lookup call is made through <code>getLookupData([&quot;COUNTRY&quot;])</code>, so the response is normalized into <code>state.lookupData.COUNTRY.data</code>.</p>
+<h2>2. Load Current Communications</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>withCredentials: true</code> session cookie</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/standAloneCommunications/editStandAloneCommunicationsContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The container loads the current communications record for the email in the route, then hydrates the <code>communications</code> redux form state.</p>
+<h3>Response handling</h3>
+<p>The helper expects a top-level <code>data</code> property. If the returned <code>communications.email_address</code> does not match the route email, the page redirects to the main profile application because the user is already authenticated in the normal Wicket profile flow.</p>
+<h2>3. Update Communications</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>withCredentials: true</code> session cookie</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Communications object from the form, plus <code>email_address</code>, <code>is_update: true</code>, and <code>is_enews_subscribeupdate: true</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Update button in <code>containers/standAloneCommunications/editStandAloneCommunicationsContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Request shape</h3>
+<p>The click handler sends the current communications state plus:</p>
+<pre><code class="language-json">{
+  &quot;benefit_subscribe&quot;: true,
+  &quot;campaign_subscribe&quot;: false,
+  &quot;enews_subscribe&quot;: true,
+  &quot;job_notification_prov&quot;: &quot;ON&quot;,
+  &quot;pd_subscribe&quot;: true,
+  &quot;products_subscribe&quot;: false,
+  &quot;receive_communications&quot;: true,
+  &quot;third_party&quot;: false,
+  &quot;eventcal_updated&quot;: &quot;...&quot;,
+  &quot;eventcal_subscribe&quot;: true,
+  &quot;email_address&quot;: &quot;member@example.com&quot;,
+  &quot;is_update&quot;: true,
+  &quot;is_enews_subscribeupdate&quot;: true
+}
+</code></pre>
+<h3>Helper behavior</h3>
+<p><code>updateCommunicationsData.ts</code> normalizes the payload before sending it:</p>
+<ul>
+<li>numeric <code>0</code> and <code>1</code> values are converted to booleans</li>
+<li><code>eventcal_updated</code> is forced to a fixed C# date string</li>
+<li>any other <code>*_updated</code> fields are removed before posting</li>
+</ul>
+<h3>Response handling</h3>
+<p>On success, the helper dispatches <code>updateMemberCommunicationsDataSuccess</code>, then refreshes communications with a second <code>GET {hostUrl}/UpdateCommunications.ashx</code>.</p>
+<h2>Open Notes</h2>
+<ul>
+<li>This page is not wrapped in the shared profile bootstrap, so it does not call member-info, education, expertise, or auto-renewal APIs.</li>
+<li>The email route is the primary access key for this flow.</li>
+</ul>
 
       </article>
     </main>

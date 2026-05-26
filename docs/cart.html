@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -76,12 +76,87 @@
   <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
 </a>
         </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
       </nav>
     </aside>
     <main class="content">
       <article class="markdown-body">
-<h1 id="cart-reference">Cart Reference</h1>
-<h2 id="flow-map">Flow Map</h2>
+<h1>Cart Reference</h1>
+<h2>Flow Map</h2>
 <table>
 <thead>
 <tr>
@@ -123,7 +198,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="shared-components">Shared Components</h3>
+<h3>Shared Components</h3>
 <table>
 <thead>
 <tr>
@@ -174,11 +249,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="component-catalog">Component Catalog</h2>
-<h2 id="cart-page-layout">1. Cart Page Layout</h2>
-<h3 id="purpose">Purpose</h3>
+<h2>Component Catalog</h2>
+<h2>1. Cart Page Layout</h2>
+<h3>Purpose</h3>
 <p>This is the order review and checkout page used to display current cart content, invoice-derived renewal content, optional add-ons, donations, payment, and final submission. See <a href="./cart-screens.html">Cart Screens</a> for the current visual examples.</p>
-<h3 id="visibility-matrix">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -193,7 +268,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="main-layout-regions">Main Layout Regions</h3>
+<h3>Main Layout Regions</h3>
 <table>
 <thead>
 <tr>
@@ -220,7 +295,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="left-column-content">Left Column Content</h3>
+<h3>Left Column Content</h3>
 <ul>
 <li>Cart Items</li>
 <li>PD Biz / IPN promotional section when eligible</li>
@@ -228,15 +303,15 @@
 <li>Donation when eligible</li>
 <li>Payment Method when amount due is greater than zero</li>
 </ul>
-<h3 id="right-column-content">Right Column Content</h3>
+<h3>Right Column Content</h3>
 <ul>
 <li>Order Summary</li>
 <li><code>Place Order</code> button</li>
 </ul>
-<h2 id="page-level-states">2. Page-Level States</h2>
-<h3 id="purpose-1">Purpose</h3>
+<h2>2. Page-Level States</h2>
+<h3>Purpose</h3>
 <p>These are the major whole-page states that determine whether the user sees the normal cart content, a loading treatment, an empty state, or a blocking error state.</p>
-<h3 id="state-matrix">State Matrix</h3>
+<h3>State Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -268,16 +343,16 @@
 </tr>
 </tbody>
 </table>
-<h3 id="loading-behavior">Loading Behavior</h3>
+<h3>Loading Behavior</h3>
 <ul>
 <li>The loading treatment is an overlay, not a separate page.</li>
 <li>The underlying content remains visible but blocked visually.</li>
 <li>Most cart-edit interactions reuse this same loading pattern.</li>
 </ul>
-<h2 id="error-panel">3. Error Panel</h2>
-<h3 id="purpose-2">Purpose</h3>
+<h2>3. Error Panel</h2>
+<h3>Purpose</h3>
 <p>This is the top-level error surface used for page errors and blocked submit-time validation.</p>
-<h3 id="visibility-matrix-1">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -304,13 +379,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="what-the-user-sees">What The User Sees</h3>
+<h3>What The User Sees</h3>
 <ul>
 <li>Red error styling</li>
 <li>Error icon</li>
 <li>One or more specific messages, or a generic fallback message</li>
 </ul>
-<h3 id="example-messages">Example Messages</h3>
+<h3>Example Messages</h3>
 <table>
 <thead>
 <tr>
@@ -337,10 +412,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="cart-items-section">4. Cart Items Section</h2>
-<h3 id="purpose-3">Purpose</h3>
+<h2>4. Cart Items Section</h2>
+<h3>Purpose</h3>
 <p>This is the main order-content table. It shows invoice-derived renewal content, standard cart items, or both. A current example is shown in <a href="./cart_with_invoice.png">Cart With Invoice</a>.</p>
-<h3 id="visibility-matrix-2">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -367,7 +442,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="table-structure">Table Structure</h3>
+<h3>Table Structure</h3>
 <table>
 <thead>
 <tr>
@@ -390,7 +465,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="invoice-row-rules">Invoice Row Rules</h3>
+<h3>Invoice Row Rules</h3>
 <table>
 <thead>
 <tr>
@@ -421,7 +496,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="standard-cart-item-rules">Standard Cart Item Rules</h3>
+<h3>Standard Cart Item Rules</h3>
 <table>
 <thead>
 <tr>
@@ -444,15 +519,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="important-notes">Important Notes</h3>
+<h3>Important Notes</h3>
 <ul>
 <li>Invoice content behaves like a subtotal row, not the final total.</li>
 <li>Invoice and standard item content can appear together in the same table.</li>
 </ul>
-<h2 id="pd-biz-ipn-promotional-section">5. PD Biz / IPN Promotional Section</h2>
-<h3 id="purpose-4">Purpose</h3>
+<h2>5. PD Biz / IPN Promotional Section</h2>
+<h3>Purpose</h3>
 <p>This is the promotional decision block that asks whether the user wants to add the Independent Practice Network offer when specific PD Biz courses are present. A current example is shown in <a href="./cart_pdBizPromo.png">Cart PD Biz Promo</a>.</p>
-<h3 id="visibility-matrix-3">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -479,7 +554,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="what-the-user-sees-1">What The User Sees</h3>
+<h3>What The User Sees</h3>
 <ul>
 <li>Section heading <code>Independent Practice Network</code></li>
 <li>One-row bordered table</li>
@@ -488,7 +563,7 @@
 <li>Radio choices <code>Yes*</code> and <code>No</code></li>
 <li>Disclaimer text below the table</li>
 </ul>
-<h3 id="decision-rules">Decision Rules</h3>
+<h3>Decision Rules</h3>
 <table>
 <thead>
 <tr>
@@ -515,20 +590,20 @@
 </tr>
 </tbody>
 </table>
-<h3 id="hidden-state-rules">Hidden-State Rules</h3>
+<h3>Hidden-State Rules</h3>
 <ul>
 <li>The section can be skipped when the state machine already resolved the promo outcome.</li>
 <li>This includes cases such as existing IPN ownership, inactive-member handling, or promo state already resolved in the cart.</li>
 </ul>
-<h3 id="student-special-case">Student Special Case</h3>
+<h3>Student Special Case</h3>
 <ul>
 <li>If a student enters a path where the PD Biz course is not available, the UI shows a browser alert.</li>
 <li>The course is removed and the page reloads.</li>
 </ul>
-<h2 id="add-ons-section">6. Add-ons Section</h2>
-<h3 id="purpose-5">Purpose</h3>
+<h2>6. Add-ons Section</h2>
+<h3>Purpose</h3>
 <p>This is the optional add-ons editor used for invoice-driven add-on purchases.</p>
-<h3 id="visibility-matrix-4">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -550,7 +625,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="available-add-ons">Available Add-ons</h3>
+<h3>Available Add-ons</h3>
 <table>
 <thead>
 <tr>
@@ -569,7 +644,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="row-content">Row Content</h3>
+<h3>Row Content</h3>
 <table>
 <thead>
 <tr>
@@ -592,7 +667,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="add-on-rules">Add-on Rules</h3>
+<h3>Add-on Rules</h3>
 <table>
 <thead>
 <tr>
@@ -615,7 +690,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="first-load-auto-selection-rule">First-Load Auto-Selection Rule</h3>
+<h3>First-Load Auto-Selection Rule</h3>
 <table>
 <thead>
 <tr>
@@ -642,10 +717,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="donation-section">7. Donation Section</h2>
-<h3 id="purpose-6">Purpose</h3>
+<h2>7. Donation Section</h2>
+<h3>Purpose</h3>
 <p>This is the optional donation editor for CFDHRE donations.</p>
-<h3 id="visibility-matrix-5">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -672,7 +747,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="what-the-user-sees-2">What The User Sees</h3>
+<h3>What The User Sees</h3>
 <ul>
 <li>Heading <code>CFDHRE Donation</code></li>
 <li>Explanatory text</li>
@@ -680,7 +755,7 @@
 <li>Amount dropdown</li>
 <li>Anonymous donation checkbox</li>
 </ul>
-<h3 id="donation-amount-rules">Donation Amount Rules</h3>
+<h3>Donation Amount Rules</h3>
 <table>
 <thead>
 <tr>
@@ -707,7 +782,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="donation-interaction-rules">Donation Interaction Rules</h3>
+<h3>Donation Interaction Rules</h3>
 <table>
 <thead>
 <tr>
@@ -730,10 +805,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="payment-method-section">8. Payment Method Section</h2>
-<h3 id="purpose-7">Purpose</h3>
+<h2>8. Payment Method Section</h2>
+<h3>Purpose</h3>
 <p>This is the credit-card payment form used when the order total is greater than zero.</p>
-<h3 id="visibility-matrix-6">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -755,7 +830,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="what-the-user-sees-3">What The User Sees</h3>
+<h3>What The User Sees</h3>
 <ul>
 <li>Heading <code>Payment Method</code></li>
 <li>Mastercard and Visa logos</li>
@@ -764,7 +839,7 @@
 <li>Expiry Date field</li>
 <li>CVC field</li>
 </ul>
-<h3 id="payment-fields">Payment Fields</h3>
+<h3>Payment Fields</h3>
 <table>
 <thead>
 <tr>
@@ -801,7 +876,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="card-brand-feedback">Card Brand Feedback</h3>
+<h3>Card Brand Feedback</h3>
 <table>
 <thead>
 <tr>
@@ -824,7 +899,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="field-layout">Field Layout</h3>
+<h3>Field Layout</h3>
 <table>
 <thead>
 <tr>
@@ -843,17 +918,17 @@
 </tr>
 </tbody>
 </table>
-<h3 id="payment-rules">Payment Rules</h3>
+<h3>Payment Rules</h3>
 <ul>
 <li>The payment section does not refresh the cart while the user types.</li>
 <li>Validation is field-driven on blur and checked again on submit.</li>
 <li>Invalid fields receive invalid styling.</li>
 <li>The current implementation relies on invalid styling and top-level error feedback rather than inline help text under each field.</li>
 </ul>
-<h2 id="order-summary-and-submit">9. Order Summary and Submit</h2>
-<h3 id="purpose-8">Purpose</h3>
+<h2>9. Order Summary and Submit</h2>
+<h3>Purpose</h3>
 <p>This is the summary area that shows the totals the user is about to pay and provides the final <code>Place Order</code> action. The right-column summary is visible in <a href="./cart_with_invoice.png">Cart With Invoice</a>.</p>
-<h3 id="visibility-matrix-7">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
 <thead>
 <tr>
@@ -880,7 +955,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="summary-card">Summary Card</h3>
+<h3>Summary Card</h3>
 <table>
 <thead>
 <tr>
@@ -919,7 +994,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="base-summary-labels">Base Summary Labels</h3>
+<h3>Base Summary Labels</h3>
 <table>
 <thead>
 <tr>
@@ -942,7 +1017,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="submit-button">Submit Button</h3>
+<h3>Submit Button</h3>
 <table>
 <thead>
 <tr>
@@ -965,8 +1040,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="submission-and-validation-rules">10. Submission and Validation Rules</h2>
-<h3 id="submit-order">Submit Order</h3>
+<h2>10. Submission and Validation Rules</h2>
+<h3>Submit Order</h3>
 <table>
 <thead>
 <tr>
@@ -993,7 +1068,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="pd-biz-ipn-blocking-rule">PD Biz / IPN Blocking Rule</h3>
+<h3>PD Biz / IPN Blocking Rule</h3>
 <table>
 <thead>
 <tr>
@@ -1014,7 +1089,7 @@
 </table>
 <p>Blocked-submit message:</p>
 <p><code>Please answer if you would like to purchase the Independent Practice Network</code></p>
-<h3 id="payment-blocking-rules">Payment Blocking Rules</h3>
+<h3>Payment Blocking Rules</h3>
 <table>
 <thead>
 <tr>
@@ -1047,15 +1122,15 @@
 </table>
 <p>Blocked-submit message:</p>
 <p><code>Payment information is invalid. Please check your credit card details and try again</code></p>
-<h3 id="unsupported-card-types">Unsupported Card Types</h3>
+<h3>Unsupported Card Types</h3>
 <ul>
 <li>The form can accept typed input for other card brands.</li>
 <li>A structurally valid non-Visa / non-Mastercard number is still rejected at the form level.</li>
 </ul>
-<h2 id="loading-and-refresh-patterns">11. Loading and Refresh Patterns</h2>
-<h3 id="purpose-9">Purpose</h3>
+<h2>11. Loading and Refresh Patterns</h2>
+<h3>Purpose</h3>
 <p>This describes the shared cart interaction pattern used by most editable sections.</p>
-<h3 id="refresh-pattern">Refresh Pattern</h3>
+<h3>Refresh Pattern</h3>
 <table>
 <thead>
 <tr>
@@ -1102,7 +1177,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="shared-behavior">Shared Behavior</h3>
+<h3>Shared Behavior</h3>
 <ol>
 <li>User interacts with a section.</li>
 <li>Section enters loading.</li>
@@ -1110,13 +1185,13 @@
 <li>The cart refreshes.</li>
 <li>Section visibility and totals are recalculated from refreshed cart state.</li>
 </ol>
-<h3 id="important-distinction">Important Distinction</h3>
+<h3>Important Distinction</h3>
 <ul>
 <li>Most editable cart sections are server-refresh-driven.</li>
 <li>The payment form remains local until submit.</li>
 </ul>
-<h2 id="structural-rules-summary">12. Structural Rules Summary</h2>
-<h3 id="invoice-driven-section-availability">Invoice-Driven Section Availability</h3>
+<h2>12. Structural Rules Summary</h2>
+<h3>Invoice-Driven Section Availability</h3>
 <table>
 <thead>
 <tr>
@@ -1143,12 +1218,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="localization">Localization</h3>
+<h3>Localization</h3>
 <ul>
 <li>Page text is translation-driven.</li>
 </ul>
-<h2 id="example-user-scenarios">13. Example User Scenarios</h2>
-<h3 id="empty-cart">Empty Cart</h3>
+<h2>13. Example User Scenarios</h2>
+<h3>Empty Cart</h3>
 <table>
 <thead>
 <tr>
@@ -1163,7 +1238,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="invoice-only-order">Invoice-Only Order</h3>
+<h3>Invoice-Only Order</h3>
 <table>
 <thead>
 <tr>
@@ -1178,7 +1253,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="cart-items-only-order">Cart-Items-Only Order</h3>
+<h3>Cart-Items-Only Order</h3>
 <table>
 <thead>
 <tr>
@@ -1193,7 +1268,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="invoice-plus-cart-items">Invoice Plus Cart Items</h3>
+<h3>Invoice Plus Cart Items</h3>
 <table>
 <thead>
 <tr>
@@ -1208,7 +1283,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="donation-without-invoice">Donation Without Invoice</h3>
+<h3>Donation Without Invoice</h3>
 <table>
 <thead>
 <tr>
@@ -1223,7 +1298,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="add-on-auto-selected">Add-on Auto-Selected</h3>
+<h3>Add-on Auto-Selected</h3>
 <table>
 <thead>
 <tr>
@@ -1238,7 +1313,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="invalid-payment-attempt">Invalid Payment Attempt</h3>
+<h3>Invalid Payment Attempt</h3>
 <table>
 <thead>
 <tr>
@@ -1253,7 +1328,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="unsupported-card-type">Unsupported Card Type</h3>
+<h3>Unsupported Card Type</h3>
 <table>
 <thead>
 <tr>
@@ -1268,7 +1343,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="pd-biz-ipn-left-unanswered">PD Biz / IPN Left Unanswered</h3>
+<h3>PD Biz / IPN Left Unanswered</h3>
 <table>
 <thead>
 <tr>
@@ -1283,7 +1358,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="zero-dollar-order">Zero-Dollar Order</h3>
+<h3>Zero-Dollar Order</h3>
 <table>
 <thead>
 <tr>

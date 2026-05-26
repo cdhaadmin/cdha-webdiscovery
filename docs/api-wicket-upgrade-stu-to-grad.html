@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wicket API Calls - Upgrade STU to Grad</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link active" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Wicket API Calls - Upgrade STU to Grad</h1>
+<p>This page is the student-to-graduate upgrade flow in the Wicket section.</p>
+<p>Entry point:</p>
+<ul>
+<li><code>/home/lalves/dev/frontend/src/upgradeStuToGradPage.tsx</code></li>
+</ul>
+<p>Route flow:</p>
+<ul>
+<li><code>upgradeStuToGradPage.tsx</code> renders <code>UpgradeStuToGradRoute</code></li>
+<li><code>UpgradeStuToGradRoute</code> wraps the flow in <code>RootContainer</code></li>
+<li><code>RootContainer</code> preloads the shared member bootstrap and then the route-specific education form</li>
+<li><code>Validations type=&quot;UPGRADE_STU_GRAD&quot;</code> only allows student members in Canada</li>
+<li>The form submit updates member info, processes the upgrade, refreshes education, and then redirects out of the page</li>
+</ul>
+<h2>API Inventory</h2>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Input</th>
+<th>Output</th>
+<th>Where Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load lookup tables</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code></td>
+<td>None</td>
+<td>Query string <code>table</code></td>
+<td><code>{ data: LookupRow[] }</code></td>
+<td>Shared bootstrap via <code>RootContainer</code></td>
+</tr>
+<tr>
+<td>Load member info</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td><code>{ get_summaryonly: true }</code></td>
+<td><code>{ data: MemberInfo, server_time? }</code></td>
+<td>Shared bootstrap via <code>RootContainer</code></td>
+</tr>
+<tr>
+<td>Load orofacial question</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>CDHA bearer token</td>
+<td>None</td>
+<td><code>{ data: QuestionAnswer[] }</code></td>
+<td>Indirect follow-up from <code>getMemberInfoData</code></td>
+</tr>
+<tr>
+<td>Load expertise</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+<td>CDHA bearer token</td>
+<td>None</td>
+<td><code>{ data: Expertise[] }</code></td>
+<td>Shared bootstrap via <code>RootContainer</code></td>
+</tr>
+<tr>
+<td>Load education</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+<td>CDHA bearer token</td>
+<td>None</td>
+<td><code>{ data: Education[] }</code></td>
+<td>Shared bootstrap via <code>RootContainer</code> and post-delete refresh</td>
+</tr>
+<tr>
+<td>Load communications</td>
+<td><code>GET</code></td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td>None</td>
+<td><code>{ data: Communications }</code></td>
+<td>Shared bootstrap via <code>RootContainer</code></td>
+</tr>
+<tr>
+<td>Load auto-renewal</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td>Empty body</td>
+<td><code>{ data: AutoRenewalSubscription }</code></td>
+<td>Shared bootstrap via <code>RootContainer</code></td>
+</tr>
+<tr>
+<td>Update member info</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td><code>{ id, chapter }</code></td>
+<td><code>{ data: MemberInfo }</code></td>
+<td>First step in the upgrade submit chain when the province changes</td>
+</tr>
+<tr>
+<td>Process upgrade</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/ProcessUpgrade.ashx</code></td>
+<td><code>withCredentials: true</code> session cookie</td>
+<td><code>{ member_type, ndhcb_id }</code></td>
+<td><code>{ errors?, ... }</code></td>
+<td>Core upgrade call for the student-to-grad flow</td>
+</tr>
+<tr>
+<td>Update education</td>
+<td><code>DELETE</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education/{seqn}</code></td>
+<td>CDHA bearer token</td>
+<td>Education sequence number</td>
+<td><code>{ data: ... }</code></td>
+<td>Current code path after the upgrade call</td>
+</tr>
+<tr>
+<td>Refresh education</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+<td>CDHA bearer token</td>
+<td>None</td>
+<td><code>{ data: Education[] }</code></td>
+<td>Called after the delete helper completes</td>
+</tr>
+</tbody>
+</table>
+<h2>1. Shared Bootstrap</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code> and <code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint group</td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code>, <code>{hostUrl}/UpdatePersonalInfo.ashx</code>, <code>{newHostUrl}/v1/authenticated/expertise</code>, <code>{newHostUrl}/v1/authenticated/education</code>, <code>{hostUrl}/UpdateCommunications.ashx</code>, <code>{hostUrl}/UpdateAutoRenew.ashx</code>, <code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>components/profile/route/upgradeStuToGradRoute.tsx</code> through <code>containers/profile/rootContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Lookup tables requested on mount</h3>
+<p><code>RootContainer</code> loads the same base profile lookups used by join and renew:</p>
+<ul>
+<li><code>COUNTRY</code></li>
+<li><code>DEGREES</code></li>
+<li><code>UNIVERSITY</code></li>
+<li><code>GRAD_YEAR</code></li>
+<li><code>GRAD_MONTH</code></li>
+<li><code>YEAR_ATTEND</code></li>
+<li><code>AREAS_OF_PRACTICE</code></li>
+<li><code>WORK_ENVIRONMENT</code></li>
+<li><code>INSURANCE</code></li>
+<li><code>IPN_STATUS</code></li>
+<li><code>INDIGENOUS_STATUS</code></li>
+</ul>
+<h3>Why they are loaded</h3>
+<p>The upgrade form uses <code>DEGREES</code>, <code>UNIVERSITY</code>, <code>GRAD_MONTH</code>, <code>GRAD_YEAR</code>, <code>YEAR_ATTEND</code>, and <code>COUNTRY</code> to seed and validate the education fields. The shared bootstrap also loads the rest of the profile state because the route reuses the common Wicket container and validation layer.</p>
+<h3>Member info follow-up</h3>
+<p><code>getMemberInfoData({ isSummary: true })</code> posts <code>get_summaryonly: true</code> to <code>UpdatePersonalInfo.ashx</code> and then always fetches the orofacial question endpoint. The response is merged into the member-info store for validation and form prefill.</p>
+<h2>2. Update Member Info</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>withCredentials: true</code> session cookie</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>{ id, chapter }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: MemberInfo }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>api/profile/processUpgradeToGrad.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The submit handler updates the member chapter before processing the upgrade if the selected province of practice differs from the member's current chapter.</p>
+<h3>Follow-up</h3>
+<p><code>updateMemberInfoData.ts</code> refreshes member info again after the update, so this flow performs a second <code>POST {hostUrl}/UpdatePersonalInfo.ashx</code> through <code>getMemberInfoData()</code> during the refresh step.</p>
+<h2>3. Process Upgrade</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/ProcessUpgrade.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>withCredentials: true</code> session cookie</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>{ member_type, ndhcb_id }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Legacy Wicket upgrade response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>api/profile/processUpgradeToGrad.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Request shape</h3>
+<p>The current page passes one of these combinations:</p>
+<ul>
+<li><code>/upgrade/STU</code> path: <code>{ member_type: &quot;FM&quot;, ndhcb_id: undefined }</code></li>
+<li><code>/upgradeToGrad</code> path: <code>{ member_type: &quot;GRAD&quot;, ndhcb_id: &lt;value from form&gt; }</code></li>
+</ul>
+<h3>Purpose</h3>
+<p>This is the legacy upgrade step that moves the member into the new membership state before the education record is refreshed.</p>
+<h2>4. Update Education</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>DELETE</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education/{seqn}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Education sequence number</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: ... }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Imported helper in <code>api/profile/processUpgradeToGrad.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Important note</h3>
+<p>The current implementation imports <code>removeEducationData.ts</code> as <code>UpdateEducationData</code>, then calls it with an <code>update</code> payload instead of the <code>remove</code> shape that the helper expects. As written, that means the generated endpoint can resolve to <code>/education/undefined</code> unless another layer transforms the payload.</p>
+<p>This is the clearest wiring issue in the current page flow.</p>
+<h2>5. Refresh Education</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Education[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>api/profile/removeEducationData.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>After the delete helper succeeds, it immediately reloads education so the store reflects the latest saved record before the route redirects away.</p>
+<h2>Page-Level Submit Sequence</h2>
+<ol>
+<li>Redirect to <code>/processingAccount</code></li>
+<li>Update member chapter with <code>UpdatePersonalInfo.ashx</code> if the province changed</li>
+<li>Post <code>ProcessUpgrade.ashx</code></li>
+<li>Call the education helper, which currently attempts to delete the existing education record</li>
+<li>Refresh education with <code>GET {newHostUrl}/v1/authenticated/education</code></li>
+<li>Redirect to <code>/guok</code> when <code>ndhcb_id</code> is present, otherwise redirect to <code>/renew</code></li>
+</ol>
+<h2>Response Shape Notes</h2>
+<ul>
+<li>The validation layer only allows members with <code>member_type === &quot;STU&quot;</code>, <code>country === &quot;CA&quot;</code>, and a defined <code>chapter</code>.</li>
+<li>If the member is not eligible, the route sends the user to the legacy error page instead of letting the form submit.</li>
+<li>The shared bootstrap also loads <code>autoRenewalSubscription</code>, even though this specific validation block does not use it directly.</li>
+</ul>
+<h2>Open Notes</h2>
+<ul>
+<li>The education update path looks like a bug, not a deliberate API contract.</li>
+<li>The visible form only uses the education fields, but the route still loads the full shared profile bootstrap through <code>RootContainer</code>.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

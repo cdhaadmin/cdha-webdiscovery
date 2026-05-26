@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docebo API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link active" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Docebo API Calls</h1>
+<p>This document covers the WordPress Docebo integration and the related webinar/event registration flows used alongside it.</p>
+<p>Current code paths:</p>
+<ul>
+<li><code>src/api/profile/docebo.ts</code></li>
+<li><code>src/containers/profile/profileTableOnDemandWebinarsContainer.tsx</code></li>
+<li><code>src/components/profile/route/profile/display.tsx</code></li>
+<li><code>src/containers/conference/zoomJoinContainer.tsx</code></li>
+<li><code>src/api/webinarAlert/registerForEvent.ts</code></li>
+<li><code>packages/cdha-api/src/routes/apiv1/authenticated/docebo/token/token.*</code></li>
+<li><code>packages/cdha-api/src/routes/apiv1/authenticated/events/events.*</code></li>
+</ul>
+<h2>API Inventory</h2>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Request</th>
+<th>Response</th>
+<th>Used By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generate Docebo SSO token</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/docebo/token</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+<td>No body</td>
+<td><code>{ access_token, expires_in, token_type, scope }</code></td>
+<td><code>getData()</code> in <code>src/api/profile/docebo.ts</code></td>
+</tr>
+<tr>
+<td>Exchange CDHA member identity for Docebo access token</td>
+<td><code>POST</code></td>
+<td><code>https://cdha.docebosaas.com/oauth2/token</code></td>
+<td>JWT bearer assertion in request body</td>
+<td><code>grant_type</code>, <code>scope</code>, <code>assertion</code> as form data</td>
+<td>Docebo OAuth token payload</td>
+<td><code>getDoceboToken()</code> in <code>packages/cdha-api/src/lib/docebo/oauthToken.ts</code></td>
+</tr>
+<tr>
+<td>Load current Docebo user session</td>
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com/manage/v1/user/session</code></td>
+<td>Docebo bearer token</td>
+<td>No body</td>
+<td><code>{ data: { id, ... } }</code></td>
+<td><code>getDoceboUser()</code> in <code>src/api/profile/docebo.ts</code></td>
+</tr>
+<tr>
+<td>Load current Docebo enrollments</td>
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com/learn/v1/enrollments?id_user[]={userId}&amp;page_size=200</code></td>
+<td>Docebo bearer token</td>
+<td><code>userId</code> in the query string</td>
+<td><code>{ data: { items: DoceboEnrollment[] } }</code></td>
+<td><code>getDoceboEnrollmentData()</code> in <code>src/api/profile/docebo.ts</code></td>
+</tr>
+<tr>
+<td>Check legacy webinar registration</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/getmemberpd.ashx?filter=EVENT</code></td>
+<td>Cookie-based session with <code>withCredentials: true</code></td>
+<td>Empty body</td>
+<td><code>{ pd_data: [...] }</code></td>
+<td><code>getRegisteredEventData()</code> in <code>src/api/webinarAlert/getRegisteredEventData.ts</code></td>
+</tr>
+<tr>
+<td>Register legacy webinar attendee</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/ConnectRegister.ashx</code></td>
+<td>Cookie-based session with <code>withCredentials: true</code></td>
+<td><code>{ scoId }</code></td>
+<td>Legacy Connect registration response</td>
+<td><code>registerForEvent()</code> in <code>src/api/webinarAlert/registerForEvent.ts</code></td>
+</tr>
+<tr>
+<td>Generate Zoom webinar token</td>
+<td><code>POST</code></td>
+<td><code>https://api.cdha.ca/v1/graphql</code></td>
+<td>None at the HTTP layer; GraphQL mutation uses the current member id</td>
+<td><code>mutation GenerateToken(payload: { id })</code></td>
+<td>GraphQL <code>GenerateToken</code> string</td>
+<td><code>ZoomJoinContainer</code> in <code>src/containers/conference/zoomJoinContainer.tsx</code></td>
+</tr>
+<tr>
+<td>Register attendee to Zoom webinar</td>
+<td><code>POST</code></td>
+<td><code>https://api.cdha.ca/v1/graphql</code></td>
+<td>GraphQL token from the previous mutation</td>
+<td><code>mutation ZoomRegisterEvent(...)</code></td>
+<td><code>data.ZoomRegisterEvent</code> including <code>join_url</code></td>
+<td><code>ZoomJoinContainer</code> in <code>src/containers/conference/zoomJoinContainer.tsx</code></td>
+</tr>
+<tr>
+<td>Register member for a CDHA event</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/register</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code> and iMIS token on the backend</td>
+<td><code>eventRegistrationSchema</code></td>
+<td><code>success: true, data: registration</code></td>
+<td><code>registerUserToEvent()</code> in <code>packages/cdha-api/src/routes/apiv1/authenticated/events/events.handlers.ts</code></td>
+</tr>
+<tr>
+<td>Get current event registration</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code> and iMIS token on the backend</td>
+<td><code>id</code> in the path</td>
+<td>Event registration payload with status, registrant data, event data, and optional Zoom data</td>
+<td><code>getEvent()</code> in <code>events.handlers.ts</code></td>
+</tr>
+<tr>
+<td>Re-register Zoom attendance</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/re-register-zoom</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code> and iMIS token on the backend</td>
+<td><code>id</code> in the path</td>
+<td>Updated registration payload</td>
+<td><code>reRegisterZoom()</code> in <code>events.handlers.ts</code></td>
+</tr>
+<tr>
+<td>Get Zoom access link</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/zoom-access-link</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code> and iMIS token on the backend</td>
+<td><code>id</code> in the path</td>
+<td><code>{ access_link: string }</code></td>
+<td><code>getZoomAccessLink()</code> in <code>events.handlers.ts</code></td>
+</tr>
+<tr>
+<td>Lookup event by party and event code</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:partyId/:eventCode</code></td>
+<td>Bearer token from <code>getCDHAClientToken()</code> and iMIS token on the backend</td>
+<td><code>partyId</code>, <code>eventCode</code> in the path</td>
+<td><code>{ success: true, data: [...] }</code></td>
+<td><code>getEventByPartyIdAndEventCode()</code> in <code>events.handlers.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h2>1. Docebo SSO Token</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/docebo/token</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token from <code>getCDHAClientToken()</code></td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>No body</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ access_token, expires_in, token_type, scope }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getData()</code> in <code>src/api/profile/docebo.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>This is the CDHA-side SSO entry point for Docebo. It returns the Docebo access token used for the user session and course lookups.</p>
+<h3>Response shape</h3>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;string&quot;,
+  &quot;expires_in&quot;: 3600,
+  &quot;token_type&quot;: &quot;Bearer&quot;,
+  &quot;scope&quot;: &quot;api&quot;
+}
+</code></pre>
+<h2>2. Docebo OAuth Exchange</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://cdha.docebosaas.com/oauth2/token</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>JWT bearer assertion in the request body</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Form data with <code>grant_type</code>, <code>scope</code>, <code>assertion</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Docebo OAuth token payload</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getDoceboToken()</code> in <code>packages/cdha-api/src/lib/docebo/oauthToken.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The backend signs a JWT for the current party and exchanges it with Docebo for a usable OAuth access token.</p>
+<h3>Request details</h3>
+<ul>
+<li><code>grant_type = urn:ietf:params:oauth:grant-type:jwt-bearer</code></li>
+<li><code>scope = api</code></li>
+<li><code>assertion = &lt;RS256 signed JWT&gt;</code></li>
+</ul>
+<h3>JWT claims</h3>
+<ul>
+<li><code>iss</code>: configured Docebo SSO app name</li>
+<li><code>sub</code>: current CDHA party id</li>
+<li><code>aud</code>: <code>cdha.docebosaas.com</code></li>
+<li><code>iat</code>: issue time</li>
+<li>expiration: 2 days</li>
+</ul>
+<h2>3. Current Docebo User and Enrollments</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://cdha.docebosaas.com/manage/v1/user/session</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Docebo bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>No body</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: { id, ... } }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getDoceboUser()</code> in <code>src/api/profile/docebo.ts</code></td>
+</tr>
+</tbody>
+</table>
+<p>The frontend uses this to resolve the Docebo user id.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://cdha.docebosaas.com/learn/v1/enrollments?id_user[]={userId}&amp;page_size=200</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Docebo bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>userId</code> in the query string</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: { items: DoceboEnrollment[] } }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getDoceboEnrollmentData()</code> in <code>src/api/profile/docebo.ts</code></td>
+</tr>
+</tbody>
+</table>
+<p>The frontend sorts the returned enrollments by enrollment date and uses them to build the current course list.</p>
+<h2>4. Webinar Course Purchase Registration</h2>
+<p>This is the legacy webinar registration path used by the webinar alert flow.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/getmemberpd.ashx?filter=EVENT</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Cookie-based session with <code>withCredentials: true</code></td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Empty body</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>pd_data</code> array containing the member’s event/webinar registrations</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getRegisteredEventData()</code> in <code>src/api/webinarAlert/getRegisteredEventData.ts</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/ConnectRegister.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Cookie-based session with <code>withCredentials: true</code></td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>{ scoId }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Legacy Connect registration response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>registerForEvent()</code> in <code>src/api/webinarAlert/registerForEvent.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>This pair of calls checks whether a member is already registered for a webinar and registers them when they are not.</p>
+<h3>Current UI usage</h3>
+<p>The webinar alert component checks existing registration first. If none is found, it calls <code>ConnectRegister.ashx</code>, then re-checks the registration state before redirecting the user.</p>
+<h2>5. Renewal or Live Event Webinar Registration</h2>
+<p>The newer live event flow uses Zoom registration through GraphQL. This is the registration path used by the live event profile page and the Zoom join container.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://api.cdha.ca/v1/graphql</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>GraphQL-generated token, not a Docebo token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>mutation GenerateToken(payload: { id })</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>GraphQL <code>GenerateToken</code> string</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>ZoomJoinContainer</code> in <code>src/containers/conference/zoomJoinContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://api.cdha.ca/v1/graphql</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>GraphQL token returned from the previous mutation</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>mutation ZoomRegisterEvent(...)</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>data.ZoomRegisterEvent</code> with <code>join_url</code>, <code>registrant_id</code>, <code>topic</code>, and <code>start_time</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>ZoomJoinContainer</code> in <code>src/containers/conference/zoomJoinContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>This is the registration flow for live event access when the member is not already registered. It generates a token for the member id and registers the attendee into the Zoom webinar.</p>
+<h3>Notes</h3>
+<ul>
+<li>The code path is separate from the Docebo token flow.</li>
+<li>This is the current implementation for live event registration in the frontend.</li>
+<li>I did not find a Docebo-native renewal registration endpoint in the current codebase.</li>
+</ul>
+<h2>6. Member Event Registration</h2>
+<p>This is the authenticated event registration flow exposed by the CDHA API package.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/register</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token from <code>getCDHAClientToken()</code>; backend also uses iMIS token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>eventRegistrationSchema</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>success: true, data: registration</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>registerUserToEvent()</code> in <code>events.handlers.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Request shape</h3>
+<p>The payload includes:</p>
+<ul>
+<li><code>eventCode</code></li>
+<li><code>registration_data</code></li>
+<li>optional badge fields</li>
+<li>optional directory text and food info</li>
+<li>optional Zoom access fields</li>
+</ul>
+<h3>Internal orchestration</h3>
+<p>The backend registration helper:</p>
+<ol>
+<li>Loads or creates the member cart</li>
+<li>Reprices the order through iMIS</li>
+<li>Updates the cart</li>
+<li>Creates or updates the event info record</li>
+</ol>
+<h3>Related support endpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id</code></td>
+<td>Read the current registration state and metadata</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/re-register-zoom</code></td>
+<td>Recreate the Zoom registration for supported webinar events</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/zoom-access-link</code></td>
+<td>Fetch the Zoom join link</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:partyId/:eventCode</code></td>
+<td>Lookup event data for a specific member and event</td>
+</tr>
+</tbody>
+</table>
+<h3>Mass registration note</h3>
+<p>I did not find a dedicated bulk or mass-registration endpoint in the current codebase. The current registration path is single-member, but it accepts multiple event function codes in <code>registration_data</code> for the event being registered.</p>
+<h2>Page-Level Flow</h2>
+<ol>
+<li>The profile page requests a CDHA bearer token with <code>getCDHAClientToken()</code></li>
+<li>The frontend calls <code>{newHostUrl}/v1/authenticated/docebo/token</code></li>
+<li>The backend exchanges the member identity for a Docebo access token</li>
+<li>The frontend calls Docebo <code>manage/v1/user/session</code> to resolve the user id</li>
+<li>The frontend calls Docebo <code>learn/v1/enrollments</code> to load the member’s enrolled courses</li>
+<li>For webinar-style purchase or alert flows, the frontend checks <code>getmemberpd.ashx</code> and may call <code>ConnectRegister.ashx</code></li>
+<li>For newer live-event registrations, the frontend uses GraphQL Zoom registration</li>
+<li>For authenticated event workflows, the frontend uses <code>/v1/authenticated/event/:id/register</code></li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>The Docebo SSO flow is separate from the legacy Connect webinar flow and the newer Zoom event flow.</li>
+<li>The current codebase does not expose a dedicated bulk registration endpoint for multiple members.</li>
+<li>The enrollment endpoint is the source of truth for the current list of Docebo courses the member is registered to.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

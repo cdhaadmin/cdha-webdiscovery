@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link active" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Join API Calls</h1>
+<h2>Purpose</h2>
+<p>This page documents the API calls needed by the Join application mounted from <code>/home/lalves/dev/frontend/src/joinPage.tsx</code>.</p>
+<p>The entry point creates the Redux store, router, translations, and the <code>JoinRoute</code>. Business API calls are reached through <code>components/profile/route/joinRoute.tsx</code>, <code>RootContainer isJoin={true}</code>, the join member-type route components, and the shared <code>api/profile/createAccount.ts</code> submission helper.</p>
+<h2>Base URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Development</th>
+<th>Production</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostUrl</code></td>
+<td><code>https://www.cdha.ca/CDHACommon</code></td>
+<td><code>//{window.location.hostname}/CDHACommon</code></td>
+<td>Legacy Wicket/iMIS <code>.ashx</code> endpoints</td>
+</tr>
+<tr>
+<td><code>newHostUrl</code></td>
+<td><code>https://api.lalves.mycdha.ca</code></td>
+<td><code>https://api.imisdev.mycdha.ca</code> on imisdev, otherwise <code>https://api.mycdha.ca</code></td>
+<td>New JSON API lookup/authenticated endpoints</td>
+</tr>
+<tr>
+<td>Invoice test</td>
+<td><code>https://www.cdha.ca/CDHAstaff/InvoiceTest.ashx</code></td>
+<td>Same fixed host</td>
+<td>Forces/checks invoice generation before cart update</td>
+</tr>
+<tr>
+<td>Canada Post AddressComplete</td>
+<td><code>http://ws1.postescanada-canadapost.ca</code></td>
+<td>Same</td>
+<td>External address lookup script loaded by <code>public/index.html</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>API family</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Wicket/iMIS <code>.ashx</code></td>
+<td>Browser session cookies. Axios uses <code>withCredentials: true</code>; <code>api/fetch/*</code> uses <code>credentials: &quot;include&quot;</code>.</td>
+</tr>
+<tr>
+<td>New <code>newHostUrl</code> lookup API</td>
+<td>No bearer token for lookup table reads.</td>
+</tr>
+<tr>
+<td>New <code>newHostUrl</code> authenticated API</td>
+<td><code>Authorization: Bearer {CDHA_CLIENT_TOKEN}</code> from <code>util/token.ts</code>. Token is stored in <code>localStorage</code> under <code>CDHA_CLIENT_TOKEN</code>.</td>
+</tr>
+<tr>
+<td>Canada Post AddressComplete</td>
+<td>External script key from <code>public/index.html</code>; requests are made by the <code>pca.Address</code> script, not directly by app code.</td>
+</tr>
+</tbody>
+</table>
+<h3>Client Token Bootstrap</h3>
+<p>Join mostly uses legacy Wicket APIs, but it still reaches authenticated new API calls when member info is augmented with the orofacial question and when education is refreshed after the legacy education save.</p>
+<h4>Create CDHA session token code</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>/api/CDHASessionToken</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS request verification token in <code>RequestVerificationToken</code> header; production only</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>iMIS generic entity payload with <code>EntityTypeName: &quot;CDHASessionToken&quot;</code>, <code>ContactKey: context.selectedPartyId</code>, and a random <code>UserCode</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>iMIS generic entity response; client reads <code>Properties.$values[].Name === &quot;UserCode&quot;</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>util/token.ts</code> before requesting a new API bearer token</td>
+</tr>
+</tbody>
+</table>
+<h4>Exchange code for API token</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/auth/token</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None. The request body carries the generated code and iMIS client context.</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;code&quot;: string, &quot;context&quot;: ClientContext }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ &quot;token&quot;: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Authenticated <code>newHostUrl</code> calls reached by Join</td>
+</tr>
+</tbody>
+</table>
+<p>In development, the app skips <code>/api/CDHASessionToken</code> and calls <code>/auth/token</code> with <code>code: &quot;anyValue&quot;</code> plus a hard-coded development client context.</p>
+<h2>Initial Join Load</h2>
+<p>These calls run when <code>JoinRoute</code> mounts through <code>RootContainer isJoin={true}</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Authentication</th>
+<th>Request</th>
+<th>Response</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load common lookup tables</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code></td>
+<td>None</td>
+<td>Query <code>table</code></td>
+<td><code>{ success?, data, errors?, status? }</code></td>
+<td>Drives country, education, insurance, IPN, and indigenous-status form options</td>
+</tr>
+<tr>
+<td>Read current member/session state</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+<td>iMIS session cookie</td>
+<td><code>{}</code></td>
+<td><code>{ data: MemberInfo, server_time? }</code> or error payload with member state</td>
+<td>Join validation expects anonymous sessions to appear as <code>memberInfo.status === &quot;User undefined&quot;</code></td>
+</tr>
+<tr>
+<td>Read orofacial answer</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>CDHA bearer token</td>
+<td>None</td>
+<td><code>{ data: CdhaQuestion[] }</code></td>
+<td>Called by the shared member-info loader when member info returns a <code>data</code> payload; merged into <code>memberInfo.orofacial_status</code> and <code>memberInfo.orofacial_seqn</code></td>
+</tr>
+<tr>
+<td>Load visitor-account lookup tables</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code></td>
+<td>None</td>
+<td><code>JOIN_REASON</code>, <code>JOB_DESCRIPTION</code></td>
+<td><code>{ data: LookupOption[] }</code></td>
+<td>Only when the <code>/join/NM</code> route mounts</td>
+</tr>
+</tbody>
+</table>
+<p>Common lookup tables requested by Join are:</p>
+<p><code>COUNTRY</code>, <code>DEGREES</code>, <code>UNIVERSITY</code>, <code>GRAD_YEAR</code>, <code>GRAD_MONTH</code>, <code>YEAR_ATTEND</code>, <code>AREAS_OF_PRACTICE</code>, <code>WORK_ENVIRONMENT</code>, <code>INSURANCE</code>, <code>IPN_STATUS</code>, <code>INDIGENOUS_STATUS</code>.</p>
+<h2>Join Routes</h2>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Member type</th>
+<th>Visible steps</th>
+<th>Submit orchestration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code> and <code>/join</code></td>
+<td>None</td>
+<td>Join landing/eligibility links</td>
+<td>No business API calls beyond initial load</td>
+</tr>
+<tr>
+<td><code>/join/NM</code></td>
+<td><code>NM</code> visitor account</td>
+<td>Personal info, consent</td>
+<td><code>createNewMember({ type: &quot;JOIN&quot;, memberType: &quot;NM&quot;, memberInfo.exclude_directory: true, ...formData })</code></td>
+</tr>
+<tr>
+<td><code>/join/STU</code></td>
+<td><code>STU</code> student</td>
+<td>Personal info, dental hygiene education, communications, confirmation</td>
+<td><code>createNewMember({ type: &quot;JOIN&quot;, memberType: &quot;STU&quot;, ...formData })</code></td>
+</tr>
+<tr>
+<td><code>/join/FM</code></td>
+<td><code>FM</code> full member</td>
+<td>Personal info, communications, insurance, confirmation</td>
+<td><code>createNewMember({ type: &quot;JOIN&quot;, memberType: &quot;FM&quot;, paymentPlanContext: state.context, ...formData })</code></td>
+</tr>
+<tr>
+<td><code>/join/SUPPT</code></td>
+<td><code>SUPPT</code> supportive member</td>
+<td>Personal info, communications, confirmation</td>
+<td><code>createNewMember({ type: &quot;JOIN&quot;, memberType: &quot;SUPPT&quot;, paymentPlanContext: state.context, ...formData })</code></td>
+</tr>
+</tbody>
+</table>
+<p>The FM and SUPPT routes instantiate the payment-plan state machine, but their payment-plan wizard steps are currently commented out. The submit helper still contains a payment-plan branch if <code>paymentPlanContext.DUES</code> is present.</p>
+<h2>Detailed Calls</h2>
+<h3>Load Lookup Data</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Query string <code>table</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: LookupOption[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Join personal info, visitor info, education, insurance, and additional-info select controls</td>
+</tr>
+</tbody>
+</table>
+<p>Lookup option shape is inferred from usage:</p>
+<pre><code class="language-json">{
+  &quot;Code&quot;: &quot;...&quot;,
+  &quot;Name&quot;: &quot;...&quot;,
+  &quot;CountryCode&quot;: &quot;...&quot;
+}
+</code></pre>
+<p><code>CountryCode</code> is used by the country lookup; not every lookup option contains it.</p>
+<h3>Read Member/Session Status</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: MemberInfo, server_time?: string }</code> or an error payload with <code>data</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Join validation, server-time dependent insurance/payment-plan logic, and member-info form defaults</td>
+</tr>
+</tbody>
+</table>
+<p>Join is allowed only when the returned member state indicates no logged-in user:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;status&quot;: &quot;User undefined&quot;
+  }
+}
+</code></pre>
+<h3>Validate New Email</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/ValidateNewEmail.ashx?email={email}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Email validation JSON from Wicket/iMIS. The form treats the returned value as the async validator result.</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Join personal-info email field in <code>MemberInfoEdit</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Create Member Account</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdatePersonalInfo.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>JSON string containing selected member-info fields plus <code>get_summaryonly: true</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: MemberInfo }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>First step of <code>createNewMember</code> when <code>memberInfo.id</code> is missing</td>
+</tr>
+</tbody>
+</table>
+<p>The join create-account request picks only these fields:</p>
+<p><code>first_name</code>, <code>middle_name</code>, <code>last_name</code>, <code>street</code>, <code>street2</code>, <code>city</code>, <code>country</code>, <code>province</code>, <code>chapter</code>, <code>postal_code</code>, <code>cell_phone</code>, <code>phone</code>, <code>email</code>, <code>alternate_email</code>, <code>date_of_birth</code>, <code>preferred_language</code>, <code>exclude_directory</code>, <code>password</code>, <code>member_type</code>, <code>join_reason</code>, <code>job_description</code>, <code>ipn_status</code>, <code>indigenous_status</code>, <code>canadapost_id</code>, <code>name_log_string</code>, and <code>get_summaryonly</code>.</p>
+<p>If <code>memberInfo.selected_chapter</code> is populated, the submit helper copies it to <code>memberInfo.chapter</code> before the request.</p>
+<h3>Save Join Orofacial Answer</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdatecdhaQuestions.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>JSON string <code>{ seqn?, question_code, question, answer }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Wicket/iMIS JSON response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>createAccount</code> after <code>UpdatePersonalInfo.ashx</code> when <code>memberInfo.orofacial_status</code> is present</td>
+</tr>
+</tbody>
+</table>
+<p>Current payload:</p>
+<pre><code class="language-json">{
+  &quot;seqn&quot;: &quot;...&quot;,
+  &quot;question_code&quot;: &quot;OROFACIAL_STATUS&quot;,
+  &quot;question&quot;: &quot;Do you practice orofacial myofunctional therapy?&quot;,
+  &quot;answer&quot;: &quot;yes&quot;
+}
+</code></pre>
+<h3>Update Communications</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Communications object with <code>is_update: true</code> and <code>email_address: memberInfo.email</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Join consent/communications step during final submit</td>
+</tr>
+</tbody>
+</table>
+<p>Before sending, the client converts numeric <code>0</code> and <code>1</code> values to booleans. It also removes most <code>*_updated</code> values because the legacy C# endpoint rejects JavaScript dates; <code>eventcal_updated</code> is replaced with a hard-coded <code>/Date(...)/</code> value.</p>
+<p>For student joins, the submit helper forces:</p>
+<pre><code class="language-json">{
+  &quot;e_journal&quot;: 1,
+  &quot;e_ohcanada&quot;: 1,
+  &quot;is_update&quot;: true,
+  &quot;email_address&quot;: &quot;member@example.com&quot;
+}
+</code></pre>
+<p>After a successful update, the client refreshes communications with <code>GET {hostUrl}/UpdateCommunications.ashx</code>.</p>
+<h3>Refresh Communications</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Follow-up refresh after the communications update</td>
+</tr>
+</tbody>
+</table>
+<h3>Save Student Education</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateDHEducation.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ update: { dh_degree, dh_university, dh_grad_year, dh_grad_month, dh_year_attend?, seqn? } }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Education[] }</code> or Wicket/iMIS education response</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>/join/STU</code> final submit</td>
+</tr>
+</tbody>
+</table>
+<p><code>dh_year_attend</code> is included by the student education form. After the legacy save succeeds, the shared education helper waits two seconds and refreshes education through the new API:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>CDHA bearer token</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: boolean, data: Education[], message?: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Post-save education refresh</td>
+</tr>
+</tbody>
+</table>
+<h3>Update Billing and Insurance</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateBilling.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Insurance/billing object from the <code>insurance</code> form, or <code>{}</code> for supportive members</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: any }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>/join/FM</code> insurance choice and <code>/join/SUPPT</code> billing initialization</td>
+</tr>
+</tbody>
+</table>
+<p>FM insurance request fields are inferred from the form:</p>
+<p><code>insurance</code>, <code>add_extension</code>.</p>
+<p>The <code>insurance</code> value is selected from lookup code <code>INS01</code> or <code>INS02</code>. <code>add_extension</code> can be <code>false</code>, <code>true</code>, <code>null</code>, or omitted depending on province and extension eligibility.</p>
+<h3>Force Invoice Generation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>https://www.cdha.ca/CDHAstaff/InvoiceTest.ashx?users={memberInfo.id or 1}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Current browser session</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Query <code>users</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Raw response from <code>InvoiceTest.ashx</code>; the client stores it only for error diagnostics</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>createNewMember</code> after billing/education updates and before adding invoice lines to the cart</td>
+</tr>
+</tbody>
+</table>
+<p>For new joins, the original <code>formData.memberInfo.id</code> is normally absent, so the current code falls back to <code>users=1</code>.</p>
+<h3>Add Invoice to Cart</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ &quot;addInvoice&quot;: true }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart update JSON</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>createNewMember</code> after <code>InvoiceTest.ashx</code></td>
+</tr>
+</tbody>
+</table>
+<p>The Redux cart helper then waits two seconds and refreshes cart items.</p>
+<h3>Read Cart Items</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/getCartItems.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart JSON. <code>createNewMember</code> reads <code>res.invoices.Lines</code> and <code>res.lines</code>.</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Verifying whether a <code>DUES</code> invoice was added and collecting old cart lines to remove</td>
+</tr>
+</tbody>
+</table>
+<p>The submit helper redirects based on the cart response:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Redirect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Join has an invoice line where <code>Item.ItemCode === &quot;DUES&quot;</code></td>
+<td><code>/cdha/joinsuccess</code> or <code>/achd/joinsuccess</code></td>
+</tr>
+<tr>
+<td>STU join without a dues invoice</td>
+<td><code>/cdha/stujoinconfirm</code> or <code>/achd/stujoinconfirm</code></td>
+</tr>
+<tr>
+<td>FM/SUPPT join without a dues invoice</td>
+<td>Internal <code>/error</code> route and error emails</td>
+</tr>
+<tr>
+<td>NM/other join without a dues invoice</td>
+<td><code>/cdha/profile</code> or <code>/achd/profile</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Remove Existing Cart Lines</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ lines: [{ productCode: line.Item.ItemCode, quantity: 0 }] }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart update JSON</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Cleanup after <code>getCartItems.ashx</code> returns existing <code>res.lines</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Conditional Payment-Plan Enrollment</h3>
+<p>This code exists in <code>createNewMember</code>, but the visible Join FM/SUPPT payment-plan wizard steps are currently commented out. It becomes active only if <code>paymentPlanContext.DUES</code> is present in the submitted data.</p>
+<h4>Update IPN cart line for payment plan</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/updateCart.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Remove IPN and independent practice lines with quantity <code>0</code>; if IPN was selected, add <code>{ productCode: &quot;IPN&quot;, quantity: 1 }</code>; all requests include <code>removeInvoice: true</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Cart update JSON</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Payment-plan branch before saving auto-renewal details</td>
+</tr>
+</tbody>
+</table>
+<h4>Save auto-renewal/payment-plan details</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ action: &quot;UPDATE&quot;, data: AutoRenewalUpdate }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: AutoRenewalSubscription }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Payment-plan branch when dues draft date is selected</td>
+</tr>
+</tbody>
+</table>
+<p><code>AutoRenewalUpdate</code> fields sent by Join can include:</p>
+<p><code>PAYMENT_METHOD</code>, <code>CC_NUMBER</code>, <code>CC_NAME</code>, <code>CC_CCV</code>, <code>CC_MONTH</code>, <code>CC_YEAR</code>, <code>DUES_DRAFT_DATE</code>, <code>IPN_DRAFT_DATE</code>, <code>MONTHS</code>, <code>FREQUENCY</code>, <code>PERPETUAL</code>.</p>
+<p>Draft dates are formatted as C# JSON dates using the selected <code>DD/MM</code> value and the hard-coded year <code>2026</code>, for example <code>/Date(1787184000000)/</code>.</p>
+<h3>Error Notification Emails</h3>
+<h4>Send operational error email</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/SendErrorEmail.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ emailSubject, emailMessage }</code> with password and credit-card fields stripped by regex</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: any }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Create-account/cart failures and missing invoice diagnostics</td>
+</tr>
+</tbody>
+</table>
+<h4>Send generic CDHA email</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/SendEmailGeneric.ashx</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>iMIS session cookie</td>
+</tr>
+<tr>
+<td>Request</td>
+<td><code>{ emailSubject, emailMessage }</code> with password and credit-card fields stripped by regex</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: any }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Secondary notification for create-account/cart failures and missing invoice diagnostics</td>
+</tr>
+</tbody>
+</table>
+<h2>Canada Post AddressComplete</h2>
+<p>The Join personal-info editor instantiates <code>pca.Address</code> with key <code>KT92-DZ18-BR58-ZD45</code>. The source does not call the Canada Post endpoint directly; the AddressComplete script loaded in <code>public/index.html</code> makes the external lookup requests.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Script/CSS host</td>
+<td><code>http://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js</code> and matching CSS</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Managed by <code>pca.Address</code> while the user searches an address</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Address object with fields such as <code>Line1</code>, <code>Line2</code>, <code>City</code>, <code>ProvinceCode</code>, <code>PostalCode</code>, <code>CountryIso2</code>, <code>Id</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Join personal-info address fields</td>
+</tr>
+</tbody>
+</table>
+<p>The selected address is copied into <code>memberInfo.street</code>, <code>street2</code>, <code>city</code>, <code>province</code>, <code>country</code>, <code>postal_code</code>, <code>canadapost_id</code>, and <code>name_log_string</code>; it is later submitted through <code>UpdatePersonalInfo.ashx</code>.</p>
+<h2>Non-Business Telemetry</h2>
+<p><code>joinRoute.tsx</code> fires Google Analytics events in production when <code>window.gtag</code> exists.</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>join_start</code></td>
+<td>Join route mounts</td>
+</tr>
+<tr>
+<td><code>invoice_added</code></td>
+<td>Join submit found a <code>DUES</code> invoice line in the cart</td>
+</tr>
+<tr>
+<td><code>renew_success</code></td>
+<td>Student join reached the student confirmation branch</td>
+</tr>
+<tr>
+<td><code>renew_success_auto_renewal</code></td>
+<td>Conditional payment-plan branch redirects to auto-renewal success</td>
+</tr>
+</tbody>
+</table>
+<h2>Response Shape Reference</h2>
+<h3>MemberInfo</h3>
+<p>Important fields consumed by Join:</p>
+<p><code>id</code>, <code>status</code>, <code>first_name</code>, <code>middle_name</code>, <code>last_name</code>, <code>street</code>, <code>street2</code>, <code>city</code>, <code>province</code>, <code>country</code>, <code>postal_code</code>, <code>email</code>, <code>alternate_email</code>, <code>phone</code>, <code>cell_phone</code>, <code>date_of_birth</code>, <code>preferred_language</code>, <code>exclude_directory</code>, <code>member_type</code>, <code>chapter</code>, <code>selected_chapter</code>, <code>join_reason</code>, <code>job_description</code>, <code>ipn_status</code>, <code>indigenous_status</code>, <code>canadapost_id</code>, <code>name_log_string</code>, <code>orofacial_status</code>, <code>orofacial_seqn</code>, <code>cut_date</code>, <code>insurance_expires</code>, and <code>show_ins_renew</code>.</p>
+<h3>Communications</h3>
+<p>Important fields consumed by Join:</p>
+<p><code>enews_subscribe</code>, <code>pd_subscribe</code>, <code>benefit_subscribe</code>, <code>products_subscribe</code>, <code>campaign_subscribe</code>, <code>eventcal_subscribe</code>, <code>job_notification_prov</code>, <code>e_ohcanada</code>, <code>e_journal</code>, <code>third_party</code>, <code>gdpr_consent</code>, <code>gdprCommunity_consent</code>, <code>gdprLanguage_consent</code>, <code>email_address</code>, <code>is_update</code>, and related <code>*_updated</code> timestamp fields.</p>
+<h3>Education</h3>
+<p>Important fields consumed by Join:</p>
+<p><code>seqn</code>, <code>dh_degree</code>, <code>dh_university</code>, <code>dh_grad_year</code>, <code>dh_grad_month</code>, <code>dh_year_attend</code>.</p>
+<h3>Insurance</h3>
+<p>Important fields consumed by Join:</p>
+<p><code>insurance</code>, <code>add_extension</code>.</p>
+<h3>Cart</h3>
+<p>Important fields consumed by Join:</p>
+<p><code>invoices.Lines[].Item.ItemCode</code> to detect <code>DUES</code>, and <code>lines[].Item.ItemCode</code> to remove existing cart lines.</p>
+<h3>AutoRenewalUpdate</h3>
+<p>Used only by the currently hidden payment-plan branch:</p>
+<p><code>PAYMENT_METHOD</code>, <code>CC_NUMBER</code>, <code>CC_NAME</code>, <code>CC_CCV</code>, <code>CC_MONTH</code>, <code>CC_YEAR</code>, <code>DUES_DRAFT_DATE</code>, <code>IPN_DRAFT_DATE</code>, <code>MONTHS</code>, <code>FREQUENCY</code>, <code>PERPETUAL</code>.</p>
+<h2>Legacy or Conditional APIs Found But Not Currently Reached</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code> update branch</td>
+<td>Implemented in <code>createNewMember</code>, but visible Join payment-plan steps are commented out.</td>
+</tr>
+<tr>
+<td><code>{hostUrl}/updateCart.ashx</code> IPN payment-plan branch</td>
+<td>Same as above; active only if <code>paymentPlanContext.DUES</code> is present.</td>
+</tr>
+<tr>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code> update</td>
+<td>The shared expertise/education container imports the old expertise updater, but Join hides expertise editing and only shows education.</td>
+</tr>
+</tbody>
+</table>
+<h2>Open Questions</h2>
+<ul>
+<li>Confirm whether <code>InvoiceTest.ashx?users=1</code> is intentional for brand-new join accounts when <code>formData.memberInfo.id</code> is not yet available.</li>
+<li>Confirm whether Join FM/SUPPT payment-plan steps should remain hidden. If they are re-enabled, the conditional <code>UpdateAutoRenew.ashx</code> and IPN cart-update branch becomes part of the active Join API surface.</li>
+<li>Confirm exact server response shapes for legacy <code>.ashx</code> endpoints. The frontend usually validates only top-level <code>data</code>, cart <code>lines</code>, and invoice <code>Lines</code> fields.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

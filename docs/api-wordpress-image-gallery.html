@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Gallery API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link active" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Image Gallery API Calls</h1>
+<p>This document covers the WordPress image gallery application entry point and the API helpers used by the gallery UI.</p>
+<p>Entry point:</p>
+<ul>
+<li><code>/home/lalves/dev/cdha-sst/packages/image-gallery/src/App.tsx</code></li>
+</ul>
+<p>Client entry:</p>
+<ul>
+<li><code>App.tsx</code> renders <code>components/ImageGallery.tsx</code></li>
+<li><code>src/lib/api/imageGallery.ts</code> contains the gallery list, upload URL, and delete helpers</li>
+<li><code>src/lib/api/memberInfo.ts</code> loads the current member record for upload gating</li>
+<li><code>src/lib/token.ts</code> provides the shared CDHA client token flow</li>
+</ul>
+<p>Current gallery code used by the app:</p>
+<ul>
+<li><code>PYPO2026</code></li>
+</ul>
+<h2>API Inventory</h2>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Request</th>
+<th>Response</th>
+<th>Used By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List gallery images</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/imagegallery/{galleryCode}</code></td>
+<td>None</td>
+<td><code>galleryCode</code> in the path</td>
+<td><code>{ success: true, data: any[] }</code></td>
+<td>Public gallery load in <code>components/ImageGallery.tsx</code></td>
+</tr>
+<tr>
+<td>Load current member info</td>
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/memberInfo</code></td>
+<td>Bearer token</td>
+<td>No body</td>
+<td><code>{ data: MemberInfo }</code></td>
+<td>Upload button gating in <code>components/ImageGallery.tsx</code></td>
+</tr>
+<tr>
+<td>Acquire client auth token</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/auth/token</code></td>
+<td>None at the API level</td>
+<td>JSON body with <code>code</code> and <code>context</code></td>
+<td><code>{ token: string }</code></td>
+<td>Shared helper for authenticated gallery calls</td>
+</tr>
+<tr>
+<td>Production auth bootstrap</td>
+<td><code>POST</code></td>
+<td><code>/api/CDHASessionToken</code></td>
+<td>Site request verification token</td>
+<td>iMIS generic entity payload for <code>CDHASessionToken</code></td>
+<td>Session token payload with a generated <code>UserCode</code></td>
+<td>Internal helper used before <code>{newHostUrl}/auth/token</code> in production</td>
+</tr>
+<tr>
+<td>Request presigned upload URL</td>
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/generate-upload-url</code></td>
+<td>Bearer token</td>
+<td>JSON body with file metadata</td>
+<td><code>{ success: true, url: string }</code></td>
+<td>Upload flow in <code>components/ImageGallery.tsx</code></td>
+</tr>
+<tr>
+<td>Upload file to storage</td>
+<td><code>PUT</code></td>
+<td>Presigned <code>url</code> returned from the upload-url request</td>
+<td>None</td>
+<td>Raw file bytes with matching <code>Content-Type</code></td>
+<td>HTTP 200 on success</td>
+<td>Upload flow in <code>components/ImageGallery.tsx</code></td>
+</tr>
+<tr>
+<td>Delete gallery image</td>
+<td><code>DELETE</code></td>
+<td><code>{newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/delete-image/{imageId}</code></td>
+<td>Bearer token</td>
+<td><code>galleryCode</code> and <code>imageId</code> in the path</td>
+<td><code>{ success: true, message: string }</code></td>
+<td>Delete branch in <code>components/ImageGallery.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h2>1. Public Gallery Listing</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/imagegallery/{galleryCode}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>galleryCode</code> in the path</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true, data: any[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getImagesFromGallery()</code> in <code>src/lib/api/imageGallery.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>This is the initial page load for the gallery. The app uses it to render the image grid and video thumbnails for the active gallery.</p>
+<h3>Current usage</h3>
+<p>The current app hard-codes <code>galleryCode: 'PYPO2026'</code>.</p>
+<h3>Response shape</h3>
+<p>The backend route returns an array of image records. The route type is loose (<code>any[]</code>), but the client currently relies on these fields:</p>
+<ul>
+<li><code>id</code></li>
+<li><code>userId</code></li>
+<li><code>fileExtension</code></li>
+<li><code>contentType</code></li>
+<li><code>height</code></li>
+</ul>
+<p>The gallery UI uses <code>contentType</code> to decide whether to render an <code>img</code> or a <code>video</code>, and it uses <code>fileExtension</code> and <code>id</code> to build the public file URL.</p>
+<h3>Error responses</h3>
+<p>The backend route also exposes <code>404</code> when the gallery does not exist and <code>500</code> for server errors.</p>
+<h2>2. Member Info Lookup</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/memberInfo</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>No body</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: MemberInfo }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getMemberInfo()</code> in <code>src/lib/api/memberInfo.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The gallery page uses the current member record to decide whether to show the upload action. If no member id is returned, the UI falls back to the public sign-in link.</p>
+<h3>Response shape</h3>
+<p>The backend returns a large <code>MemberInfo</code> payload. The gallery page only consumes:</p>
+<ul>
+<li><code>data.id</code></li>
+</ul>
+<p>Other fields are returned by the API but are not used directly by this page.</p>
+<h2>3. Auth Token Bootstrap</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/auth/token</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None at API level</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>{ code, context }</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ token: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getCDHAClientToken()</code> in <code>src/lib/token.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Production bootstrap</h3>
+<p>In production, the helper first calls <code>/api/CDHASessionToken</code> with the current site context and request verification token to get a one-time <code>UserCode</code>. It then posts that code to <code>{newHostUrl}/auth/token</code>.</p>
+<h3>Development bootstrap</h3>
+<p>In development, the helper skips <code>/api/CDHASessionToken</code> and posts a hard-coded dev context directly to <code>{newHostUrl}/auth/token</code>.</p>
+<h2>4. Production Session Token Bootstrap</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>/api/CDHASessionToken</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>RequestVerificationToken</code> header</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>iMIS generic entity payload for <code>CDHASessionToken</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Session token payload containing the generated <code>UserCode</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>getCDHAClientToken()</code> in production</td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>This is the iMIS-side bootstrap call used to generate the <code>UserCode</code> that is exchanged for a CDHA API token.</p>
+<h2>5. Request Presigned Upload URL</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/generate-upload-url</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>JSON body with file metadata</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true, url: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>requestUploadUrl()</code> in <code>src/lib/api/imageGallery.ts</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Request shape</h3>
+<pre><code class="language-json">{
+  &quot;filename&quot;: &quot;photo.jpg&quot;,
+  &quot;contentType&quot;: &quot;image/jpeg&quot;,
+  &quot;fileExtension&quot;: &quot;jpg&quot;,
+  &quot;size&quot;: 245881
+}
+</code></pre>
+<h3>Current usage</h3>
+<p>The current app posts this request before each upload. The gallery code is fixed to <code>PYPO2026</code> in the client.</p>
+<h3>Error responses</h3>
+<p>The backend route defines <code>401</code> for unauthorized access and <code>500</code> for server errors.</p>
+<h2>6. Upload File to Storage</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>PUT</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>Presigned <code>url</code> returned from the upload-url request</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td>Raw file bytes</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>HTTP 200 on success</td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>The upload loop in <code>components/ImageGallery.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Purpose</h3>
+<p>The API host does not receive the file body directly. The client uploads the file to the presigned storage URL returned by the previous call.</p>
+<h3>Upload behavior</h3>
+<p>The client sets the <code>Content-Type</code> header to the selected file MIME type and retries the gallery view after a short delay once the upload completes.</p>
+<h2>7. Delete Gallery Image</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>DELETE</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/delete-image/{imageId}</code></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Bearer token</td>
+</tr>
+<tr>
+<td>Request input</td>
+<td><code>galleryCode</code> and <code>imageId</code> in the path</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ success: true, message: string }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td>Delete branch in <code>components/ImageGallery.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Current UI state</h3>
+<p>The delete button exists in the component, but it is currently gated off because <code>isAdmin</code> is hard-coded to <code>false</code>.</p>
+<h3>Error responses</h3>
+<p>The backend route also exposes <code>401</code>, <code>403</code>, <code>404</code>, and <code>500</code>.</p>
+<h2>Page-Level Flow</h2>
+<ol>
+<li>The gallery page mounts and loads <code>getMemberInfo()</code> and <code>getImagesFromGallery({ galleryCode: 'PYPO2026' })</code></li>
+<li>The public image list renders as soon as the gallery request resolves</li>
+<li>If the member lookup returns an <code>id</code>, the upload button is shown</li>
+<li>When a file is selected, the client calls <code>generate-upload-url</code></li>
+<li>The client uploads the file to the presigned storage URL with <code>PUT</code></li>
+<li>After upload, the gallery list is refetched</li>
+<li>The delete flow exists in code but is not currently exposed because <code>isAdmin</code> is <code>false</code></li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>The public gallery request does not require authentication.</li>
+<li>The member lookup and upload/delete helpers all share the same token bootstrap.</li>
+<li>The rendered media URLs are direct file URLs on <code>files.cdha.ca</code>, not API calls.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>

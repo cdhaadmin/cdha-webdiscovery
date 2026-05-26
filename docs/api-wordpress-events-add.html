@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Career Centre Screens</title>
+  <title>Events Add API Calls</title>
   <link rel="stylesheet" href="./assets/site.css" />
 </head>
 <body>
@@ -71,7 +71,7 @@
   <span class="nav-title">Profile Screens</span>
   <span class="nav-description">Screenshots for profile display and summary views.</span>
 </a>
-<a class="nav-link active" href="./career-centre-screens.html">
+<a class="nav-link" href="./career-centre-screens.html">
   <span class="nav-title">Career Centre Screens</span>
   <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
 </a>
@@ -126,7 +126,7 @@
   <span class="nav-title">Job Search</span>
   <span class="nav-description">WordPress API calls for job search.</span>
 </a>
-<a class="nav-link" href="./api-wordpress-events-add.html">
+<a class="nav-link active" href="./api-wordpress-events-add.html">
   <span class="nav-title">Events Add</span>
   <span class="nav-description">WordPress API calls for adding events.</span>
 </a>
@@ -155,18 +155,244 @@
     </aside>
     <main class="content">
       <article class="markdown-body">
-<h1>Career Centre Screens</h1>
-<p>This page is a visual companion to <a href="./career-centre.html">career-centre.md</a>.</p>
-<h2>1. Post Your Job Ad Validation</h2>
-<p><img src="./newJobAdValidation.png" alt="Post Your Job Ad Validation" /></p>
-<h2>2. Add New Job Ad</h2>
-<p><img src="./addNewJobad.png" alt="Add New Job Ad" /></p>
-<h2>3. Career Search</h2>
-<p><img src="./JobSearch.png" alt="Career Search" /></p>
-<h2>4. Career Search By City</h2>
-<p><img src="./JobSearchByCity.png" alt="Career Search By City" /></p>
-<h2>5. Career Search Details</h2>
-<p><img src="./JobSearchDetails.png" alt="Career Search Details" /></p>
+<h1>Events Add API Calls</h1>
+<h2>Purpose</h2>
+<p>This page documents the API calls used by the event submission flow wired from the event add route in <code>/home/lalves/dev/frontend/src</code>.</p>
+<p>The repo does not contain a file named <code>eventsAddPage.tsx</code>; the actual add workflow is mounted through <code>components/event/eventAddRoute.tsx</code> and <code>containers/event/addContainer.tsx</code>.</p>
+<h2>Base URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Value</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostUrl</code></td>
+<td><code>https://www.cdha.ca/CDHACommon</code> in development, <code>//{window.location.hostname}/CDHACommon</code> in production</td>
+<td>Legacy Wicket/iMIS <code>.ashx</code> endpoints</td>
+</tr>
+<tr>
+<td><code>newHostUrl</code></td>
+<td><code>https://api.lalves.mycdha.ca</code> in development, <code>https://api.imisdev.mycdha.ca</code> on <code>imisdev</code>, otherwise <code>https://api.mycdha.ca</code></td>
+<td>Lookup table API</td>
+</tr>
+</tbody>
+</table>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>API family</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Wicket/iMIS <code>.ashx</code></td>
+<td>Browser session cookies via <code>withCredentials: true</code></td>
+</tr>
+<tr>
+<td>Lookup API</td>
+<td>No auth for the country table read</td>
+</tr>
+</tbody>
+</table>
+<h2>Page Flow</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>API call</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page bootstrap</td>
+<td><code>GET {newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+<td>Loads the country list used to build the province selector</td>
+</tr>
+<tr>
+<td>Submit event</td>
+<td><code>POST {hostUrl}/UpdateCDHAEvent.ashx</code></td>
+<td>Sends the validated event form payload</td>
+</tr>
+<tr>
+<td>Success route</td>
+<td>none</td>
+<td>Client-side route push to <code>/success</code></td>
+</tr>
+<tr>
+<td>Error route</td>
+<td>none</td>
+<td>Client-side route push to <code>/error</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Detailed Calls</h2>
+<h3>Load Country Lookup</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Query string <code>table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: CountryLookup[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/event/rootContainer.tsx</code> through <code>getLookupData([&quot;COUNTRY&quot;])</code></td>
+</tr>
+</tbody>
+</table>
+<p>The add form uses the Canada row to render province options for countries that require a province/state selection.</p>
+<h3>Submit Event Listing</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCDHAEvent.ashx</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Browser session cookies</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>JSON event payload from the add form</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>Legacy service response; the client reads <code>response.data.data</code> and stores it in <code>addEvent.data</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>components/event/add.tsx</code> submit handler -&gt; <code>containers/event/addContainer.tsx</code> -&gt; <code>api/events/addEvent.ts</code></td>
+</tr>
+</tbody>
+</table>
+<p>The client submits the form fields below:</p>
+<table>
+<thead>
+<tr>
+<th>Form field</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Event name</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>Event website</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City</td>
+</tr>
+<tr>
+<td><code>venue</code></td>
+<td>Venue name</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>Country code</td>
+</tr>
+<tr>
+<td><code>province</code></td>
+<td>Province code</td>
+</tr>
+<tr>
+<td><code>is_ongoing</code></td>
+<td>Boolean-ish checkbox state</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td><code>MM/DD/YYYY</code> string when the event is not ongoing</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td><code>MM/DD/YYYY</code> string when the event is not ongoing</td>
+</tr>
+<tr>
+<td><code>volunteers_needed</code></td>
+<td><code>&quot;true&quot;</code> or <code>&quot;false&quot;</code> from the select control</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Free text, truncated to 1024 characters in the UI</td>
+</tr>
+<tr>
+<td><code>contact_name</code></td>
+<td>Contact person</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Contact email</td>
+</tr>
+<tr>
+<td><code>seqn</code></td>
+<td>Present in the reducer state, but blank for a new listing</td>
+</tr>
+</tbody>
+</table>
+<p>The submit helper does not perform an additional transformation layer. It posts the form state directly after validation.</p>
+<h2>Response Shape</h2>
+<p>The backend response is only partially inferred from the client:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;data&quot;: {}
+  }
+}
+</code></pre>
+<p>The reducer stores the inner <code>data</code> value as <code>addEvent.data</code> and then routes to <code>/success</code>.</p>
+<h2>Where It Is Used</h2>
+<ul>
+<li><code>components/event/eventAddRoute.tsx</code> mounts the add flow.</li>
+<li><code>containers/event/rootContainer.tsx</code> loads the country lookup.</li>
+<li><code>containers/event/addContainer.tsx</code> validates the form and dispatches the submit thunk.</li>
+<li><code>components/event/add.tsx</code> renders the form and collects the payload.</li>
+</ul>
+<h2>Open Questions</h2>
+<ul>
+<li>The server response schema for <code>UpdateCDHAEvent.ashx</code> is not documented in the client; only the nested <code>data</code> field is consumed.</li>
+<li>The requested filename <code>eventsAddPage.tsx</code> does not exist in the current tree; the add workflow is wired through <code>eventAddRoute.tsx</code>.</li>
+</ul>
 
       </article>
     </main>

@@ -76,123 +76,464 @@
   <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
 </a>
         </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
       </nav>
     </aside>
     <main class="content">
       <article class="markdown-body">
-<h1 id="career-centre-reference">Career Centre Reference</h1>
-<h2 id="flow-map">Flow Map</h2>
+<h1>Career Centre Reference</h1>
+<h2>Flow Map</h2>
 <table>
-<thead><tr><th>Flow / state</th><th>Visible screens / steps</th><th>Conditional notes</th></tr></thead>
+<thead>
+<tr>
+<th>Flow / state</th>
+<th>Visible screens / steps</th>
+<th>Conditional notes</th>
+</tr>
+</thead>
 <tbody>
-<tr><td><a href="./career-centre-screens.html">Post Your Job Ad</a></td><td><code>/</code> redirects to <code>#/add</code> -&gt; Job ad form -&gt; Submit for Review -&gt; Thank You or Error route</td><td>Form is blocked by client-side validation before the API request is made</td></tr>
-<tr><td>Salary explanation</td><td>Salary field group -&gt; <code>Salary is now mandatory</code> link -&gt; modal -&gt; Close</td><td>Modal explains the salary requirement and does not change form values</td></tr>
-<tr><td>Successful job ad submission</td><td>Form submit -&gt; <code>UpdateJobAd.ashx</code> -&gt; <code>/success</code> route</td><td>User sees review timing message; submitter also receives an email confirming the post will be reviewed</td></tr>
-<tr><td>Failed job ad submission</td><td>Form submit -&gt; API/network error -&gt; <code>/error</code> route</td><td>User sees a generic retry/contact-CDHA message</td></tr>
-<tr><td>Staff review outcome</td><td>Submitted ad is reviewed outside the public form</td><td>User receives an email when the ad is approved, or when it is rejected with the rejection reason</td></tr>
-<tr><td><a href="./career-centre-screens.html">CDHA's Career Centre - Search</a></td><td>Email notification sign-up -&gt; search title -&gt; search bar and filters -&gt; results table -&gt; details popup</td><td>Search results are loaded once, sorted newest first, then filtered in the browser</td></tr>
-<tr><td>Search by URL province</td><td>Page opened with <code>?Code={province}</code> -&gt; results filtered to province</td><td>Used by email links</td></tr>
-<tr><td>Search details</td><td>Select a result row -&gt; details popup opens over the results table -&gt; close icon or outside click closes it</td><td>Details are taken from the selected result row</td></tr>
+<tr>
+<td><a href="./career-centre-screens.html">Post Your Job Ad</a></td>
+<td><code>/</code> redirects to <code>#/add</code> -&gt; Job ad form -&gt; Submit for Review -&gt; Thank You or Error route</td>
+<td>Form is blocked by client-side validation before the API request is made</td>
+</tr>
+<tr>
+<td>Salary explanation</td>
+<td>Salary field group -&gt; <code>Salary is now mandatory</code> link -&gt; modal -&gt; Close</td>
+<td>Modal explains the salary requirement and does not change form values</td>
+</tr>
+<tr>
+<td>Successful job ad submission</td>
+<td>Form submit -&gt; <code>UpdateJobAd.ashx</code> -&gt; <code>/success</code> route</td>
+<td>User sees review timing message; submitter also receives an email confirming the post will be reviewed</td>
+</tr>
+<tr>
+<td>Failed job ad submission</td>
+<td>Form submit -&gt; API/network error -&gt; <code>/error</code> route</td>
+<td>User sees a generic retry/contact-CDHA message</td>
+</tr>
+<tr>
+<td>Staff review outcome</td>
+<td>Submitted ad is reviewed outside the public form</td>
+<td>User receives an email when the ad is approved, or when it is rejected with the rejection reason</td>
+</tr>
+<tr>
+<td><a href="./career-centre-screens.html">CDHA's Career Centre - Search</a></td>
+<td>Email notification sign-up -&gt; search title -&gt; search bar and filters -&gt; results table -&gt; details popup</td>
+<td>Search results are loaded once, sorted newest first, then filtered in the browser</td>
+</tr>
+<tr>
+<td>Search by URL province</td>
+<td>Page opened with <code>?Code={province}</code> -&gt; results filtered to province</td>
+<td>Used by email links</td>
+</tr>
+<tr>
+<td>Search details</td>
+<td>Select a result row -&gt; details popup opens over the results table -&gt; close icon or outside click closes it</td>
+<td>Details are taken from the selected result row</td>
+</tr>
 </tbody>
 </table>
-<h3 id="shared-components">Shared Components</h3>
+<h3>Shared Components</h3>
 <table>
-<thead><tr><th>Pattern</th><th>Post Your Job Ad</th><th>Career Search</th></tr></thead>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Post Your Job Ad</th>
+<th>Career Search</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Translation bundle</td><td><code>jobAdd</code></td><td><code>jobAddv2</code></td></tr>
-<tr><td>Redux provider</td><td>Yes</td><td>Yes</td></tr>
-<tr><td>Hash router</td><td>Yes</td><td>Yes</td></tr>
-<tr><td>Google Places autocomplete</td><td>Yes, city/location</td><td>Yes, search location</td></tr>
-<tr><td>Province lookup</td><td>Yes, from <code>COUNTRY</code> lookup</td><td>Yes, for email notification sign-up</td></tr>
-<tr><td>Loading state</td><td>Yes, around submit</td><td>Yes, initial job-ad load and communication lookup</td></tr>
-<tr><td>Error route / message</td><td>Yes</td><td>Initial load shows simple error text</td></tr>
-<tr><td>Details popup</td><td>No</td><td>Yes</td></tr>
+<tr>
+<td>Translation bundle</td>
+<td><code>jobAdd</code></td>
+<td><code>jobAddv2</code></td>
+</tr>
+<tr>
+<td>Redux provider</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Hash router</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Google Places autocomplete</td>
+<td>Yes, city/location</td>
+<td>Yes, search location</td>
+</tr>
+<tr>
+<td>Province lookup</td>
+<td>Yes, from <code>COUNTRY</code> lookup</td>
+<td>Yes, for email notification sign-up</td>
+</tr>
+<tr>
+<td>Loading state</td>
+<td>Yes, around submit</td>
+<td>Yes, initial job-ad load and communication lookup</td>
+</tr>
+<tr>
+<td>Error route / message</td>
+<td>Yes</td>
+<td>Initial load shows simple error text</td>
+</tr>
+<tr>
+<td>Details popup</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
 </tbody>
 </table>
-<h2 id="component-catalog">Component Catalog</h2>
-<h2 id="1-post-your-job-ad-page">1. Post Your Job Ad Page</h2>
-<h3 id="purpose">Purpose</h3>
+<h2>Component Catalog</h2>
+<h2>1. Post Your Job Ad Page</h2>
+<h3>Purpose</h3>
 <p>This is the public job-ad submission form used by employers or other submitters to send a Career Centre posting to CDHA for review. Current examples are shown in <a href="./career-centre-screens.html">Career Centre Screens</a>.</p>
-<h3 id="entry-point">Entry Point</h3>
+<h3>Entry Point</h3>
 <table>
-<thead><tr><th>Item</th><th>Current implementation</th></tr></thead>
+<thead>
+<tr>
+<th>Item</th>
+<th>Current implementation</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Application entry</td><td><code>src/jobAddPage.tsx</code></td></tr>
-<tr><td>Rendered route component</td><td><code>JobAddRoute</code></td></tr>
-<tr><td>Default route behavior</td><td><code>/</code> redirects to <code>#/add</code></td></tr>
-<tr><td>Form route</td><td><code>#/add</code></td></tr>
-<tr><td>Success route</td><td><code>#/success</code></td></tr>
-<tr><td>Error route</td><td><code>#/error</code></td></tr>
-<tr><td>Submit endpoint</td><td><code>POST {hostUrl}/UpdateJobAd.ashx</code> with credentials</td></tr>
+<tr>
+<td>Application entry</td>
+<td><code>src/jobAddPage.tsx</code></td>
+</tr>
+<tr>
+<td>Rendered route component</td>
+<td><code>JobAddRoute</code></td>
+</tr>
+<tr>
+<td>Default route behavior</td>
+<td><code>/</code> redirects to <code>#/add</code></td>
+</tr>
+<tr>
+<td>Form route</td>
+<td><code>#/add</code></td>
+</tr>
+<tr>
+<td>Success route</td>
+<td><code>#/success</code></td>
+</tr>
+<tr>
+<td>Error route</td>
+<td><code>#/error</code></td>
+</tr>
+<tr>
+<td>Submit endpoint</td>
+<td><code>POST {hostUrl}/UpdateJobAd.ashx</code> with credentials</td>
+</tr>
 </tbody>
 </table>
-<h3 id="page-layout">Page Layout</h3>
+<h3>Page Layout</h3>
 <table>
-<thead><tr><th>Region</th><th>Content</th></tr></thead>
+<thead>
+<tr>
+<th>Region</th>
+<th>Content</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Page title</td><td><code>Post Your Job Ad</code></td></tr>
-<tr><td>Form body</td><td>Position, term, salary, location, dates, company, contact, description</td></tr>
-<tr><td>Salary modal</td><td>Explanation shown from the <code>Learn why</code> link</td></tr>
-<tr><td>Submit action</td><td><code>Submit for Review</code> button centered at the bottom</td></tr>
+<tr>
+<td>Page title</td>
+<td><code>Post Your Job Ad</code></td>
+</tr>
+<tr>
+<td>Form body</td>
+<td>Position, term, salary, location, dates, company, contact, description</td>
+</tr>
+<tr>
+<td>Salary modal</td>
+<td>Explanation shown from the <code>Learn why</code> link</td>
+</tr>
+<tr>
+<td>Submit action</td>
+<td><code>Submit for Review</code> button centered at the bottom</td>
+</tr>
 </tbody>
 </table>
-<h3 id="field-rules">Field Rules</h3>
+<h3>Field Rules</h3>
 <table>
-<thead><tr><th>Field</th><th>Label shown to user</th><th>Required</th><th>Validation / rules</th><th>Submission notes</th></tr></thead>
+<thead>
+<tr>
+<th>Field</th>
+<th>Label shown to user</th>
+<th>Required</th>
+<th>Validation / rules</th>
+<th>Submission notes</th>
+</tr>
+</thead>
 <tbody>
-<tr><td><code>title</code></td><td>Position Title</td><td>Yes</td><td>Non-empty after trim; max 100 characters</td><td>Posted as entered</td></tr>
-<tr><td><code>term</code></td><td>Term</td><td>Yes</td><td>Must select one value</td><td>Values: <code>CONTRACT</code>, <code>FULL_TIME</code>, <code>PART_TIME</code>, <code>PERMANENT</code>, <code>TEMPORARY</code></td></tr>
-<tr><td><code>salary</code></td><td>Salary</td><td>Yes</td><td>Must select salary mode</td><td>Values: <code>RANGE</code> or <code>BASE</code>; default rendered option is <code>RANGE</code></td></tr>
-<tr><td><code>minimum</code></td><td>Minimum / Base</td><td>Yes</td><td>Number; greater than 0</td><td>Used to build the formatted <code>salary</code> string</td></tr>
-<tr><td><code>maximum</code></td><td>Maximum</td><td>Required when salary mode is <code>RANGE</code></td><td>Number; greater than 0; must be higher than <code>minimum</code></td><td>Cleared when salary mode is <code>BASE</code></td></tr>
-<tr><td><code>rate</code></td><td>Rate</td><td>Yes</td><td>Must select one value</td><td>Values: <code>hourly</code> or <code>yearly</code>; <code>yearly</code> is hidden when term is <code>PART_TIME</code></td></tr>
-<tr><td><code>geographical_area</code></td><td>City</td><td>Yes</td><td>Non-empty; max 100 characters; must come from Google Places unless province is <code>IN</code></td><td>Google Places writes city, province, latitude, and longitude</td></tr>
-<tr><td><code>province</code></td><td>Province</td><td>Yes</td><td>Must select province or International</td><td>Changing province clears latitude/longitude; non-international province clears city</td></tr>
-<tr><td><code>lat</code></td><td>Hidden latitude</td><td>No</td><td>Set only by Google Places</td><td>Sent only when numeric</td></tr>
-<tr><td><code>lng</code></td><td>Hidden longitude</td><td>No</td><td>Set only by Google Places</td><td>Sent only when numeric</td></tr>
-<tr><td><code>start_date</code></td><td>Start Date</td><td>Yes</td><td>Must be a valid date; must be today or future</td><td>Format hint shown as <code>(MM/DD/YYYY)</code></td></tr>
-<tr><td><code>deadline</code></td><td>Deadline</td><td>Yes</td><td>Must be a valid date; must be today or future; cannot be more than 3 months after today</td><td>Format hint shown as <code>(MM/DD/YYYY)</code></td></tr>
-<tr><td><code>co_name</code></td><td>Company Name</td><td>Yes</td><td>Non-empty after trim; max 100 characters</td><td>Posted as entered</td></tr>
-<tr><td><code>contact_name</code></td><td>Contact Info</td><td>Yes</td><td>Non-empty after trim; max 250 characters</td><td>Label says email, phone, etc.</td></tr>
-<tr><td><code>description</code></td><td>Position Description</td><td>Yes</td><td>Non-empty after trim; max 5000 characters</td><td>Posted as entered</td></tr>
-<tr><td><code>qualifications</code></td><td>Qualifications</td><td>No visible field</td><td>Field is commented out in the UI</td><td>Submitted as <code>N/A</code></td></tr>
+<tr>
+<td><code>title</code></td>
+<td>Position Title</td>
+<td>Yes</td>
+<td>Non-empty after trim; max 100 characters</td>
+<td>Posted as entered</td>
+</tr>
+<tr>
+<td><code>term</code></td>
+<td>Term</td>
+<td>Yes</td>
+<td>Must select one value</td>
+<td>Values: <code>CONTRACT</code>, <code>FULL_TIME</code>, <code>PART_TIME</code>, <code>PERMANENT</code>, <code>TEMPORARY</code></td>
+</tr>
+<tr>
+<td><code>salary</code></td>
+<td>Salary</td>
+<td>Yes</td>
+<td>Must select salary mode</td>
+<td>Values: <code>RANGE</code> or <code>BASE</code>; default rendered option is <code>RANGE</code></td>
+</tr>
+<tr>
+<td><code>minimum</code></td>
+<td>Minimum / Base</td>
+<td>Yes</td>
+<td>Number; greater than 0</td>
+<td>Used to build the formatted <code>salary</code> string</td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td>Maximum</td>
+<td>Required when salary mode is <code>RANGE</code></td>
+<td>Number; greater than 0; must be higher than <code>minimum</code></td>
+<td>Cleared when salary mode is <code>BASE</code></td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td>Rate</td>
+<td>Yes</td>
+<td>Must select one value</td>
+<td>Values: <code>hourly</code> or <code>yearly</code>; <code>yearly</code> is hidden when term is <code>PART_TIME</code></td>
+</tr>
+<tr>
+<td><code>geographical_area</code></td>
+<td>City</td>
+<td>Yes</td>
+<td>Non-empty; max 100 characters; must come from Google Places unless province is <code>IN</code></td>
+<td>Google Places writes city, province, latitude, and longitude</td>
+</tr>
+<tr>
+<td><code>province</code></td>
+<td>Province</td>
+<td>Yes</td>
+<td>Must select province or International</td>
+<td>Changing province clears latitude/longitude; non-international province clears city</td>
+</tr>
+<tr>
+<td><code>lat</code></td>
+<td>Hidden latitude</td>
+<td>No</td>
+<td>Set only by Google Places</td>
+<td>Sent only when numeric</td>
+</tr>
+<tr>
+<td><code>lng</code></td>
+<td>Hidden longitude</td>
+<td>No</td>
+<td>Set only by Google Places</td>
+<td>Sent only when numeric</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>Start Date</td>
+<td>Yes</td>
+<td>Must be a valid date; must be today or future</td>
+<td>Format hint shown as <code>(MM/DD/YYYY)</code></td>
+</tr>
+<tr>
+<td><code>deadline</code></td>
+<td>Deadline</td>
+<td>Yes</td>
+<td>Must be a valid date; must be today or future; cannot be more than 3 months after today</td>
+<td>Format hint shown as <code>(MM/DD/YYYY)</code></td>
+</tr>
+<tr>
+<td><code>co_name</code></td>
+<td>Company Name</td>
+<td>Yes</td>
+<td>Non-empty after trim; max 100 characters</td>
+<td>Posted as entered</td>
+</tr>
+<tr>
+<td><code>contact_name</code></td>
+<td>Contact Info</td>
+<td>Yes</td>
+<td>Non-empty after trim; max 250 characters</td>
+<td>Label says email, phone, etc.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Position Description</td>
+<td>Yes</td>
+<td>Non-empty after trim; max 5000 characters</td>
+<td>Posted as entered</td>
+</tr>
+<tr>
+<td><code>qualifications</code></td>
+<td>Qualifications</td>
+<td>No visible field</td>
+<td>Field is commented out in the UI</td>
+<td>Submitted as <code>N/A</code></td>
+</tr>
 </tbody>
 </table>
-<h3 id="salary-behavior">Salary Behavior</h3>
+<h3>Salary Behavior</h3>
 <table>
-<thead><tr><th>Behavior</th><th>Rule</th></tr></thead>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Rule</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Salary is mandatory</td><td>The salary mode, amount, and rate are required before submit</td></tr>
-<tr><td>Range salary</td><td>Submitted as <code>$minimum - $maximum/rate</code></td></tr>
-<tr><td>Base salary</td><td>Submitted as <code>$minimum / rate</code></td></tr>
-<tr><td>Part-time term</td><td>Yearly rate option is hidden</td></tr>
-<tr><td>Salary explanation</td><td><code>Learn why</code> opens a modal explaining wage-details requirements</td></tr>
+<tr>
+<td>Salary is mandatory</td>
+<td>The salary mode, amount, and rate are required before submit</td>
+</tr>
+<tr>
+<td>Range salary</td>
+<td>Submitted as <code>$minimum - $maximum/rate</code></td>
+</tr>
+<tr>
+<td>Base salary</td>
+<td>Submitted as <code>$minimum / rate</code></td>
+</tr>
+<tr>
+<td>Part-time term</td>
+<td>Yearly rate option is hidden</td>
+</tr>
+<tr>
+<td>Salary explanation</td>
+<td><code>Learn why</code> opens a modal explaining wage-details requirements</td>
+</tr>
 </tbody>
 </table>
-<h3 id="location-behavior">Location Behavior</h3>
+<h3>Location Behavior</h3>
 <ul>
 <li>Google Places autocomplete is restricted to Canadian regions.</li>
-<li>Selecting a Google Places location sets:</li>
+<li>Selecting a Google Places location sets:
+<ul>
 <li><code>geographical_area</code></li>
 <li><code>province</code></li>
 <li><code>lat</code></li>
 <li><code>lng</code></li>
+</ul>
+</li>
 <li>Manually typing into City clears latitude and longitude.</li>
 <li>For Canadian province postings, the user must select a Google Places dropdown option.</li>
 <li>International postings use province value <code>IN</code> and do not require latitude/longitude.</li>
 </ul>
-<h3 id="submit-behavior">Submit Behavior</h3>
+<h3>Submit Behavior</h3>
 <table>
-<thead><tr><th>Step</th><th>Behavior</th></tr></thead>
+<thead>
+<tr>
+<th>Step</th>
+<th>Behavior</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Submit clicked</td><td><code>react-hook-form</code> validates all registered fields</td></tr>
-<tr><td>Validation fails</td><td>Invalid fields receive red border styling and inline error text</td></tr>
-<tr><td>Validation passes</td><td>Data is transformed and posted to <code>UpdateJobAd.ashx</code></td></tr>
-<tr><td>API succeeds</td><td>Redux status becomes <code>success</code> and route changes to <code>#/success</code></td></tr>
-<tr><td>API fails</td><td>Redux status becomes <code>Error</code>, a shared error is set, and route changes to <code>#/error</code></td></tr>
+<tr>
+<td>Submit clicked</td>
+<td><code>react-hook-form</code> validates all registered fields</td>
+</tr>
+<tr>
+<td>Validation fails</td>
+<td>Invalid fields receive red border styling and inline error text</td>
+</tr>
+<tr>
+<td>Validation passes</td>
+<td>Data is transformed and posted to <code>UpdateJobAd.ashx</code></td>
+</tr>
+<tr>
+<td>API succeeds</td>
+<td>Redux status becomes <code>success</code> and route changes to <code>#/success</code></td>
+</tr>
+<tr>
+<td>API fails</td>
+<td>Redux status becomes <code>Error</code>, a shared error is set, and route changes to <code>#/error</code></td>
+</tr>
 </tbody>
 </table>
-<h3 id="user-communications">User Communications</h3>
+<h3>User Communications</h3>
 <ul>
 <li>After successful submission, the page tells the user that CDHA staff will review the entry and post within the next 3 business days.</li>
 <li>After submission, the user receives an email confirming that the post will be reviewed.</li>
@@ -200,143 +541,359 @@
 <li>If staff reject the posting, the user receives an email with the rejection reason.</li>
 <li>The approve/reject decision and email content are part of the review workflow outside the public <code>Post Your Job Ad</code> form.</li>
 </ul>
-<h2 id="2-career-search-page">2. Career Search Page</h2>
-<h3 id="purpose">Purpose</h3>
+<h2>2. Career Search Page</h2>
+<h3>Purpose</h3>
 <p>This is the public Career Centre search page used to browse approved job postings, filter by location or term, subscribe to job alerts, and open a detail popup for a selected posting.</p>
-<h3 id="entry-point">Entry Point</h3>
+<h3>Entry Point</h3>
 <table>
-<thead><tr><th>Item</th><th>Current implementation</th></tr></thead>
+<thead>
+<tr>
+<th>Item</th>
+<th>Current implementation</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Application entry</td><td><code>src/jobSearchPage.tsx</code></td></tr>
-<tr><td>Rendered component</td><td><code>SearchIndex</code> from <code>components/jobv2/search</code></td></tr>
-<tr><td>Initial data endpoint</td><td><code>POST {hostUrl}/GetJobAds.ashx</code> with <code>{ province: "" }</code></td></tr>
-<tr><td>Initial sort</td><td><code>created_at</code> descending</td></tr>
-<tr><td>Details source</td><td>Selected row from the loaded result data</td></tr>
-<tr><td>Query-string filter</td><td><code>Code</code> province parameter</td></tr>
+<tr>
+<td>Application entry</td>
+<td><code>src/jobSearchPage.tsx</code></td>
+</tr>
+<tr>
+<td>Rendered component</td>
+<td><code>SearchIndex</code> from <code>components/jobv2/search</code></td>
+</tr>
+<tr>
+<td>Initial data endpoint</td>
+<td><code>POST {hostUrl}/GetJobAds.ashx</code> with <code>{ province: &quot;&quot; }</code></td>
+</tr>
+<tr>
+<td>Initial sort</td>
+<td><code>created_at</code> descending</td>
+</tr>
+<tr>
+<td>Details source</td>
+<td>Selected row from the loaded result data</td>
+</tr>
+<tr>
+<td>Query-string filter</td>
+<td><code>Code</code> province parameter</td>
+</tr>
 </tbody>
 </table>
-<h3 id="page-layout">Page Layout</h3>
+<h3>Page Layout</h3>
 <table>
-<thead><tr><th>Region</th><th>Content</th></tr></thead>
+<thead>
+<tr>
+<th>Region</th>
+<th>Content</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Email notification panel</td><td>Subscribe to weekly job alerts by province, or manage existing preference</td></tr>
-<tr><td>Page title</td><td><code>CDHA's Career Centre - Search</code></td></tr>
-<tr><td>Search bar</td><td>Google Places location input</td></tr>
-<tr><td>Filters</td><td>All, Part-Time, Full-Time, International</td></tr>
-<tr><td>Result summary</td><td>Most recent Canada message or search-specific count</td></tr>
-<tr><td>Result table</td><td>Position, posted date, deadline, term, city/province</td></tr>
-<tr><td>Load more</td><td>Adds the next page of results</td></tr>
-<tr><td>Details popup</td><td>Opens over the results list after selecting a row</td></tr>
+<tr>
+<td>Email notification panel</td>
+<td>Subscribe to weekly job alerts by province, or manage existing preference</td>
+</tr>
+<tr>
+<td>Page title</td>
+<td><code>CDHA's Career Centre - Search</code></td>
+</tr>
+<tr>
+<td>Search bar</td>
+<td>Google Places location input</td>
+</tr>
+<tr>
+<td>Filters</td>
+<td>All, Part-Time, Full-Time, International</td>
+</tr>
+<tr>
+<td>Result summary</td>
+<td>Most recent Canada message or search-specific count</td>
+</tr>
+<tr>
+<td>Result table</td>
+<td>Position, posted date, deadline, term, city/province</td>
+</tr>
+<tr>
+<td>Load more</td>
+<td>Adds the next page of results</td>
+</tr>
+<tr>
+<td>Details popup</td>
+<td>Opens over the results list after selecting a row</td>
+</tr>
 </tbody>
 </table>
-<h3 id="initial-load">Initial Load</h3>
+<h3>Initial Load</h3>
 <table>
-<thead><tr><th>Step</th><th>Behavior</th></tr></thead>
+<thead>
+<tr>
+<th>Step</th>
+<th>Behavior</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Read query string</td><td><code>Code</code> is read from the current URL</td></tr>
-<tr><td>Load jobs</td><td>Calls <code>GetJobAds.ashx</code> once with an empty province</td></tr>
-<tr><td>Sort jobs</td><td>Sorts returned items by <code>created_at</code> newest first</td></tr>
-<tr><td>Load email sign-up data</td><td>Loads country lookup and current communication preferences</td></tr>
-<tr><td>Error state</td><td>Shows simple error text if job data cannot be loaded</td></tr>
+<tr>
+<td>Read query string</td>
+<td><code>Code</code> is read from the current URL</td>
+</tr>
+<tr>
+<td>Load jobs</td>
+<td>Calls <code>GetJobAds.ashx</code> once with an empty province</td>
+</tr>
+<tr>
+<td>Sort jobs</td>
+<td>Sorts returned items by <code>created_at</code> newest first</td>
+</tr>
+<tr>
+<td>Load email sign-up data</td>
+<td>Loads country lookup and current communication preferences</td>
+</tr>
+<tr>
+<td>Error state</td>
+<td>Shows simple error text if job data cannot be loaded</td>
+</tr>
 </tbody>
 </table>
-<h3 id="search-filters">Search Filters</h3>
+<h3>Search Filters</h3>
 <table>
-<thead><tr><th>Filter</th><th>Behavior</th></tr></thead>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Behavior</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Location search</td><td>User must choose a Google Places dropdown option; pressing Enter with typed-only text opens an error modal</td></tr>
-<tr><td>Province from URL</td><td>When <code>?Code={province}</code> exists, results are filtered by that province until a Google Places location is selected</td></tr>
-<tr><td>City / sublocality</td><td>Matches result <code>geographical_area</code> exactly against selected city or sublocality</td></tr>
-<tr><td>Geolocation</td><td>If both selected place and job have coordinates, jobs within 100 km are included</td></tr>
-<tr><td>Part-Time</td><td>Adds or removes <code>PART_TIME</code> term filter</td></tr>
-<tr><td>Full-Time</td><td>Adds or removes <code>FULL_TIME</code> term filter</td></tr>
-<tr><td>All</td><td>Clears Part-Time and Full-Time term filters</td></tr>
-<tr><td>International</td><td>Filters to province <code>IN</code>, clears location fields, and clears the typed search</td></tr>
+<tr>
+<td>Location search</td>
+<td>User must choose a Google Places dropdown option; pressing Enter with typed-only text opens an error modal</td>
+</tr>
+<tr>
+<td>Province from URL</td>
+<td>When <code>?Code={province}</code> exists, results are filtered by that province until a Google Places location is selected</td>
+</tr>
+<tr>
+<td>City / sublocality</td>
+<td>Matches result <code>geographical_area</code> exactly against selected city or sublocality</td>
+</tr>
+<tr>
+<td>Geolocation</td>
+<td>If both selected place and job have coordinates, jobs within 100 km are included</td>
+</tr>
+<tr>
+<td>Part-Time</td>
+<td>Adds or removes <code>PART_TIME</code> term filter</td>
+</tr>
+<tr>
+<td>Full-Time</td>
+<td>Adds or removes <code>FULL_TIME</code> term filter</td>
+</tr>
+<tr>
+<td>All</td>
+<td>Clears Part-Time and Full-Time term filters</td>
+</tr>
+<tr>
+<td>International</td>
+<td>Filters to province <code>IN</code>, clears location fields, and clears the typed search</td>
+</tr>
 </tbody>
 </table>
-<h3 id="result-rules">Result Rules</h3>
+<h3>Result Rules</h3>
 <table>
-<thead><tr><th>Behavior</th><th>Rule</th></tr></thead>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Rule</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Default results</td><td>If no filter is applied, all loaded jobs are shown newest first</td></tr>
-<tr><td>Pagination</td><td>10 results are shown per page</td></tr>
-<tr><td>Load more</td><td>Increases the page count by 1 and shows 10 additional results</td></tr>
-<tr><td>Empty results</td><td>No table rows are rendered</td></tr>
-<tr><td>Mobile table</td><td>Columns after Posted Date are hidden below 600px</td></tr>
-<tr><td>Row click</td><td>Opens the details popup for that row</td></tr>
+<tr>
+<td>Default results</td>
+<td>If no filter is applied, all loaded jobs are shown newest first</td>
+</tr>
+<tr>
+<td>Pagination</td>
+<td>10 results are shown per page</td>
+</tr>
+<tr>
+<td>Load more</td>
+<td>Increases the page count by 1 and shows 10 additional results</td>
+</tr>
+<tr>
+<td>Empty results</td>
+<td>No table rows are rendered</td>
+</tr>
+<tr>
+<td>Mobile table</td>
+<td>Columns after Posted Date are hidden below 600px</td>
+</tr>
+<tr>
+<td>Row click</td>
+<td>Opens the details popup for that row</td>
+</tr>
 </tbody>
 </table>
-<h3 id="result-columns">Result Columns</h3>
+<h3>Result Columns</h3>
 <table>
-<thead><tr><th>Column</th><th>Source / formatting</th></tr></thead>
+<thead>
+<tr>
+<th>Column</th>
+<th>Source / formatting</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Position</td><td><code>title</code></td></tr>
-<tr><td>Posted Date</td><td><code>created_date</code>, formatted <code>MM/DD/YYYY</code></td></tr>
-<tr><td>Deadline</td><td><code>deadline</code>, formatted <code>MM/DD/YYYY</code></td></tr>
-<tr><td>Term</td><td><code>term</code>, lowercased and shortened from full time / part time to <code>F/T</code> / <code>P/T</code></td></tr>
-<tr><td>City, Province</td><td><code>geographical_area</code>, <code>province</code></td></tr>
+<tr>
+<td>Position</td>
+<td><code>title</code></td>
+</tr>
+<tr>
+<td>Posted Date</td>
+<td><code>created_date</code>, formatted <code>MM/DD/YYYY</code></td>
+</tr>
+<tr>
+<td>Deadline</td>
+<td><code>deadline</code>, formatted <code>MM/DD/YYYY</code></td>
+</tr>
+<tr>
+<td>Term</td>
+<td><code>term</code>, lowercased and shortened from full time / part time to <code>F/T</code> / <code>P/T</code></td>
+</tr>
+<tr>
+<td>City, Province</td>
+<td><code>geographical_area</code>, <code>province</code></td>
+</tr>
 </tbody>
 </table>
-<h2 id="3-details-popup">3. Details Popup</h2>
-<h3 id="purpose">Purpose</h3>
+<h2>3. Details Popup</h2>
+<h3>Purpose</h3>
 <p>The details popup gives the user the full posting information without navigating away from the search results.</p>
-<h3 id="visibility-matrix">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
-<thead><tr><th>Condition</th><th>Details popup shown?</th></tr></thead>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Details popup shown?</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>No result selected</td><td>No</td></tr>
-<tr><td>User selects a result row</td><td>Yes</td></tr>
-<tr><td>User clicks close icon</td><td>No</td></tr>
-<tr><td>User clicks outside popup, away from scrollbar area</td><td>No</td></tr>
+<tr>
+<td>No result selected</td>
+<td>No</td>
+</tr>
+<tr>
+<td>User selects a result row</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>User clicks close icon</td>
+<td>No</td>
+</tr>
+<tr>
+<td>User clicks outside popup, away from scrollbar area</td>
+<td>No</td>
+</tr>
 </tbody>
 </table>
-<h3 id="popup-content">Popup Content</h3>
+<h3>Popup Content</h3>
 <table>
-<thead><tr><th>Field</th><th>Source / formatting</th></tr></thead>
+<thead>
+<tr>
+<th>Field</th>
+<th>Source / formatting</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Job Title</td><td><code>title</code>, followed by formatted <code>term</code></td></tr>
-<tr><td>Wage/Salary</td><td><code>salary</code>, shown only when a salary value exists</td></tr>
-<tr><td>Location</td><td><code>geographical_area</code>, <code>province</code></td></tr>
-<tr><td>Company Name</td><td><code>co_name</code></td></tr>
-<tr><td>Contact Info</td><td><code>contact_name</code></td></tr>
-<tr><td>Posted</td><td><code>created_date</code>, formatted <code>MM/DD/YYYY</code></td></tr>
-<tr><td>Deadline</td><td><code>deadline</code>, formatted <code>MM/DD/YYYY</code></td></tr>
-<tr><td>Job Description</td><td><code>description</code>, parsed as HTML</td></tr>
+<tr>
+<td>Job Title</td>
+<td><code>title</code>, followed by formatted <code>term</code></td>
+</tr>
+<tr>
+<td>Wage/Salary</td>
+<td><code>salary</code>, shown only when a salary value exists</td>
+</tr>
+<tr>
+<td>Location</td>
+<td><code>geographical_area</code>, <code>province</code></td>
+</tr>
+<tr>
+<td>Company Name</td>
+<td><code>co_name</code></td>
+</tr>
+<tr>
+<td>Contact Info</td>
+<td><code>contact_name</code></td>
+</tr>
+<tr>
+<td>Posted</td>
+<td><code>created_date</code>, formatted <code>MM/DD/YYYY</code></td>
+</tr>
+<tr>
+<td>Deadline</td>
+<td><code>deadline</code>, formatted <code>MM/DD/YYYY</code></td>
+</tr>
+<tr>
+<td>Job Description</td>
+<td><code>description</code>, parsed as HTML</td>
+</tr>
 </tbody>
 </table>
-<h3 id="popup-behavior">Popup Behavior</h3>
+<h3>Popup Behavior</h3>
 <ul>
 <li>The popup is absolutely positioned over the results area.</li>
 <li>The popup position is adjusted based on the current table position in the viewport.</li>
 <li>Opening a detail view sends a <code>gtag</code> page-view event with <code>?seqn={job seqn}</code> when Google Analytics is available.</li>
 <li>The close icon and outside-click behavior both return the user to the results table.</li>
 </ul>
-<h2 id="4-email-notification-sign-up">4. Email Notification Sign-up</h2>
-<h3 id="purpose">Purpose</h3>
+<h2>4. Email Notification Sign-up</h2>
+<h3>Purpose</h3>
 <p>This panel lets authenticated users subscribe to Career Centre email alerts for a selected province.</p>
-<h3 id="visibility-matrix">Visibility Matrix</h3>
+<h3>Visibility Matrix</h3>
 <table>
-<thead><tr><th>Condition</th><th>What the user sees</th></tr></thead>
+<thead>
+<tr>
+<th>Condition</th>
+<th>What the user sees</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>No current job notification province</td><td>Sign-up panel with province selector</td></tr>
-<tr><td>Existing job notification province</td><td>Success message and link to manage email preferences</td></tr>
+<tr>
+<td>No current job notification province</td>
+<td>Sign-up panel with province selector</td>
+</tr>
+<tr>
+<td>Existing job notification province</td>
+<td>Success message and link to manage email preferences</td>
+</tr>
 </tbody>
 </table>
-<h3 id="province-options">Province Options</h3>
+<h3>Province Options</h3>
 <table>
-<thead><tr><th>Option type</th><th>Notes</th></tr></thead>
+<thead>
+<tr>
+<th>Option type</th>
+<th>Notes</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>All Provinces</td><td>Added as code <code>AP</code></td></tr>
-<tr><td>Canadian provinces</td><td>Loaded from the <code>COUNTRY</code> lookup</td></tr>
-<tr><td>International</td><td>Added as code <code>IN</code></td></tr>
+<tr>
+<td>All Provinces</td>
+<td>Added as code <code>AP</code></td>
+</tr>
+<tr>
+<td>Canadian provinces</td>
+<td>Loaded from the <code>COUNTRY</code> lookup</td>
+</tr>
+<tr>
+<td>International</td>
+<td>Added as code <code>IN</code></td>
+</tr>
 </tbody>
 </table>
-<h3 id="update-behavior">Update Behavior</h3>
+<h3>Update Behavior</h3>
 <ul>
 <li>Selecting a province writes <code>communications.job_notification_prov</code>.</li>
 <li>The update is sent through the shared communications update API with <code>is_update: true</code>.</li>
 <li>Existing subscribers are linked to <code>/profile#/profile/edit/communication?hashtag=/profile/edit/communication</code> to manage preferences.</li>
 </ul>
+
       </article>
     </main>
   </div>

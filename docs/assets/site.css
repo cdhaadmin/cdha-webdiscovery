@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: light;
   --bg: #f4efe7;
   --panel: rgba(255, 252, 247, 0.92);
@@ -103,6 +103,111 @@ img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.nav-subsection-title {
+  margin: 8px 4px 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.api-summary-shell > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.api-summary-shell > label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  margin: 24px 10px 16px 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  color: var(--ink);
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.api-summary-shell > label:hover,
+.api-summary-shell > label:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(159, 77, 29, 0.28);
+}
+
+.api-summary-shell > input[type="radio"]:checked + label {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.api-summary-table {
+  margin-top: 10px;
+}
+
+.api-summary-table td {
+  word-break: break-word;
+}
+
+.api-summary-details {
+  min-width: 220px;
+}
+
+.api-summary-details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.api-summary-details summary::marker {
+  color: var(--accent);
+}
+
+.api-summary-io {
+  width: 100%;
+  margin: 12px 0 0;
+  border-radius: 12px;
+}
+
+.api-summary-io td,
+.api-summary-io th {
+  padding: 10px 12px;
+}
+
+.platform-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#api-filter-all:checked ~ .api-summary-table tbody > tr {
+  display: table-row;
+}
+
+#api-filter-wicket:checked ~ .api-summary-table tbody > tr:not([data-platform="wicket"]) {
+  display: none;
+}
+
+#api-filter-wordpress:checked ~ .api-summary-table tbody > tr:not([data-platform="wordpress"]) {
+  display: none;
+}
+
+#api-filter-both:checked ~ .api-summary-table tbody > tr:not([data-platform="both"]) {
+  display: none;
 }
 
 .nav-link {

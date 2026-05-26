@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Search API Calls</title>
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html">CDHA Web Discovery</a>
+      <p class="sidebar-copy">Main components and user flows for the CDHA website.</p>
+      <nav class="nav-list" aria-label="Documentation">
+<a class="nav-link" href="./index.html">
+  <span class="nav-title">Profile, Join and Renew</span>
+  <span class="nav-description">Main components from the Profile Join and Renew user flow.</span>
+</a>
+<a class="nav-link" href="./cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Functional walkthrough for the current cart UI.</span>
+</a>
+<a class="nav-link" href="./career-centre.html">
+  <span class="nav-title">Career Centre</span>
+  <span class="nav-description">Functional walkthrough for job ad posting and Career Centre search.</span>
+</a>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="Website Screens">
+          <p class="nav-section-title">Website Screens</p>
+<a class="nav-link" href="./join-landing-flow-images.html">
+  <span class="nav-title">Join Landing</span>
+  <span class="nav-description">Screenshot walkthrough for the join landing experience.</span>
+</a>
+<a class="nav-link" href="./join-stu-flow-images.html">
+  <span class="nav-title">Join STU</span>
+  <span class="nav-description">Student join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-fm-flow-images.html">
+  <span class="nav-title">Join FM</span>
+  <span class="nav-description">Full member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-suppt-flow-images.html">
+  <span class="nav-title">Join SUPPT</span>
+  <span class="nav-description">Support member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./join-nm-flow-images.html">
+  <span class="nav-title">Join NM</span>
+  <span class="nav-description">Non-member join flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-stu-flow-images.html">
+  <span class="nav-title">Renew STU</span>
+  <span class="nav-description">Student renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-fm-flow-images.html">
+  <span class="nav-title">Renew FM</span>
+  <span class="nav-description">Full member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-suppt-flow-images.html">
+  <span class="nav-title">Renew SUPPT</span>
+  <span class="nav-description">Support member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./renew-ret-flow-images.html">
+  <span class="nav-title">Renew RET</span>
+  <span class="nav-description">Retired member renewal flow screenshots.</span>
+</a>
+<a class="nav-link" href="./cart-screens.html">
+  <span class="nav-title">Cart Screens</span>
+  <span class="nav-description">Screenshots for the cart UI states and promotional flow.</span>
+</a>
+<a class="nav-link" href="./profile-screens.html">
+  <span class="nav-title">Profile Screens</span>
+  <span class="nav-description">Screenshots for profile display and summary views.</span>
+</a>
+<a class="nav-link" href="./career-centre-screens.html">
+  <span class="nav-title">Career Centre Screens</span>
+  <span class="nav-description">Screenshots for job ad posting and Career Centre search.</span>
+</a>
+        </section>
+        <div class="nav-divider"></div>
+        <section class="nav-section" aria-label="API Calls">
+          <p class="nav-section-title">API Calls</p>
+          <p class="nav-subsection-title">Summary</p>
+<a class="nav-link" href="./api-summary.html">
+  <span class="nav-title">Summary</span>
+  <span class="nav-description">Consolidated active API inventory for Wicket and WordPress.</span>
+</a>
+          <p class="nav-subsection-title">Wicket</p>
+<a class="nav-link" href="./api-wicket-profile.html">
+  <span class="nav-title">Profile</span>
+  <span class="nav-description">Wicket API calls for profile workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-join.html">
+  <span class="nav-title">Join</span>
+  <span class="nav-description">Wicket API calls for join workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-renew.html">
+  <span class="nav-title">Renew</span>
+  <span class="nav-description">Wicket API calls for renewal workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-standalone-communications.html">
+  <span class="nav-title">Standalone Communications</span>
+  <span class="nav-description">Wicket API calls for standalone communications preference editing.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-insurance.html">
+  <span class="nav-title">Upgrade Insurance</span>
+  <span class="nav-description">Wicket API calls for the BC insurance upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-upgrade-stu-to-grad.html">
+  <span class="nav-title">Upgrade STU to Grad</span>
+  <span class="nav-description">Wicket API calls for the student-to-graduate upgrade flow.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cart.html">
+  <span class="nav-title">Cart</span>
+  <span class="nav-description">Wicket API calls for cart workflows.</span>
+</a>
+<a class="nav-link" href="./api-wicket-cfdhre-donations.html">
+  <span class="nav-title">CFDHRE Donations</span>
+  <span class="nav-description">Wicket API calls for CFDHRE donations.</span>
+</a>
+          <p class="nav-subsection-title">WordPress</p>
+<a class="nav-link" href="./api-wordpress-job-add.html">
+  <span class="nav-title">Job Add</span>
+  <span class="nav-description">WordPress API calls for adding jobs.</span>
+</a>
+<a class="nav-link active" href="./api-wordpress-job-search.html">
+  <span class="nav-title">Job Search</span>
+  <span class="nav-description">WordPress API calls for job search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-add.html">
+  <span class="nav-title">Events Add</span>
+  <span class="nav-description">WordPress API calls for adding events.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-events-search.html">
+  <span class="nav-title">Events Search</span>
+  <span class="nav-description">WordPress API calls for event search.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-pypo-photos.html">
+  <span class="nav-title">Pypo Photos</span>
+  <span class="nav-description">WordPress API calls for Pypo Photos.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-image-gallery.html">
+  <span class="nav-title">Image Gallery</span>
+  <span class="nav-description">WordPress API calls for the image gallery.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-coloring-contest.html">
+  <span class="nav-title">Coloring Contest</span>
+  <span class="nav-description">WordPress API calls for Coloring Contest.</span>
+</a>
+<a class="nav-link" href="./api-wordpress-docebo.html">
+  <span class="nav-title">Docebo</span>
+  <span class="nav-description">WordPress API calls for Docebo.</span>
+</a>
+        </section>
+      </nav>
+    </aside>
+    <main class="content">
+      <article class="markdown-body">
+<h1>Job Search API Calls</h1>
+<h2>Purpose</h2>
+<p>This page documents the API calls used by the career-centre job search flow mounted from <code>/home/lalves/dev/frontend/src/jobSearchPage.tsx</code>.</p>
+<p>The page shell renders <code>components/job/jobSearchRoute.tsx</code>, which mounts the province search UI, the results display, and the email-notification signup block.</p>
+<h2>Base URLs</h2>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Value</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hostUrl</code></td>
+<td><code>https://www.cdha.ca/CDHACommon</code> in development, <code>//{window.location.hostname}/CDHACommon</code> in production</td>
+<td>Legacy Wicket/iMIS <code>.ashx</code> endpoints</td>
+</tr>
+<tr>
+<td><code>newHostUrl</code></td>
+<td><code>https://api.lalves.mycdha.ca</code> in development, <code>https://api.imisdev.mycdha.ca</code> on <code>imisdev</code>, otherwise <code>https://api.mycdha.ca</code></td>
+<td>Lookup table API</td>
+</tr>
+</tbody>
+</table>
+<h2>Authentication</h2>
+<table>
+<thead>
+<tr>
+<th>API family</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legacy Wicket/iMIS <code>.ashx</code></td>
+<td>Browser session cookies via <code>withCredentials: true</code></td>
+</tr>
+<tr>
+<td>Lookup API</td>
+<td>No auth for the country table read</td>
+</tr>
+</tbody>
+</table>
+<h2>Page Flow</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>API call</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page bootstrap</td>
+<td><code>GET {newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+<td>Loads the province list used by the search selector and the notification signup block</td>
+</tr>
+<tr>
+<td>Page bootstrap</td>
+<td><code>GET {hostUrl}/UpdateCommunications.ashx</code></td>
+<td>Loads the current communication preferences for the email-notification block</td>
+</tr>
+<tr>
+<td>Search results</td>
+<td><code>POST {hostUrl}/GetJobAds.ashx</code></td>
+<td>Loads the job list for the selected province</td>
+</tr>
+<tr>
+<td>Update notifications</td>
+<td><code>POST {hostUrl}/UpdateCommunications.ashx</code></td>
+<td>Persists the selected job-notification province</td>
+</tr>
+<tr>
+<td>Legacy detail view</td>
+<td><code>POST {hostUrl}/GetJobAdDetail.ashx?SEQN={id}</code></td>
+<td>Present in the repo, but not mounted by the current search page shell</td>
+</tr>
+</tbody>
+</table>
+<h2>Detailed Calls</h2>
+<h3>Load Country Lookup</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{newHostUrl}/v1/lookupdata?table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Query string <code>table=COUNTRY</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: CountryLookup[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/job/searchContainer.tsx</code> and <code>containers/job/emailNotificationSignupContainer.tsx</code></td>
+</tr>
+</tbody>
+</table>
+<p>The returned Canada row is used to build the province list, which is extended with <code>AP</code> for &quot;All Provinces&quot; and <code>IN</code> for &quot;International&quot;.</p>
+<h3>Load Member Communications</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Browser session cookies</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/job/emailNotificationSignupContainer.tsx</code> on mount</td>
+</tr>
+</tbody>
+</table>
+<p>This call pre-populates the communication model so the page can show whether the member is already subscribed.</p>
+<h3>Update Job Notification Preferences</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Browser session cookies</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Communications object plus <code>is_update: true</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: Communications }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>components/job/emailNotificationSignup.tsx</code> when the province selector changes</td>
+</tr>
+</tbody>
+</table>
+<p>The component mutates <code>communications.job_notification_prov</code> and then posts the full communications object back to the legacy endpoint.</p>
+<h3>Load Job Ads</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/GetJobAds.ashx</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Browser session cookies</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>JSON object with the selected province filter</td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ data: JobAd[] }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/job/displayContainer.tsx</code> when the route changes to <code>/search/:province</code></td>
+</tr>
+</tbody>
+</table>
+<p>Request shape:</p>
+<pre><code class="language-json">{
+  &quot;province&quot;: &quot;ON&quot;
+}
+</code></pre>
+<p>The route param <code>AP</code> is converted to an empty string before sending, which the backend treats as &quot;all provinces&quot;.</p>
+<h3>Load Job Ad Details</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td><code>{hostUrl}/GetJobAdDetail.ashx?SEQN={id}</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Browser session cookies</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>Empty JSON body <code>{}</code></td>
+</tr>
+<tr>
+<td>Response</td>
+<td><code>{ ad_data: JobAdDetail }</code></td>
+</tr>
+<tr>
+<td>Used by</td>
+<td><code>containers/job/jobAdDetailsContainer.tsx</code> only</td>
+</tr>
+</tbody>
+</table>
+<p>This endpoint is present in the repo, but the current job search page renders the detail panel from the already-loaded list item data instead of calling this endpoint.</p>
+<h2>Response Shape</h2>
+<h3>Job list item</h3>
+<p>The list and detail components use these fields from each job ad:</p>
+<pre><code class="language-json">{
+  &quot;seqn&quot;: 123,
+  &quot;title&quot;: &quot;Job title&quot;,
+  &quot;created_date&quot;: &quot;2026-05-26T00:00:00Z&quot;,
+  &quot;province&quot;: &quot;ON&quot;,
+  &quot;geographical_area&quot;: &quot;Toronto&quot;,
+  &quot;term&quot;: &quot;FULL_TIME&quot;,
+  &quot;co_name&quot;: &quot;Employer name&quot;,
+  &quot;contact_name&quot;: &quot;Contact name&quot;,
+  &quot;deadline&quot;: &quot;2026-06-15T00:00:00Z&quot;,
+  &quot;start_date&quot;: &quot;2026-07-01T00:00:00Z&quot;,
+  &quot;description&quot;: &quot;...&quot;,
+  &quot;qualifications&quot;: &quot;...&quot;
+}
+</code></pre>
+<h3>Job ad detail</h3>
+<p><code>GetJobAdDetail.ashx</code> returns a single <code>ad_data</code> object with the same core fields plus the full detail payload consumed by <code>components/job/jobAdDetails.tsx</code>.</p>
+<h2>Where It Is Used</h2>
+<ul>
+<li><code>jobSearchPage.tsx</code> bootstraps the page.</li>
+<li><code>components/job/jobSearchRoute.tsx</code> and <code>containers/job/searchContainer.tsx</code> wire the province selector.</li>
+<li><code>containers/job/displayContainer.tsx</code> loads the job list.</li>
+<li><code>containers/job/emailNotificationSignupContainer.tsx</code> loads and updates communication preferences.</li>
+<li><code>components/job/jobAdsTable.tsx</code> and <code>components/job/jobAdDetails.tsx</code> render the loaded data.</li>
+</ul>
+<h2>Open Questions</h2>
+<ul>
+<li>The job detail endpoint is still implemented in the repo, but the current search page does not need it because it opens details from the list payload.</li>
+<li>The communication payload is legacy and loosely typed; the client mutates the object in place before submitting it.</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>
