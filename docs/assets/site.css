@@ -202,7 +202,7 @@ img {
   display: none;
 }
 
-#api-filter-wordpress:checked ~ .api-summary-table tbody > tr:not([data-platform="wordpress"]) {
+#api-filter-cdha:checked ~ .api-summary-table tbody > tr:not([data-platform="cdha"]) {
   display: none;
 }
 

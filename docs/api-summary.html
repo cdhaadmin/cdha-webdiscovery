@@ -157,372 +157,522 @@
       <article class="markdown-body">
 <h1>API Summary</h1>
 <h2>Purpose</h2>
-<p>This page is a consolidated inventory of the active API calls documented across the Wicket and WordPress sections.</p>
-<p>Use the filter chips to narrow the table, then expand a row to inspect its input and output. Legacy and unreached endpoints stay in the detailed pages.</p>
+<p>This page is a consolidated inventory of API calls documented across every page in the API Calls section.</p>
+<p>Use the filter chips to narrow the table by migration owner. Each row includes a short input/output summary, and the source-page links point to the detailed page with the full request/response notes.</p>
 <div class="api-summary-shell">
 <input type="radio" name="api-filter" id="api-filter-all" checked>
 <label for="api-filter-all">All</label>
 <input type="radio" name="api-filter" id="api-filter-wicket">
 <label for="api-filter-wicket">Wicket</label>
-<input type="radio" name="api-filter" id="api-filter-wordpress">
-<label for="api-filter-wordpress">WordPress</label>
-<input type="radio" name="api-filter" id="api-filter-both">
-<label for="api-filter-both">Both</label>
+<input type="radio" name="api-filter" id="api-filter-cdha">
+<label for="api-filter-cdha">CDHA</label>
 <table class="api-summary-table">
 <thead>
 <tr>
+<th>Method</th>
 <th>API call</th>
 <th>Where used</th>
-<th>Platform</th>
-<th>Description</th>
-<th>Input / output</th>
+<th>Migration owner</th>
+<th>Input / Output</th>
+<th>Source pages</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
-<tr data-platform="both">
-<td><code>POST /api/CDHASessionToken</code><br><code>POST {newHostUrl}/auth/token</code></td>
-<td>Wicket: Profile, Join, Renew, Cart bootstrap<br>WordPress: Image Gallery, Coloring Contest, Docebo helpers</td>
-<td><span class="platform-chip">Both</span></td>
-<td>Shared token bootstrap used to turn an iMIS request verification token and client context into a CDHA bearer token.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td><code>/api/CDHASessionToken</code> posts the iMIS entity payload; <code>/auth/token</code> posts <code>{ code, context }</code>.</td></tr>
-<tr><th>Output</th><td><code>/api/CDHASessionToken</code> returns the generated <code>UserCode</code>; <code>/auth/token</code> returns <code>{ token }</code>.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>/api/CDHASessionToken</code></td>
+<td>Production session-token bootstrap before requesting a CDHA bearer token</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: iMIS generic entity payload with <code>EntityTypeName</code>, <code>ContactKey</code>, and random <code>UserCode</code>. Output: iMIS entity response containing the generated code.</td>
+<td></td>
+<td></td>
 </tr>
-<tr data-platform="both">
-<td><code>GET {newHostUrl}/v1/lookupdata?table={table}</code></td>
-<td>Wicket: Join, Renew, Profile edit, standalone communications, upgrade pages<br>WordPress: Job add/search, event add/search</td>
-<td><span class="platform-chip">Both</span></td>
-<td>Common lookup-table endpoint for country, province, degree, insurance, and similar select lists.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Query string <code>table</code>; common values include <code>COUNTRY</code>, <code>DEGREES</code>, <code>UNIVERSITY</code>, <code>GRAD_YEAR</code>, <code>GRAD_MONTH</code>, <code>YEAR_ATTEND</code>, <code>AREAS_OF_PRACTICE</code>, <code>WORK_ENVIRONMENT</code>, <code>INSURANCE</code>, <code>IPN_STATUS</code>, and <code>INDIGENOUS_STATUS</code>.</td></tr>
-<tr><th>Output</th><td><code>{ data: LookupOption[] }</code> or a page-specific normalized lookup payload.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>/MyCertificate</code></td>
+<td>Profile insurance certificate link</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: logged-in member session. Output: browser download/navigation to the certificate document.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/UpdatePersonalInfo.ashx</code></td>
-<td>Profile load and edit, Join account creation, Renew bootstrap, Cart member summary, insurance/upgrade bootstrap</td>
+<td><code>GET</code></td>
+<td><code>/MyInvoice</code></td>
+<td>member invoice details</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Loads member state and persists member-info changes, including the summary-only bootstrap request used by several flows.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Read path uses <code>{ get_summaryonly: true }</code> or <code>{}</code>. Write path posts a JSON diff or selected fields plus <code>id</code>.</td></tr>
-<tr><th>Output</th><td><code>{ data: MemberInfo, server_time? }</code> for reads; <code>{ data: MemberInfo }</code> for updates.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: logged-in member session. Output: invoice document response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>/MyMembershipCard</code></td>
+<td>Profile membership-card link</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: logged-in member session. Output: membership card document response.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>GET / POST {hostUrl}/UpdateCommunications.ashx</code></td>
-<td>Profile, Join, Renew, standalone communications editor, Job Search notification signup</td>
+<td><code>GET</code></td>
+<td><code>/MyReceipt</code> | </td>
+<td>API for purchase transactions</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Reads and writes the member communication preference record.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>GET has no body. POST sends the communications payload plus <code>is_update</code> and route-specific fields such as <code>email_address</code>.</td></tr>
-<tr><th>Output</th><td><code>{ data: Communications }</code>.</td></tr>
-</table>
-</details>
-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>/cdha/GetCert?CE={scoTag}&amp;cert={CECert.pdf or ConfCert.pdf}&amp;SRC={D or C}</code></td>
+<td>Profile CE certificate</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: query params <code>CE</code>, <code>cert</code>, and <code>SRC</code>. Output: certificate/document download.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>GET / POST {hostUrl}/UpdateAutoRenew.ashx</code></td>
-<td>Profile, Join, Renew, payment-plan and auto-renewal flows</td>
+<td><code>NAVIGATION</code></td>
+<td><code>/confirmation</code></td>
+<td>Successful payment. Wicket to configure post purchase actions based on different products (IPN, EDU, etc)</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Loads and updates the member auto-renewal / payment-plan record.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>GET uses no body. POST uses <code>{}</code>, <code>{ action, data }</code>, or the payment-plan payload selected by the route.</td></tr>
-<tr><th>Output</th><td><code>{ data: AutoRenewalSubscription }</code> for reads and a legacy update response for writes.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: client-side success state. Output: browser navigation to the confirmation route.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/UpdateEventRegistrationEx.ashx?Event={eventCode}</code></td>
+<td>Event registration and badge details</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: registration payload. Output: event-registration response.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>GET / POST / PUT {newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
-<td>Profile load/edit, Join create-account flow, Renew bootstrap, upgrade flows</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/UpdatePersonalInfo.ashx</code></td>
+<td>Member Personal Info</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Loads the orofacial question and creates or updates the answer when the member profile changes.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>GET has no body. POST/PUT sends <code>{ question_code, question, answer }</code>, with <code>seqn</code> added for updates.</td></tr>
-<tr><th>Output</th><td><code>{ data: CdhaQuestion[] }</code> on read and the new API JSON response on write.</td></tr>
-</table>
-</details>
-</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>GET / POST / PUT / DELETE {newHostUrl}/v1/authenticated/education</code></td>
-<td>Profile, Join student education, Renew student education, upgrade-to-grad flow</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/getCartItems.ashx</code></td>
+<td>Get member cart items</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>CRUD for the member education records managed by the profile, join, renew, and upgrade flows.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Reads have no body. Creates and updates send degree, university, grad year/month, and optional year-attend fields. Deletes use the education <code>seqn</code> path param.</td></tr>
-<tr><th>Output</th><td><code>{ success, data: Education[], message? }</code> for reads and writes.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: cart/member context payload. Output: cart items and totals payload.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>GET / POST / PUT {newHostUrl}/v1/authenticated/expertise</code></td>
-<td>Profile summary/edit and Renew bootstrap</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/updateCart.ashx</code></td>
+<td>Update member cart</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Loads and mutates the member areas-of-expertise record.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>GET has no body. POST/PUT send <code>aoe_primary</code>, <code>aoe_secondary</code>, <code>we_primary</code>, <code>we_secondary</code>, and <code>is_update</code>.</td></tr>
-<tr><th>Output</th><td><code>{ success, data: AreaOfExpertise, message? }</code>.</td></tr>
-</table>
-</details>
-</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/ValidateNewEmail.ashx?email={email}</code></td>
-<td>Profile edit email field and Join email validation</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/CDHACommon/updatePaymentData.ashx</code></td>
+<td>Cart payment submission</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Legacy async email validator used before the client accepts a new address.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Email in the query string.</td></tr>
-<tr><th>Output</th><td>Legacy validation JSON; the form uses the response as the validator result.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: payment and billing payload from the cart. </td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/GetJobAdDetail.ashx?SEQN={id}</code></td>
+<td>Career Centre job detail load</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/GetJobAdDetail.ashx?SEQN={seqn}</code></td>
+<td>Profile job-ad detail popup</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: job <code>SEQN</code> in the query string. Output: <code>{ ad_data: JobAdDetails }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/GetJobAds.ashx</code></td>
+<td>Career Centre job search list</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: job search filters. Output: legacy job-ad listing payload.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/GetMemberJobAds.ashx?filter=MYADS_</code></td>
+<td>Profile member job-ad table</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: empty body. Output: <code>{ pd_data: ProfileTableItem[], errors? }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateJobAd.ashx</code></td>
+<td>Job ad submission</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: validated job-ad form payload. Output: legacy response where the client reads nested <code>data</code>.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/GetMemberJobAds.ashx?filter=MYADS_</code><br><code>POST {hostUrl}/GetJobAdDetail.ashx?SEQN={seqn}</code><br><code>POST {hostUrl}/getmemberaddons.ashx?filter=ADDONS_</code></td>
-<td>Profile display tables and profile popup detail views</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/ProcessUpgrade.ashx</code></td>
+<td>Renew upgrade and student-to-grad upgrade processing</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Loads the member job-ad table, job-ad detail popup, and membership add-ons used on the profile dashboard.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Empty POST body; the filter or <code>seqn</code> stays in the query string.</td></tr>
-<tr><th>Output</th><td><code>{ pd_data: ProfileTableItem[] }</code>, <code>{ ad_data: JobAdDetails }</code>, and <code>{ addons_data: AddOn[] }</code>.</td></tr>
-</table>
-</details>
-</td>
-</tr>
-<tr data-platform="both">
-<td><code>GET {newHostUrl}/v1/authenticated/docebo/token</code><br><code>GET https://cdha.docebosaas.com/manage/v1/user/session</code><br><code>GET https://cdha.docebosaas.com/learn/v1/enrollments?id_user[]={userId}&page_size=200</code></td>
-<td>Profile eLearning/conference/workshop tables and the Docebo integration docs</td>
-<td><span class="platform-chip">Both</span></td>
-<td>CDHA-side Docebo SSO and the follow-up user/enrollment calls that build the course table.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Bearer token on the CDHA token call; Docebo bearer token on the user/session and enrollments calls.</td></tr>
-<tr><th>Output</th><td><code>{ data: { access_token } }</code>, <code>{ data: { id, ... } }</code>, and <code>{ data: { items: DoceboEnrollment[] } }</code>.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: upgrade payload for renew or student-to-grad. Output: Wicket/iMIS upgrade response.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/UpdatecdhaQuestions.ashx</code></td>
-<td>Join submit helper after member-info save</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateAutoRenew.ashx</code></td>
+<td>Auto-renewal and payment-plan load/update flows</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Legacy join-specific orofacial answer save path.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>JSON string with <code>{ seqn?, question_code, question, answer }</code>.</td></tr>
-<tr><th>Output</th><td>Legacy Wicket/iMIS JSON response.</td></tr>
-</table>
-</details>
-</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/UpdateBilling.ashx</code><br><code>POST https://www.cdha.ca/CDHAstaff/InvoiceTest.ashx</code><br><code>POST {hostUrl}/updateCart.ashx</code><br><code>POST {hostUrl}/getCartItems.ashx</code><br><code>POST {hostUrl}/updatePaymentData.ashx</code></td>
-<td>Join, Renew, Cart, and insurance/upgrade flows</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateBilling.ashx</code></td>
+<td>Insurance billing and rebilling updates</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Billing and cart orchestration used to create invoices, recalculate cart state, and submit payments.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td><code>UpdateBilling.ashx</code> posts the insurance code. <code>InvoiceTest.ashx</code> posts the membership invoice test payload. <code>updateCart.ashx</code> posts line changes or promo code updates. <code>getCartItems.ashx</code> reads the cart. <code>updatePaymentData.ashx</code> posts the payment payload.</td></tr>
-<tr><th>Output</th><td>Legacy Wicket/iMIS update responses and the cart payload that drives the UI.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: insurance billing payload such as <code>{ insurance }</code>. Output: <code>{ data: any }</code> / legacy rebill response.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/UpdateDHEducation.ashx</code><br><code>POST {hostUrl}/SendErrorEmail.ashx</code><br><code>POST {hostUrl}/SendEmailGeneric.ashx</code></td>
-<td>Join and Renew submission helpers, plus failure reporting</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateCDHAnet.ashx</code></td>
+<td>CDHA Net address load, add, update, and delete</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Legacy student-education write path and the error-email helpers used when a create/account or cart step fails.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td><code>UpdateDHEducation.ashx</code> posts the education payload. The email helpers post <code>{ emailSubject, emailMessage }</code>.</td></tr>
-<tr><th>Output</th><td>Legacy Wicket/iMIS JSON or email-send responses.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: multiple address CRUD payloads. Output: legacy CDHA Net address response.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/ProcessInsuranceUpgrade.ashx</code><br><code>POST {hostUrl}/ProcessUpgrade.ashx</code></td>
-<td>Renew upgrade flows and the BC insurance upgrade page</td>
+<td><code>GET</code></td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+<td>Communications preference load</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Core upgrade endpoints used to move the member into the new state before the cart or confirmation redirect.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Legacy Wicket upgrade payloads; the insurance flow posts an empty body, and the renew upgrade flow posts <code>{ member_type, ndhcb_id }</code>.</td></tr>
-<tr><th>Output</th><td>Legacy upgrade response objects, including invoice totals and error arrays where relevant.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: no body. Output: <code>{ data: Communications }</code>.</td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>POST {hostUrl}/UpdateUINAddress.ashx</code><br><code>POST {hostUrl}/UpdateCDHAnet.ashx</code></td>
-<td>Profile business-info display/edit</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateCommunications.ashx</code></td>
+<td>Communications preference update and job-notification preference update</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Reads, adds, updates, and deletes business addresses for the UIN and CDHA Net sections.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Empty object for reads, <code>{ update: ... }</code> for writes, or <code>{ remove: [seqn] }</code> for deletes.</td></tr>
-<tr><th>Output</th><td>Legacy Wicket/iMIS JSON payloads with address arrays or update responses.</td></tr>
-</table>
-</details>
-</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr data-platform="wicket">
-<td><code>GET https://www.imisdev.cdha.ca/CDHACommon/SendConnectRequest.ashx</code><br><code>GET //{window.location.hostname}/CDHACommon/SendConnectRequest.ashx</code><br><code>GET https://cdha.adobeconnect.com/api/xml</code><br><code>POST https://www.imisdev.cdha.ca/CDHACommon/UpdateConnectUserTranscript.ashx</code><br><code>POST //{window.location.hostname}/CDHACommon/UpdateConnectUserTranscript.ashx</code></td>
-<td>Profile eLearning / Adobe Connect transcript flows</td>
+<td><code>POST</code></td>
+<td><code>{hostUrl}/UpdateUINAddress.ashx</code></td>
+<td>UIN business address load, add, update, and delete</td>
 <td><span class="platform-chip">Wicket</span></td>
-<td>Adobe Connect proxy calls used to load course contents, learner status, and transcript updates.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Query parameters such as <code>action=common-info</code>, <code>curriculum-contents</code>, <code>report-curriculum-taker</code>, and <code>learning-path-info</code>; transcript updates post <code>{ sco_id, curriculum_id }</code>.</td></tr>
-<tr><th>Output</th><td>XML responses from Adobe Connect and the transcript update response from Wicket/iMIS.</td></tr>
-</table>
-</details>
-</td>
+<td>Input: multiple UIN address CRUD payloads. Output: legacy UIN address response.</td>
+<td><a href="./api-wicket-profile.html">Profile</a></td>
+<td>Same endpoint has multiple request shapes.</td>
 </tr>
-<tr data-platform="wordpress">
-<td><code>POST {hostUrl}/UpdateJobAd.ashx</code><br><code>POST {hostUrl}/GetJobAds.ashx</code></td>
-<td>WordPress Career Centre job add and job search</td>
-<td><span class="platform-chip">WordPress</span></td>
-<td>Legacy job-ad submission and the job-search list/detail endpoints.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Job add posts the validated form payload; search posts the selected province; detail reads the row by <code>SEQN</code>.</td></tr>
-<tr><th>Output</th><td>Legacy service response objects and the job list/detail payloads consumed by the Career Centre pages.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="wicket">
+<td><code>POST</code></td>
+<td><code>{hostUrl}/getmemberaddons.ashx?filter=ADDONS_</code></td>
+<td>Profile membership add-ons table</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: empty body. Output: <code>{ addons_data: AddOn[], errors? }</code>.</td>
+<td></td>
+<td></td>
 </tr>
-<tr data-platform="wordpress">
-<td><code>POST {hostUrl}/UpdateCDHAEvent.ashx</code><br><code>POST {hostUrl}/GetCDHAEvents.ashx</code></td>
-<td>WordPress event add and event search</td>
-<td><span class="platform-chip">WordPress</span></td>
-<td>Legacy event submission and the event calendar list endpoint.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Event add posts the validated event form payload. Event search loads the calendar list with an empty body.</td></tr>
-<tr><th>Output</th><td>Legacy service responses and grouped event list data.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="wicket">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>Orofacial answer load</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: bearer token. Output: <code>{ data: CdhaQuestion[] }</code>.</td>
+<td></td>
+<td></td>
 </tr>
-<tr data-platform="wordpress">
-<td><code>GET {newHostUrl}/v1/authenticated/memberInfo</code><br><code>GET {newHostUrl}/v1/imagegallery/{galleryCode}</code><br><code>POST {newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/generate-upload-url</code><br><code>PUT presigned upload URL</code><br><code>DELETE {newHostUrl}/v1/authenticated/imagegallery/{galleryCode}/delete-image/{imageId}</code></td>
-<td>WordPress image gallery</td>
-<td><span class="platform-chip">WordPress</span></td>
-<td>Public gallery listing, upload gating, presigned uploads, and delete support for the image gallery app.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Gallery code in the path, file metadata for the upload-url call, raw file bytes for the presigned upload, and image id for delete.</td></tr>
-<tr><th>Output</th><td><code>{ data: MemberInfo }</code>, gallery item arrays, upload URLs, and delete responses.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="wicket">
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>Orofacial answer create</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: <code>{ question_code, question, answer }</code>. Output: authenticated JSON create response.</td>
+<td></td>
+<td></td>
 </tr>
-<tr data-platform="wordpress">
-<td><code>POST {newHostUrl}/v1/ndhwcoloringcontest</code><br><code>PUT presigned upload URL</code><br><code>GET {newHostUrl}/v1/authenticated/ndhwcoloringcontest/{campaignId}/{status}</code><br><code>GET {newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/file</code><br><code>PUT {newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/{endpoint}</code></td>
-<td>WordPress coloring-contest public submission and admin moderation</td>
-<td><span class="platform-chip">WordPress</span></td>
-<td>Submission create/upload flow plus the authenticated admin listing, file download, and status update actions.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>Contest metadata and file info for create, raw bytes for upload, campaign and status params for admin list, and sequence numbers for file/status updates.</td></tr>
-<tr><th>Output</th><td>Presigned upload URLs, file IDs, contest submission lists, download URLs, and success responses.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="wicket">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/cdhaquestions/OROFACIAL_STATUS</code></td>
+<td>Orofacial answer update</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: <code>{ seqn, question_code, question, answer }</code>. Output: authenticated JSON update response.</td>
+<td></td>
+<td></td>
 </tr>
-<tr data-platform="wordpress">
-<td><code>POST https://cdha.docebosaas.com/oauth2/token</code><br><code>POST {hostUrl}/getmemberpd.ashx?filter=EVENT</code><br><code>POST {hostUrl}/ConnectRegister.ashx</code></td>
-<td>WordPress Docebo webinar registration and legacy webinar-alert support</td>
-<td><span class="platform-chip">WordPress</span></td>
-<td>Docebo OAuth exchange plus the legacy webinar registration path that checks for an existing registration and enrolls the member when needed.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td>JWT bearer assertion for the OAuth exchange; empty body for the registration lookup; <code>{ scoId }</code> for registration.</td></tr>
-<tr><th>Output</th><td>Docebo OAuth token payload, registration arrays, and the legacy Connect registration response.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="wicket">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/25plusyearsofmembership</code></td>
+<td>Member with 25+ years of membership</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: <code>{ fist_name, last_name }</code>. Output:  JSON  response.</td>
+<td></td>
+<td></td>
 </tr>
-<tr data-platform="wordpress">
-<td><code>POST https://api.cdha.ca/v1/graphql</code></td>
-<td>WordPress live-event and Zoom join flows</td>
-<td><span class="platform-chip">WordPress</span></td>
-<td>GraphQL token generation and Zoom event registration used by the live-event registration flow.</td>
-<td>
-<details class="api-summary-details">
-<summary>Show input / output</summary>
-<table class="api-summary-io">
-<tr><th>Input</th><td><code>mutation GenerateToken(payload: { id })</code> and <code>mutation ZoomRegisterEvent(...)</code>.</td></tr>
-<tr><th>Output</th><td>The generated GraphQL token string and the Zoom registration payload, including the join URL.</td></tr>
-</table>
-</details>
-</td>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/docebo/token</code></td>
+<td>CDHA-side Docebo SSO token load</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: bearer token. Output: Docebo token payload with <code>access_token</code>, expiry, and token type.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+<td>Education load and refresh</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: bearer token. Output: <code>{ success, data: Education[], message? }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education</code></td>
+<td>Education create</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: education create payload. Output: authenticated JSON create response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education/{seqn}</code></td>
+<td>Education update</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: education update payload plus <code>seqn</code>. Output: authenticated JSON update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>DELETE</code></td>
+<td><code>{newHostUrl}/v1/authenticated/education/{seqn}</code></td>
+<td>Education delete and current upgrade-to-grad education update path</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: path <code>seqn</code> and flow-specific payload/context. Output: authenticated delete/update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+<td>Areas-of-expertise load</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: bearer token. Output: <code>{ success, data: AreaOfExpertise, message? }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+<td>Areas-of-expertise create</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: expertise create payload. Output: authenticated JSON create response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/expertise</code></td>
+<td>Areas-of-expertise update</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: expertise update payload. Output: authenticated JSON update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id</code></td>
+<td>Read current authenticated event registration state</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: event id in the path with bearer token. Output: registration payload with status, registrant, event data, and optional Zoom data.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/register</code></td>
+<td>Authenticated CDHA event registration</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: <code>eventRegistrationSchema</code> payload. Output: <code>{ success: true, data: registration }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/re-register-zoom</code></td>
+<td>Recreate Zoom registration for supported webinar events</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: event id in the path with bearer token. Output: updated registration payload.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:id/zoom-access-link</code></td>
+<td>Fetch Zoom join/access link</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: event id in the path with bearer token. Output: <code>{ access_link: string }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/event/:partyId/:eventCode</code></td>
+<td>Lookup event data by member and event code</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: <code>partyId</code> and <code>eventCode</code> in the path. Output: <code>{ success: true, data: [...] }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>{newHostUrl}/v1/ndhwcoloringcontest</code></td>
+<td>Public coloring contest entry submission</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: public contest submission payload. Output: created submission data plus a presigned upload URL.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{campaignId}/{status}</code></td>
+<td>Coloring contest admin submission list</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: <code>campaignId</code> and <code>status</code> in the path. Output: authenticated submission list payload.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/file</code></td>
+<td>Coloring contest file download URL</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: submission <code>seqn</code> in the path. Output: authenticated file URL response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/markasdeleted</code></td>
+<td>Mark coloring contest submission as deleted</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: submission <code>seqn</code> in the path. Output: authenticated status-update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/markasdownloaded</code></td>
+<td>Mark coloring contest submission as downloaded</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: submission <code>seqn</code> in the path. Output: authenticated status-update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/markasuploaded</code></td>
+<td>Mark coloring contest submission as uploaded</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: submission <code>seqn</code> in the path. Output: authenticated status-update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>PUT</code></td>
+<td><code>{newHostUrl}/v1/authenticated/ndhwcoloringcontest/{seqn}/{endpoint}</code></td>
+<td>Generic coloring contest status update endpoint</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: submission <code>seqn</code> and mapped status endpoint. Output: authenticated status-update response.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/imagegallery/{galleryCode}</code></td>
+<td>Public image-gallery listing</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: gallery code in the path. Output: public image-gallery payload for the selected gallery.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="wicket">
+<td><code>GET</code></td>
+<td><code>{newHostUrl}/v1/lookupdata?table={table}</code></td>
+<td>Shared lookup-table load for profile, join, renew, upgrade, education, expertise, insurance, and related options</td>
+<td><span class="platform-chip">Wicket</span></td>
+<td>Input: query string <code>table</code> for lookup tables such as <code>DEGREES</code>, <code>UNIVERSITY</code>, <code>INSURANCE</code>, or <code>INDIGENOUS_STATUS</code>. <code>COUNTRY</code>, <code>PROVINCES</code>, <code>YEARS</code>, and others. Output: lookup data payload.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com/learn/v1/enrollments?id_user[]={userId}&amp;page_size=200</code></td>
+<td>Docebo enrollment load</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: Docebo bearer token and query <code>id_user[]</code>. Output: <code>{ data: { items: DoceboEnrollment[] } }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com/manage/v1/user/session</code></td>
+<td>Docebo current-user session load</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: Docebo bearer token. Output: <code>{ data: { id, ... } }</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>POST</code></td>
+<td><code>https://cdha.docebosaas.com/oauth2/token</code></td>
+<td>Docebo OAuth token exchange</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: form data with <code>grant_type</code>, <code>scope</code>, and JWT <code>assertion</code>. Output: Docebo OAuth token payload.</td>
+<td></td>
+<td></td>
+</tr>
+<tr data-platform="cdha">
+<td><code>GET</code></td>
+<td><code>https://cdha.docebosaas.com{courseUrl};type=oauth2_response;reenter_cc=0;access_token={doceboAccessToken}</code></td>
+<td>Docebo course launch</td>
+<td><span class="platform-chip">CDHA</span></td>
+<td>Input: course URL plus Docebo access token in the URL. Output: browser navigation to the Docebo course page.</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
