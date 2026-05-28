@@ -65,7 +65,7 @@ Use the filter chips to narrow the table by migration owner. Each row includes a
 </tr>
 <tr data-platform="wicket">
 <td><code>GET</code></td>
-<td><code>/MyReceipt</code> | </td>
+<td><code>/MyReceipt</code></td>
 <td>API for purchase transactions</td>
 <td><span class="platform-chip">Wicket</span></td>
 <td></td>
@@ -533,3 +533,32 @@ Use the filter chips to narrow the table by migration owner. Each row includes a
 </tbody>
 </table>
 </div>
+
+<script>
+(() => {
+  const shell = document.querySelector('.api-summary-shell');
+  if (!shell) return;
+
+  const rows = Array.from(shell.querySelectorAll('.api-summary-table tbody > tr[data-platform]'));
+  const filters = {
+    'api-filter-all': null,
+    'api-filter-wicket': 'wicket',
+    'api-filter-cdha': 'cdha',
+  };
+
+  const applyFilter = () => {
+    const activeInput = shell.querySelector('input[name="api-filter"]:checked');
+    const activePlatform = activeInput ? filters[activeInput.id] : null;
+
+    rows.forEach((row) => {
+      row.hidden = Boolean(activePlatform) && row.dataset.platform !== activePlatform;
+    });
+  };
+
+  shell.querySelectorAll('input[name="api-filter"]').forEach((input) => {
+    input.addEventListener('change', applyFilter);
+  });
+
+  applyFilter();
+})();
+</script>

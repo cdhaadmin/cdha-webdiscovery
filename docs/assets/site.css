@@ -151,6 +151,10 @@ img {
   margin-top: 10px;
 }
 
+.api-summary-table tbody > tr[hidden] {
+  display: none;
+}
+
 .api-summary-table td {
   word-break: break-word;
 }
@@ -192,22 +196,6 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-}
-
-#api-filter-all:checked ~ .api-summary-table tbody > tr {
-  display: table-row;
-}
-
-#api-filter-wicket:checked ~ .api-summary-table tbody > tr:not([data-platform="wicket"]) {
-  display: none;
-}
-
-#api-filter-cdha:checked ~ .api-summary-table tbody > tr:not([data-platform="cdha"]) {
-  display: none;
-}
-
-#api-filter-both:checked ~ .api-summary-table tbody > tr:not([data-platform="both"]) {
-  display: none;
 }
 
 .nav-link {
